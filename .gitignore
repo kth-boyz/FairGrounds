@@ -2,3 +2,4 @@
 *.iml
 **/application.properties
 .DS_Store
+*.properties
