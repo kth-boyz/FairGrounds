@@ -3,21 +3,13 @@ package FairGrounds.Domain;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "EXPERTISEPROFILE")
+@Table(name = "Expertise")
 public class Expertise {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    @Column(name="id")
+    private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "personId")
-    private int personId;
-
-    @ManyToOne
-    @JoinColumn (name = "ExId")
-    private int ExpertiseId;
-
-    @Column (name = "yearsOfEx")
-    private double yearsOfEx;
+    @Column(name = "name")
+    private String name;
 }

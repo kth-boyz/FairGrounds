@@ -2,11 +2,14 @@ package FairGrounds.Domain;
 
 import javax.persistence.*;
 
-@MappedSuperclass
+
+@Entity
+@Table(name = "Person")
 public class Person{
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="person_id")
     private int personId;
 
     @Column (name = "fname")

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Application {
 
-    private ArrayList<Expertise> expertize;
+    private ArrayList<ExpertiseProfile> expertize;
     private ArrayList<Availability> availabilities;
 
 }
