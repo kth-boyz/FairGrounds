@@ -9,23 +9,34 @@ public class Person{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int personId;
 
-    @Column (name = "")
+    @Column (name = "fname")
     private String fname;
 
-    @Column (name = "")
+    @Column (name = "lname")
     private String lname;
 
-    @Column (name = "")
-    private String scn;
+    @Column (name = "ssnr")
+    private String ssnr;
 
-    @Column (name = "")
+    @Column (name = "email")
     private String email;
 
-    @Column (name = "")
+    @Column (name = "uname")
     private String uname;
 
-    @Column (name = "")
+    @Column (name = "pwd")
     private String pwd;
+
+    @Column (name = "roleId")
+    private int roleId;
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
 
     public int getPersonId() {
         return personId;
@@ -43,8 +54,8 @@ public class Person{
         this.lname = lname;
     }
 
-    public void setScn(String scn) {
-        this.scn = scn;
+    public void setSsnr(String scn) {
+        this.ssnr = scn;
     }
 
     public void setEmail(String email) {
@@ -67,8 +78,8 @@ public class Person{
         return lname;
     }
 
-    public String getScn() {
-        return scn;
+    public String getSsnr() {
+        return ssnr;
     }
 
     public String getEmail() {

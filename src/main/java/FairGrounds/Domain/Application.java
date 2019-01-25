@@ -6,4 +6,5 @@ public class Application {
 
     private ArrayList<Expertise> expertize;
     private ArrayList<Availability> availabilities;
+
 }
