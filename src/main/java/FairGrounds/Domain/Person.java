@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @MappedSuperclass
 public class Person{
-    //foo
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int personId;
