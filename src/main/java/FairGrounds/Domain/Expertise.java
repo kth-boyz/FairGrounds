@@ -3,7 +3,7 @@ package FairGrounds.Domain;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "Expertise")
+@Table (name = "EXPERTISEPROFILE")
 public class Expertise {
 
     @Id
