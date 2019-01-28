@@ -1,0 +1,12 @@
+FairGrounds/Domain/Expertise.class
+FairGrounds/Config/FairGroundsConfig.class
+FairGrounds/Domain/ExpertiseProfile.class
+FairGrounds/Domain/Person.class
+FairGrounds/Domain/Availability.class
+FairGrounds/Domain/Recruiter.class
+FairGrounds/Repository/UserRepository.class
+FairGrounds/Application/LoginService.class
+FairGrounds/Domain/Application.class
+FairGrounds/Domain/Applicant.class
+FairGrounds/Main.class
+FairGrounds/Presentation/FairGroundsController.class
