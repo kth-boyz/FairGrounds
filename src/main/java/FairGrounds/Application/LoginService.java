@@ -23,7 +23,7 @@ public class LoginService {
     public void logInPerson(String username, String pwd) {
         this.person = personRepository.findByName(username);
         if(this.person.getPwd().equals(pwd)) {
-            //do something
+            //do something dddddddddd
         }
     }
 
