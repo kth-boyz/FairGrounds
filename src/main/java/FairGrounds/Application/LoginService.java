@@ -21,7 +21,7 @@ public class LoginService {
     }
 
     public void logInPerson(String username, String pwd) {
-        this.person = personRepository.findByName(username);
+        this.person = personRepository.findByUname(username);
         if(this.person.getPwd().equals(pwd)) {
             //do something dddddddddd
         }

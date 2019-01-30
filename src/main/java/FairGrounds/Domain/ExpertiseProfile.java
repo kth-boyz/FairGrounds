@@ -8,7 +8,7 @@ public class ExpertiseProfile {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private int expertixeprofile_id;
 
     @ManyToOne
     @JoinColumn(name = "personId")
@@ -16,7 +16,7 @@ public class ExpertiseProfile {
 
     @ManyToOne
     @JoinColumn (name = "expertiseId")
-    private Expertise ExpertiseId;
+    private Expertise expertiseId;
 
     @Column (name = "yearsOfEx")
     private long yearsOfEx;

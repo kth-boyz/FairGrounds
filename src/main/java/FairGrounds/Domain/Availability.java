@@ -9,7 +9,7 @@ public class Availability {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private int availability_id;
 
     @Column (name = "fromDate")
     private Date fromDate;
