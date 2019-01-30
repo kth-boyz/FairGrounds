@@ -15,8 +15,5 @@ script:
    - docker run -p 8080:8080 -t app
 after_script:
    - docker images
-before_deploy:
    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-deploy:
-   provider: script
-   script: docker push kthboyz/fairgrounds:app
+   - docker push kthboyz/fairgrounds:app

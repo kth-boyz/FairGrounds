@@ -4,9 +4,11 @@ FairGrounds/Domain/ExpertiseProfile.class
 FairGrounds/Domain/Person.class
 FairGrounds/Domain/Availability.class
 FairGrounds/Domain/Recruiter.class
+FairGrounds/Presentation/LoginController.class
 FairGrounds/Repository/UserRepository.class
 FairGrounds/Application/LoginService.class
+FairGrounds/Presentation/RegisterController.class
 FairGrounds/Domain/Application.class
-FairGrounds/Domain/Applicant.class
 FairGrounds/Main.class
+FairGrounds/Domain/Applicant.class
 FairGrounds/Presentation/FairGroundsController.class
