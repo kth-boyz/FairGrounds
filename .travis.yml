@@ -14,13 +14,14 @@ script:
    - docker build -t fairgrounds .
 after_script:
    - docker images
-
-
 before_deploy:
    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
    - docker tag fairgrounds kthboyz/fairgrounds:fairgrounds
+   - docker push kthboyz/fairgrounds:fairgrounds
 deploy:
-   provider: script
-   script: docker push kthboyz/fairgrounds:fairgrounds
+   provider: heroku
+   api_key:
+      secure: b1914aef-2241-4c05-988c-68866367fdd8
+   app: kthboyz-fairgrounds
    on:
-      branch: test
+      repo: kthboyz-fairgrounds
