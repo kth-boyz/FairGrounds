@@ -10,7 +10,6 @@ env:
       - REGISTRY_PASS=whatever
       - secret: 12345678910
 script:
-   #- ./mvnw clean install -B
    - docker build -t fairgrounds .
 after_script:
    - docker images
@@ -25,4 +24,4 @@ deploy:
    app: kthboyz-fairgrounds
    on:
       repo: kth-boyz/FairGrounds
-      branch: test
+      branch: master
