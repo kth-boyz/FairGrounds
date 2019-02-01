@@ -12,10 +12,11 @@ env:
 before-script:
    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 script:
-   - ./mvnw clean install -B
-  # - docker run -p 8080:8080 -t app
-after_script:
+   #- ./mvnw clean install -B
    - docker build -t app .
+after_script:
    - docker images
    - docker tag local-image:app kthboyz/fairgrounds:app
    - docker push kthboyz/fairgrounds:app
+deploy:
+   - docker run -p 8080:8080 -t app
