@@ -21,6 +21,6 @@ before_deploy:
    - docker tag fairgrounds kthboyz/fairgrounds:fairgrounds
 deploy:
    provider: script
-   script: docker run -p 8080:8080 -t fairgrounds
+   script: docker push kthboyz/fairgrounds:fairgrounds
    on:
       branch: test
