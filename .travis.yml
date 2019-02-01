@@ -12,8 +12,16 @@ env:
 script:
    #- ./mvnw clean install -B
    - docker build -t fairgrounds .
+   - docker run -p 8080:8080 -t fairgrounds
 after_script:
    - docker images
+
+
+before_deploy:
    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
    - docker tag fairgrounds kthboyz/fairgrounds:fairgrounds
-   - docker push kthboyz/fairgrounds:fairgrounds
+deploy:
+   provider: script
+   script: docker push kthboyz/fairgrounds:fairgrounds
+   on:
+      branch: test
