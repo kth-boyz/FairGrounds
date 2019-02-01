@@ -2,7 +2,7 @@
 Project in Global Application Course at KTH (IV1201) by Peter Svensson, Christopher Robberts and Youssef Taoudi
 
 
-### Docker
+### Running Docker locally
 1. CD into root
 2. Build:
 docker build -t app .
