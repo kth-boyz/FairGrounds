@@ -14,6 +14,7 @@ before-script:
 script:
    #- ./mvnw clean install -B
    - docker build -t app .
+   - docker run -p 8080:8080 -t app
 after_script:
    - docker images
    - docker tag local-image:app kthboyz/fairgrounds:app
