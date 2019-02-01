@@ -16,5 +16,4 @@ script:
    - docker build -t app .
 after_script:
    - docker images
-   - docker tag local-image:app kthboyz/fairgrounds:app
    - docker push kthboyz/fairgrounds:app
