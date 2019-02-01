@@ -9,12 +9,19 @@ env:
       - REGISTRY_USER=taoudi
       - REGISTRY_PASS=whatever
       - secret: 12345678910
-before-script:
-   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 script:
-   #- ./mvnw clean install -B
-   - docker build -t app .
+   - docker build -t fairgrounds .
 after_script:
    - docker images
-   - docker tag local-image:app kthboyz/fairgrounds:app
-   - docker push kthboyz/fairgrounds:app
+before_deploy:
+   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+   - docker tag fairgrounds kthboyz/fairgrounds:fairgrounds
+   - docker push kthboyz/fairgrounds:fairgrounds
+deploy:
+   provider: heroku
+   api_key:
+      secure: b1914aef-2241-4c05-988c-68866367fdd8
+   app: kthboyz-fairgrounds
+   on:
+      repo: kth-boyz/FairGrounds
+      branch: master
