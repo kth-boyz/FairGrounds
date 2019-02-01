@@ -9,12 +9,11 @@ env:
       - REGISTRY_USER=taoudi
       - REGISTRY_PASS=whatever
       - secret: 12345678910
-before-script:
-   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 script:
    #- ./mvnw clean install -B
-   - docker build -t app .
+   - docker build -t fairgrounds .
 after_script:
    - docker images
+   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
    - docker tag app kthboyz/fairgrounds
    - docker push kthboyz/fairgrounds
