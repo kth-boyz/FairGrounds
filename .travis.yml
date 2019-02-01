@@ -15,5 +15,5 @@ script:
 after_script:
    - docker images
    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-   - docker tag app kthboyz/fairgrounds
-   - docker push kthboyz/fairgrounds
+   - docker tag fairgrounds kthboyz/fairgrounds:fairgrounds
+   - docker push kthboyz/fairgrounds:fairgrounds
