@@ -1,5 +1,5 @@
 package FairGrounds.Domain;
-//This is backend
+//This is backend-login
 import javax.persistence.*;
 import java.util.List;
 
