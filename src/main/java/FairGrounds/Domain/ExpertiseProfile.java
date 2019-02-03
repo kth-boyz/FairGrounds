@@ -4,7 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "EXPERTISEPROFILE")
-public class ExpertiseProfile {
+public class ExpertiseProfile implements ExpertiseProfileDTO{
+
+    public ExpertiseProfile(Expertise expertise,Person person){
+        this.expertise = expertise;
+        this.person = person;
+    }
 
     @Id
     @Column(name="id")
