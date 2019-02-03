@@ -20,5 +20,4 @@ public class FairGroundsController {
     public String showDefaultView() {
         return EXAMPLE_PAGE;
     }
-
 }
