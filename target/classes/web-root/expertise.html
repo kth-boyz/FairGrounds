@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply Test</title>
+</head>
+<body>
+
+<form th:action="@{/expertise/post}" th:object="${applicationForm}" method="post">
+
+    <div> <h3>Application form</h3>
+        <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
+            <li>
+                <!-- <li><span th:text="${status}"> Status </span>-->
+                <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
+                 <input th:field="*{expertiseProfiles[__${status.index}__].yearsOfEx}"/>
+            </li>
+        </ul>
+    </div>
+
+</form>
+</body>
+</html>
