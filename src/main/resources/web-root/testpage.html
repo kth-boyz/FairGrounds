@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{resources/fragments/layout}">
+      <link rel="stylesheet" type="text/css" th:href="@{css/mainpage}">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!!!!</title>
+    <title>Home</title>
 </head>
 <body>
-    <h2>Hello World!!!!</h2>
+<main layout:fragment="mainsection">
+    <p>hello</p>
+</main>
 </body>
 </html>

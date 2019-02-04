@@ -1,0 +1,9 @@
+.title {
+    background-color: rgba(200, 200, 200, 0.2);
+    text-align: center;
+}
+
+.headContainer {
+    width: 50%;
+    margin: 0 auto;
+}
