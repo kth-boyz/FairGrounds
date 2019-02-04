@@ -7,16 +7,17 @@ import javax.persistence.*;
 public class ExpertiseProfile {
 
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int expertixeprofile_id;
+    private int expertiseprofile_id;
 
     @ManyToOne
-    @JoinColumn(name = "personId")
-    private Person personId;
+    @JoinColumn (name = "expertise")
+    private Expertise expertise;
 
     @ManyToOne
-    @JoinColumn (name = "expertiseId")
-    private Expertise expertiseId;
+    @JoinColumn (name = "person")
+    private Person person;
 
     @Column (name = "yearsOfEx")
     private long yearsOfEx;

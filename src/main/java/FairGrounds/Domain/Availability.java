@@ -8,12 +8,17 @@ import java.util.Date;
 public class Availability {
 
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int availability_id;
 
-    @Column (name = "fromDate")
+    @ManyToOne
+    @JoinColumn (name = "person")
+    private Person Person;
+
+    @Column (name = "fd")
     private Date fromDate;
 
-    @Column (name = "toDate")
+    @Column (name = "td")
     private Date toDate;
 }
