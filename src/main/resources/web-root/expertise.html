@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<form th:action="@{/expertise/post}" th:object="${applicationForm}" method="post">
+<form th:action="@{/availability}" th:object="${applicationForm}" method="post">
 
-    <div> <h3>Application form</h3>
+    <div> <h3>Exptertise form</h3>
         <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
             <li>
                 <!-- <li><span th:text="${status}"> Status </span>-->
@@ -16,8 +16,8 @@
                  <input th:field="*{expertiseProfiles[__${status.index}__].yearsOfEx}"/>
             </li>
         </ul>
+        <button type="submit">Next</button>
     </div>
-
 </form>
 </body>
 </html>

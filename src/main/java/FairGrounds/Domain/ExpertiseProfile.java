@@ -4,7 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "EXPERTISEPROFILE")
-public class ExpertiseProfile {
+public class ExpertiseProfile{
+
+    public ExpertiseProfile(){
+
+    }
+
 
     @Id
     @Column(name="id")
