@@ -3,11 +3,12 @@ package FairGrounds.Presentation;
 import FairGrounds.Domain.Availability;
 import FairGrounds.Domain.ExpertiseProfile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationForm {
     private List<ExpertiseProfile> expertiseProfiles;
-    private List<Availability> availabilities;
+    private List<Availability> availabilities = new ArrayList<>();
 
 
     public List<ExpertiseProfile> getExpertiseProfiles() {
