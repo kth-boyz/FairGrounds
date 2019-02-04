@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table (name = "EXPERTISEPROFILE")
 public class ExpertiseProfile implements ExpertiseProfileDTO{
 
+    public ExpertiseProfile(){
+
+    }
+
     public ExpertiseProfile(Expertise expertise,Person person){
         this.expertise = expertise;
         this.person = person;
