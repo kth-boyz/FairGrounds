@@ -31,8 +31,11 @@ public class Person{
     @Column (name = "pwd")
     private String pwd;
 
-    /**@Column (name = "roleId")
-    private Integer roleId;**/
+    @Column (name = "role_id")
+    private Integer roleId;
+
+    @OneToOne(mappedBy = "person")
+    private Application application;
 
    /** @OneToMany
     @JoinColumn (name="availability")
@@ -43,14 +46,14 @@ public class Person{
     private List<ExpertiseProfile> expertiseProfile;
     **/
 
-   /** public Integer getRoleId() {
+   public Integer getRoleId() {
 
         return roleId;
     }
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
-    }**/
+    }
 
     public int getPersonId() {
         return personId;
@@ -108,4 +111,11 @@ public class Person{
         return pwd;
     }
 
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
+    public Application getApplication() {
+        return application;
+    }
 }
