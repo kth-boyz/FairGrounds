@@ -1,7 +1,11 @@
 package FairGrounds.Application;
 
 import FairGrounds.Domain.Person;
+import FairGrounds.Presentation.ExceptionHandler;
+import FairGrounds.Presentation.LoginDTO;
+import FairGrounds.Presentation.RegisterDTO;
 import FairGrounds.Repository.PersonRepository;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,19 +17,16 @@ public class LoginService {
     @Autowired
     PersonRepository personRepository;
 
-    private Person person;
-
-    public void newPerson() {
-        this.person = new Person();
-        personRepository.save(person);
+    public Person findUserAccount(LoginDTO loginDTO) {
+        return personRepository.findByUname(loginDTO.getUserLoginName());
     }
 
-    public void logInPerson(String username, String pwd) {
-        this.person = personRepository.findByUname(username);
-        if(this.person.getPwd().equals(pwd)) {
-            //do something dddddddddd
-        }
+    public Person saveNewUser(RegisterDTO registerDTO) {
+        Person newUser = new Person(registerDTO);
+        return personRepository.save(newUser);
     }
 
-
+    public Person validateNewUser(RegisterDTO registerDTO) {
+        return personRepository.findByUname(registerDTO.getUserName());
+    }
 }
