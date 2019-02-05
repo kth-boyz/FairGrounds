@@ -6,39 +6,22 @@
 </head>
 <body>
 
-<form th:action="@{/apply}" th:object="${applicationForm}" method="post">
+<form th:action="@{/availability}" th:object="${applicationForm}" method="post">
 
     <div> <h3>Availability form</h3>
         <p>With thymeleaf</p>
         <ul th:each="availability, status : ${applicationForm.availabilities}" id="availabilities-th" >
             <li>
-                <input th:field="*{availabilities[__${status.index}__].toDate}"/>
-                <input th:field="*{availabilities[__${status.index}__].fromDate}"/>
+                <input type="date" th:field="*{availabilities[__${status.index}__].toDate}"/>
+                <input type="date" th:field="*{availabilities[__${status.index}__].fromDate}"/>
             </li>
         </ul>
-
-        <p>Without thymeleaf</p>
-
-       <ul id="availabilities">
-       </ul>
-
-        <button onclick="goAgane()" type="button" >Add Availablity</button>
-        <button type="submit">Next</button>
     </div>
+    <button name="addAvailability" type="submit">Add</button>
+    <button name="confirm" type="submit">Next</button>
 </form>
 
 
 </body>
-
-<script>
-
-    function goAgane(){
-        var li = document.createElement("LI");
-        li.appendChild(document.createTextNode("coooooool"));
-        document.getElementById("availabilities").appendChild(li);
-        document.getElementById("availabilities-th").appendChild(li);
-        ul.appendChild(li);
-    }
-</script>
 
 </html>
