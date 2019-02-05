@@ -33,11 +33,12 @@
 <script>
 
     function goAgane(){
-        var ul = document.getElementById("availabilities-th");
+
         var li = document.createElement("LI");
         li.appendChild(document.createTextNode("coooooool"));
-       // document.getElementById("availabilities").appendChild(li);
-       ul.appendChild(li);
+        document.getElementById("availabilities").appendChild(li);
+        document.getElementById("availabilities-th").appendChild(li);
+        ul.appendChild(li);
     }
 </script>
 
