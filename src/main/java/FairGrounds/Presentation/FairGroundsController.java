@@ -13,9 +13,6 @@ public class FairGroundsController {
     static final String DEFAULT_PAGE_URL = "/";
     static final String EXAMPLE_PAGE = "testpage";
 
-    @Autowired
-    LoginService loginService;
-
     @GetMapping(DEFAULT_PAGE_URL)
     public String showDefaultView() {
         return EXAMPLE_PAGE;
