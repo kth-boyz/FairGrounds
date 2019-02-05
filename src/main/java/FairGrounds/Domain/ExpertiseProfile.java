@@ -10,6 +10,10 @@ public class ExpertiseProfile{
 
     }
 
+    public ExpertiseProfile(Expertise expertise){
+        this.expertise = expertise;
+    }
+
 
     @Id
     @Column(name="id")
