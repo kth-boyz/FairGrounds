@@ -6,18 +6,30 @@
 </head>
 <body>
     <form th:action="@{/registerNewUser}" th:object="${registerDTO}" method='POST'>
-        <label>User Name</label>
-        <input type="text" th:field="*{userName}" id="register-userName" palceholder="Choose User Name" required/>
-        <label>Password</label>
-        <input type="password" th:field="*{userPwd}" id="register-pwd" palceholder="Select Password" required/>
-        <label>First Name</label>
-        <input type="text" th:field="*{fName}" id="register-firstName" palceholder="Type First Name" required/>
-        <label>Last Name</label>
-        <input type="text" th:field="*{lName}" id="register-lastName" palceholder="Type Last Name" required/>
-        <label>Social Security Number</label>
-        <input type="text" th:field="*{userSsnr}" id="register-ssnr" palceholder="Enter Social Security Number" required/>
-        <label>E-mail</label>
-        <input type="email" th:field="*{email}" id="register-email" palceholder="Enter Email Address" required/>
+        <p class="form"><label>User Name</label>
+        <input type="text" th:field="*{userName}" id="register-userName" palceholder="Choose User Name"/>
+        <span class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Error</span>
+        </p>
+        <p class="form"><label>Password</label>
+        <input type="password" th:field="*{userPwd}" id="register-pwd" palceholder="Select Password"/>
+        <span class="error" th:if="${#fields.hasErrors('userPwd')}" th:errors="*{userPwd}">Error</span>
+        </p>
+        <p class="form"><label>First Name</label>
+        <input type="text" th:field="*{fName}" id="register-firstName" palceholder="Type First Name"/>
+        <span class="error" th:if="${#fields.hasErrors('fName')}" th:errors="*{fName}">Error</span>
+        </p>
+        <p class="form"><label>Last Name</label>
+        <input type="text" th:field="*{lName}" id="register-lastName" palceholder="Type Last Name"/>
+        <span class="error" th:if="${#fields.hasErrors('lName')}" th:errors="*{lName}">Error</span>
+        </p>
+        <p class="form"><label>Social Security Number</label>
+        <input type="text" th:field="*{userSsnr}" id="register-ssnr" palceholder="Enter Social Security Number"/>
+        <span class="error" th:if="${#fields.hasErrors('userSsnr')}" th:errors="*{userSsnr}">Error</span>
+        </p>
+        <p class="form"><label>E-mail</label>
+        <input type="email" th:field="*{email}" id="register-email" palceholder="Enter Email Address"/>
+        <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
+        </p>
         <button type="submit">Register</button>
     </form>
 </body>

@@ -1,6 +1,7 @@
 package FairGrounds.Presentation;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class LoginDTO {
 
@@ -8,6 +9,7 @@ public class LoginDTO {
     private String userLoginName;
 
     @NotBlank(message = "Please enter password")
+    @Size (min = 6, message = "Password must be min 6 characters")
     private String userLoginPwd;
 
     public void setUserLoginName(String userName) {
