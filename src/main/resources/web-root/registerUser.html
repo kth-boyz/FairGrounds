@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/registerNewUser}" th:object="${registerDTO}" method='POST'>
+        <label>User Name</label>
+        <input type="text" th:field="*{userName}" id="register-userName" palceholder="Choose User Name" required/>
+        <label>Password</label>
+        <input type="password" th:field="*{userPwd}" id="register-pwd" palceholder="Select Password" required/>
+        <label>First Name</label>
+        <input type="text" th:field="*{fName}" id="register-firstName" palceholder="Type First Name" required/>
+        <label>Last Name</label>
+        <input type="text" th:field="*{lName}" id="register-lastName" palceholder="Type Last Name" required/>
+        <label>Social Security Number</label>
+        <input type="text" th:field="*{userSsnr}" id="register-ssnr" palceholder="Enter Social Security Number" required/>
+        <label>E-mail</label>
+        <input type="email" th:field="*{email}" id="register-email" palceholder="Enter Email Address" required/>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

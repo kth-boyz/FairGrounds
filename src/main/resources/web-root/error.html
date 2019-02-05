@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <section>
+        <h1 th:if="${#messages.msgOrNull('error.__${errorType}__') != null}"
+            th:text="#{error.__${errorType}__}">Error</h1>
+        <h1 th:if="${#messages.msgOrNull('error.__${errorType}__') == null}"
+            th:text="#{error.generic}">Error</h1>
+        <p class="info" th:if="${#messages.msgOrNull('error.__${errorType}__.info') != null}"
+           th:text="#{error.__${errorType}__.info}">Current error details</p>
+        <p class="info" th:if="${#messages.msgOrNull('error.__${errorType}__.info') == null}"
+           th:text="#{error.generic.info}">Current error details</p>
+    </section>
+</main>
+</body>
+</html>
