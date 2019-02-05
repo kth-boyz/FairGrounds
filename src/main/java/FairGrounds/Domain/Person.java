@@ -1,15 +1,16 @@
 package FairGrounds.Domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 @Table(name = "Person")
 public class Person{
-    
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="person_id")
+    @Column(name="id")
     private Integer personId;
 
     @Column (name = "fname")
@@ -30,27 +31,26 @@ public class Person{
     @Column (name = "pwd")
     private String pwd;
 
-    @Column (name = "roleId")
-    private int roleId;
+    @Column (name = "role_id")
+    private Integer roleId;
 
-    @OneToOne
-    @JoinColumn (name="application")
+    @OneToOne(mappedBy = "person")
     private Application application;
 
-    public Application getApplication() {
-        return application;
-    }
+    /** @OneToMany
+     @JoinColumn (name="availability")
+     private List<Availability> availability;
+     @OneToMany
+     @JoinColumn (name="expertiseprofile")
+     private List<ExpertiseProfile> expertiseProfile;
+     **/
 
-    public void setApplication(Application application) {
-        this.application = application;
-    }
-
-    public int getRoleId() {
+    public Integer getRoleId() {
 
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
@@ -110,4 +110,11 @@ public class Person{
         return pwd;
     }
 
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
+    public Application getApplication() {
+        return application;
+    }
 }

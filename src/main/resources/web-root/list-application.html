@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/applications}" th:object="${applicationSearchForm}" id="search-params" method="POST">
+    <input th:field="*{name}"/>
+    <input th:field="*{appDate}" type="text" id="name"/>
+    <input th:field="*{workAvailabilityFrom}" type="text" id="application-date"/>
+    <input th:field="*{workAvailabilityTo}" type="text" id="work-period"/>
+    <input type="submit"/>
+</form>
+<div>
+    <ul id="applications">
+    </ul>
+</div>
+</body>
+</html>
