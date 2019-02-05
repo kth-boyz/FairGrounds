@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Expertise {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id")
     private Long id;
 
