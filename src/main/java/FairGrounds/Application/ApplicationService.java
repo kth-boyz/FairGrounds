@@ -24,11 +24,8 @@ public class ApplicationService {
         List<ExpertiseProfile> expertiseProfiles = new ArrayList<>();
         List<Expertise> expertises =  expertiseRepository.findAll();
         for (Expertise expertise: expertises) {
-<<<<<<< HEAD
             expertiseProfiles.add(new ExpertiseProfile(expertise));
-=======
-            expertiseProfiles.add(new ExpertiseProfile(expertise, personRepository.findByUname("Taoudi")));
->>>>>>> bc486ad8d5f450b6cb72c873215087b87aa1bf55
+
         }
         return expertiseProfiles;
     }
