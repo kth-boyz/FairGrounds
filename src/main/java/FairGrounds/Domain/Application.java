@@ -21,14 +21,11 @@ public class Application {
     @JoinColumn (name = "person")
     private Person person;
 
-
     @OneToMany(mappedBy = "application")
     List<Availability> availabilities;
 
-
     @OneToMany(mappedBy = "application")
     List<ExpertiseProfile> expertiseProfile;
-
 
     @Column (name="status")
     private String status;

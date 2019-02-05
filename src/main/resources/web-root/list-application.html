@@ -7,14 +7,21 @@
 <body>
 <form th:action="@{/applications}" th:object="${applicationSearchForm}" id="search-params" method="POST">
     <input th:field="*{name}"/>
+    <input th:field="*{expertise}"/>
     <input th:field="*{appDate}" type="text" id="name"/>
     <input th:field="*{workAvailabilityFrom}" type="text" id="application-date"/>
     <input th:field="*{workAvailabilityTo}" type="text" id="work-period"/>
     <input type="submit"/>
 </form>
 <div>
-    <ul id="applications">
-    </ul>
+    <table th:object="${applications}">
+        <tr th:each="app : ${applications}">
+            <td>
+                <span th:text="${app?.getFname()}"></span>
+                <span th:text="${app?.getLname()}"></span>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

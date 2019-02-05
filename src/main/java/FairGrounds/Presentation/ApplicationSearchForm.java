@@ -5,10 +5,9 @@ public class ApplicationSearchForm {
     private String appDate;
     private String workAvailabilityFrom;
     private String workAvailabilityTo;
+    private String expertise;
 
-    public String getName() {
-        return this.name;
-    }
+    public String getName() { return this.name; }
 
     public String getAppDate() {
         return this.appDate;
@@ -22,9 +21,13 @@ public class ApplicationSearchForm {
         return this.workAvailabilityTo;
     }
 
+    public String getExpertise() { return this.expertise; }
+
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setExpertise(String expertise) { this.expertise = expertise; }
 
     public void setAppDate(String appDate) {
         this.appDate = appDate;
