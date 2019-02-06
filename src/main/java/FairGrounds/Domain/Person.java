@@ -1,5 +1,7 @@
 package FairGrounds.Domain;
 
+import FairGrounds.Presentation.RegisterDTO;
+
 import javax.persistence.*;
 
 
@@ -36,6 +38,18 @@ public class Person{
     @OneToOne
     @JoinColumn (name="application")
     private Application application;
+
+    public Person(){};
+
+    public Person (RegisterDTO registerDTO) {
+        this.fname = registerDTO.getfName();
+        this.lname = registerDTO.getlName();
+        this.uname = registerDTO.getUserName();
+        this.pwd = registerDTO.getUserPwd();
+        this.email = registerDTO.getEmail();
+        this.ssnr = registerDTO.getUserSsnr();
+        this.personId = 1;
+    }
 
     public Application getApplication() {
         return application;
