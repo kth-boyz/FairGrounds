@@ -7,4 +7,7 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     Person findByUname(String Username);
 
+    @Override
+    Person save(Person person);
+
 }
