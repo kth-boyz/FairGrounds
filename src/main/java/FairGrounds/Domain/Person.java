@@ -1,5 +1,7 @@
 package FairGrounds.Domain;
 
+import FairGrounds.Presentation.RegisterDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
