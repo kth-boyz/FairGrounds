@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+    <section>
+        <h1 th:text="${msg}">Error</h1>
+    </section>
     <form th:action="@{/loginUser}" th:object="${loginDTO}" method='POST'>
         <p class="form"><label>Username</label>
         <input type="text" th:field="*{userLoginName}" id="login-userName" palceholder="Type Username"/>

@@ -40,15 +40,6 @@ public class Person{
     @OneToOne(mappedBy = "person")
     private Application application;
 
-   /** @OneToMany
-    @JoinColumn (name="availability")
-    private List<Availability> availability;
-
-    @OneToMany
-    @JoinColumn (name="expertiseprofile")
-    private List<ExpertiseProfile> expertiseProfile;
-    **/
-
    public Integer getRoleId() {
 
         return role;

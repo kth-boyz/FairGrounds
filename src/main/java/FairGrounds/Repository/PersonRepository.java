@@ -10,4 +10,7 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     @Override
     Person save(Person person);
 
+    @Override
+    Person save(Person person);
+
 }
