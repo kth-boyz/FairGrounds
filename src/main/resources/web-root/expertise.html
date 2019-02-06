@@ -6,18 +6,18 @@
 </head>
 <body>
 
-<form th:action="@{/availability}" th:object="${applicationForm}" method="post">
+<form th:action="@{/apply}" th:object="${applicationForm}" method="post">
 
-    <div> <h3>Exptertise form</h3>
-        <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
-            <li>
+        <div>   <h3>Exptertise form</h3>
+            <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
+                <li>
                 <!-- <li><span th:text="${status}"> Status </span>-->
-                <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
-                 <input th:field="*{expertiseProfiles[__${status.index}__].years}"/>
-            </li>
-        </ul>
-        <button  type="submit">Next</button>
-    </div>
-</form>
+                    <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
+                    <input th:field="*{expertiseProfiles[__${status.index}__].years}"/>
+                </li>
+            </ul>
+            <button name="getAvailability" type="submit">Next</button>
+        </div>
+    </form>
 </body>
 </html>
