@@ -12,6 +12,7 @@ public class ExpertiseProfile{
 
     public ExpertiseProfile(Expertise expertise){
         this.expertise = expertise;
+        this.years=0;
     }
 
 
@@ -29,7 +30,7 @@ public class ExpertiseProfile{
     private Application application;
 
     @Column (name = "years")
-    private long years;
+    private int years;
 
     public Expertise getExpertise() {
         return expertise;
@@ -55,11 +56,11 @@ public class ExpertiseProfile{
         this.application = application;
     }
 
-    public long getYears() {
+    public int getYears() {
         return years;
     }
 
-    public void setYears(long years) {
+    public void setYears(int years) {
         this.years = years;
     }
 }

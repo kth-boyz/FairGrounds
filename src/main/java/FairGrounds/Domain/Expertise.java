@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Expertise")
 public class Expertise {
+    public Expertise(){
+
+    }
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
