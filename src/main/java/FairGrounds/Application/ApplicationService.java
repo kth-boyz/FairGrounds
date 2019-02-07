@@ -20,8 +20,7 @@ public class ApplicationService {
     @Autowired
     PersonRepository personRepository;
 
-    public List<ExpertiseProfile> getExpertises(){
-        List<ExpertiseProfile> expertiseProfiles = new ArrayList<>();
+    public List<Expertise> getExpertises(){
         List<Expertise> expertises =  expertiseRepository.findAll();
         for (Expertise expertise: expertises) {
             expertiseProfiles.add(new ExpertiseProfile(expertise, personRepository.findByUname("Taoudi")));
