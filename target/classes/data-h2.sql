@@ -1,5 +1,5 @@
-INSERT INTO EXPERTISE (id, name) VALUES (1, 'porn');
-INSERT INTO EXPERTISE (id, name) VALUES (2, 'poop');
+INSERT INTO EXPERTISE (id, name) VALUES (1, 'foo');
+INSERT INTO EXPERTISE (id, name) VALUES (2, 'bar');
 INSERT INTO EXPERTISE (id, name) VALUES (3, 'skim');
 
 
