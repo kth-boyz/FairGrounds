@@ -31,18 +31,22 @@ public class ApplicationController {
     }
 
     @Autowired
+    ApplicationForm applicationForm;
+    @Autowired
     ApplicationService applicationService;
 
     @GetMapping(APPLICATION_URL)
-    public String showExpertiseView(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String showExpertiseView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+       // this.applicationForm = applicationForm;
         applicationForm.setExpertize(applicationService.getExpertises());
-
         printAll(applicationForm);
         model.addAttribute(applicationForm);
         return EXPERTISE_URL;
     }
     @PostMapping(value=APPLICATION_URL, params={"addExpertise"})
-    public String addExpertise(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String addExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+       // this.applicationForm = applicationForm;
+
         applicationForm.setExpertize(applicationService.getExpertises());
 
         applicationForm.getExpertiseProfiles().add(new ExpertiseProfile(new Expertise()));
@@ -52,7 +56,8 @@ public class ApplicationController {
     }
 
     @PostMapping(value=APPLICATION_URL, params={"deleteExpertise"})
-    public String deleteExpertise(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String deleteExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+
         applicationForm.setExpertize(applicationService.getExpertises());
 
         int size = applicationForm.getExpertiseProfiles().size();
@@ -65,14 +70,18 @@ public class ApplicationController {
     }
 
     @PostMapping(value =APPLICATION_URL, params={"getAvailability"})
-    public String showAvailabilityView(@ModelAttribute ApplicationForm applicationForm, Model model){
+    public String showAvailabilityView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model){
+        this.applicationForm.setExpertize(applicationForm.getExpertize());
+        this.applicationForm.setExpertiseProfiles(applicationForm.getExpertiseProfiles());
+
         printAll(applicationForm);
         model.addAttribute(applicationForm);
         return AVAILABILITY_URL;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"addAvailability"})
-    public String addAvailability(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String addAvailability(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+
         applicationForm.getAvailabilities().add(new Availability());
         printAll(applicationForm);
         model.addAttribute(applicationForm);
@@ -80,7 +89,8 @@ public class ApplicationController {
     }
 
     @PostMapping(value=APPLICATION_URL, params={"deleteAvailability"})
-    public String deleteAvailability(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String deleteAvailability(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+
         int size = applicationForm.getAvailabilities().size();
         if(size>0){
             applicationForm.getAvailabilities().remove(size-1);
@@ -91,7 +101,14 @@ public class ApplicationController {
     }
 
     @PostMapping(value=APPLICATION_URL, params={"application"})
-    public String showApplication(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String showApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+
+        applicationForm.setExpertize(this.applicationForm.getExpertize());
+        applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
+
+        this.applicationForm.setAvailabilities(applicationForm.getAvailabilities());
+
+
         for (Availability availability: applicationForm.getAvailabilities()) {
             System.out.println(availability.getFromDate() + " - " + availability.getToDate());
         }
@@ -104,7 +121,12 @@ public class ApplicationController {
     }
 
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
-    public String confirmApplication(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String confirmApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+
+        applicationForm.setExpertize(this.applicationForm.getExpertize());
+        applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
+        applicationForm.setAvailabilities(this.applicationForm.getAvailabilities());
+
         model.addAttribute(applicationForm);
         printAll(applicationForm);
         return TEST_PAGE;

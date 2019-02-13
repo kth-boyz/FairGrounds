@@ -1,6 +1,7 @@
 package FairGrounds.Domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 

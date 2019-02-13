@@ -3,10 +3,15 @@ package FairGrounds.Presentation;
 import FairGrounds.Domain.Availability;
 import FairGrounds.Domain.Expertise;
 import FairGrounds.Domain.ExpertiseProfile;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Component
+@Scope("session")
 public class ApplicationForm {
     private List<ExpertiseProfile> expertiseProfiles = new ArrayList<>();
     private List<Availability> availabilities = new ArrayList<>();
