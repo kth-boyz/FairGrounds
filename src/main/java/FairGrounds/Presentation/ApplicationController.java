@@ -128,7 +128,12 @@ public class ApplicationController {
     }
 
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
-    public String confirmApplication(@ModelAttribute ApplicationForm applicationForm, Model model) {
+    public String confirmApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+
+        applicationForm.setExpertize(this.applicationForm.getExpertize());
+        applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
+        applicationForm.setAvailabilities(this.applicationForm.getAvailabilities());
+
         model.addAttribute(applicationForm);
         printAll(applicationForm);
         return TEST_PAGE;
