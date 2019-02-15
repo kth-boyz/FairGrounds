@@ -8,12 +8,20 @@ import java.util.Date;
 @Entity
 @Table (name = "Availability")
 public class Availability {
+    public Availability(Date fromDate, Date toDate, Application application){
+        this.fromDate=fromDate;
+        this.toDate=toDate;
+        this.application=application;
+    }
+    public Availability(){
+
+    }
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "application")
     private Application application;
 

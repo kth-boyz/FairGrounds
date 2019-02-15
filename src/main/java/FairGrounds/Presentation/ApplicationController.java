@@ -1,6 +1,7 @@
 package FairGrounds.Presentation;
 
 import FairGrounds.Application.ApplicationService;
+import FairGrounds.Domain.Application;
 import FairGrounds.Domain.Availability;
 import FairGrounds.Domain.Expertise;
 import FairGrounds.Domain.ExpertiseProfile;
@@ -49,7 +50,7 @@ public class ApplicationController {
 
         applicationForm.setExpertize(applicationService.getExpertises());
 
-        applicationForm.getExpertiseProfiles().add(new ExpertiseProfile(new Expertise()));
+        applicationForm.getExpertiseProfiles().add(new ExpertiseProfile());
         printAll(applicationForm);
         model.addAttribute(applicationForm);
         return EXPERTISE_URL;
@@ -126,7 +127,9 @@ public class ApplicationController {
         applicationForm.setExpertize(this.applicationForm.getExpertize());
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
         applicationForm.setAvailabilities(this.applicationForm.getAvailabilities());
-
+        Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
+        applicationService.storeApplication(application);
+        System.out.println("check database now");
         model.addAttribute(applicationForm);
         printAll(applicationForm);
         return TEST_PAGE;

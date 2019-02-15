@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class ExpertiseProfile implements ExpertiseProfileDTO{
 
     public ExpertiseProfile(){
-
     }
 
     public ExpertiseProfile(Expertise expertise,Person person){
@@ -20,11 +19,11 @@ public class ExpertiseProfile implements ExpertiseProfileDTO{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long expertiseprofile_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "expertise")
     private Expertise expertise;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "application")
     private Application application;
 
