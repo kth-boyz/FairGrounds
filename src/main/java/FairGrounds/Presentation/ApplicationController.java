@@ -133,7 +133,9 @@ public class ApplicationController {
         applicationForm.setExpertize(this.applicationForm.getExpertize());
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
         applicationForm.setAvailabilities(this.applicationForm.getAvailabilities());
-
+        Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
+        applicationService.storeApplication(application);
+        System.out.println("check database now");
         model.addAttribute(applicationForm);
         printAll(applicationForm);
         return TEST_PAGE;
