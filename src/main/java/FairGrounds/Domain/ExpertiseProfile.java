@@ -7,13 +7,18 @@ import javax.persistence.*;
 public class ExpertiseProfile{
 
     public ExpertiseProfile(){
-
     }
 
+    public ExpertiseProfile(Expertise expertise, int years, Application application){
+        this.expertise = expertise;
+        this.years=years;
+        this.application = application;
+    }
     public ExpertiseProfile(Expertise expertise){
         this.expertise = expertise;
         this.years=0;
     }
+
 
 
     @Id
@@ -21,11 +26,11 @@ public class ExpertiseProfile{
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long expertiseprofile_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "expertise")
     private Expertise expertise;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "application")
     private Application application;
 
