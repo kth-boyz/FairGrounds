@@ -1,5 +1,7 @@
 package FairGrounds.Domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,9 +17,11 @@ public class Availability {
     @JoinColumn (name = "application")
     private Application application;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column (name = "fd")
     private Date fromDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column (name = "td")
     private Date toDate;
 
