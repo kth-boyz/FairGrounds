@@ -124,7 +124,14 @@ public class ApplicationController {
     @PostMapping(value =AVAILABILITY_URL)
     public String showAvailabilityView(ApplicationForm applicationForm, Model model){
         model.addAttribute(applicationForm);
-        return AVAILABILITY_URL;
+        return APPLICATION_URL;
+    }
+
+    @PostMapping(value=APPLICATION_URL, params={"confirm"})
+    public String confirmApplication(@ModelAttribute ApplicationForm applicationForm, Model model) {
+        model.addAttribute(applicationForm);
+        printAll(applicationForm);
+        return TEST_PAGE;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
