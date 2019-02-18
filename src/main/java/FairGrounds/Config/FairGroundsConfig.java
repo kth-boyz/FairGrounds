@@ -33,11 +33,6 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setCharacterEncoding("UTF-8");
