@@ -121,7 +121,7 @@ public class ApplicationController {
         return EXPERTISE_URL;
     }
 
-    @PostMapping(AVAILABILITY_URL)
+    @PostMapping(value =AVAILABILITY_URL)
     public String showAvailabilityView(ApplicationForm applicationForm, Model model){
         model.addAttribute(applicationForm);
         return AVAILABILITY_URL;
