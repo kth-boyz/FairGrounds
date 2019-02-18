@@ -34,18 +34,18 @@ public class Person{
     @Column (name = "pwd")
     private String pwd;
 
-    @Column (name = "role_id")
-    private Integer roleId;
+    @Column (name = "roleId")
+    private String roleId;
 
     @OneToOne(mappedBy = "person")
     private Application application;
 
-   public Integer getRoleId() {
+    public Person(){};
 
         return role;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

@@ -48,6 +48,7 @@ public class LoginController {
     public String showLoginPage(LoginDTO loginDTO, Model model) {
         return LOGIN_PAGE;
     }
+    */
 
     @GetMapping ("/" + REGISTER_USER_PAGE)
     public String showRegistrationPage (RegisterDTO registerDTO) {
@@ -80,5 +81,10 @@ public class LoginController {
     @GetMapping ("/logintestAdmin")
     public String showtestPage2() {
         return "logintestAdmin";
+    }
+
+    @GetMapping ("/testpage")
+    public String showtestPage(Model model) {
+        return "testpage";
     }
 }

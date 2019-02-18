@@ -4,7 +4,6 @@ import FairGrounds.Domain.Person;
 import FairGrounds.Presentation.LoginDTO;
 import FairGrounds.Presentation.RegisterDTO;
 import FairGrounds.Repository.PersonRepository;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
