@@ -34,18 +34,29 @@ public class Person{
     @Column (name = "pwd")
     private String pwd;
 
-    @Column (name = "role_id")
-    private Integer roleId;
+    @Column (name = "roleId")
+    private String roleId;
 
     @OneToOne(mappedBy = "person")
     private Application application;
 
-   public Integer getRoleId() {
+    public Person(){};
 
+    public Person (RegisterDTO registerDTO) {
+        this.fname = registerDTO.getfName();
+        this.lname = registerDTO.getlName();
+        this.uname = registerDTO.getUserName();
+        this.pwd = registerDTO.getUserPwd();
+        this.email = registerDTO.getEmail();
+        this.ssnr = registerDTO.getUserSsnr();
+        this.personId = 1;
+    }
+
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

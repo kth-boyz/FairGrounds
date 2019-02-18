@@ -8,16 +8,18 @@
     <section>
         <h1 th:text="${msg}">Error</h1>
     </section>
-    <form th:action="@{/loginUser}" th:object="${loginDTO}" method='POST'>
+    <form th:action="@{/login}" th:object="${loginDTO}" method='POST'>
         <p class="form"><label>Username</label>
-        <input type="text" th:field="*{userLoginName}" id="login-userName" palceholder="Type Username"/>
+        <input type="text" th:field="*{userLoginName}" name="login-userName" id="login-userName" palceholder="Type Username"/>
         <span class="error" th:if="${#fields.hasErrors('userLoginName')}" th:errors="*{userLoginName}">Error</span>
         </p>
         <p class="form"><label>Password</label>
-        <input type="password" th:field="*{userLoginPwd}" id="login-userPwd" palceholder="Type Password"/>
+        <input type="password" th:field="*{userLoginPwd}" name="login-userPwd" id="login-userPwd" palceholder="Type Password"/>
         <span class="error" th:if="${#fields.hasErrors('userLoginPwd')}" th:errors="*{userLoginPwd}">Error</span>
         </p>
         <button type="submit">Log In</button>
     </form>
+    <br/>
+    <a th:href="@{/registerUser}">Register a Profile</a>
 </body>
 </html>
