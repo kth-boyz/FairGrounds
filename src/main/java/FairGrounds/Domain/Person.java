@@ -33,7 +33,7 @@ public class Person{
     private String pwd;
 
     @Column (name = "roleId")
-    private int roleId;
+    private String roleId;
 
     @OneToOne
     @JoinColumn (name="application")
@@ -59,12 +59,12 @@ public class Person{
         this.application = application;
     }
 
-    public int getRoleId() {
+    public String getRoleId() {
 
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 

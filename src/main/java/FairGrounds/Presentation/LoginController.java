@@ -4,6 +4,7 @@ import FairGrounds.Application.LoginService;
 import FairGrounds.Domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,16 +30,19 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
-    @Autowired
-    private Person currentUser;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    private Person currentUser;
+
 
     @GetMapping(DEFAULT_PAGE_URL)
     public String showDefaultView(LoginDTO loginDTO, Model model) {
         return LOGIN_PAGE;
     }
 
+    /*
     @PostMapping("/" + LOG_IN_USER)
     public String loginUser(@Valid LoginDTO loginDTO, BindingResult bindingResult, Model model) {
 
@@ -46,13 +50,12 @@ public class LoginController {
             System.out.println(bindingResult.getErrorCount() + " Error found");
             return DEFAULT_PAGE_URL;
         }
-        this.currentUser = loginService.findUserAccount(loginDTO);
-        if (this.currentUser == null) {
+        UserDetails userDetails = loginService.findUserAccount(loginDTO);
+        if (userDetails == null) {
             model.addAttribute(ExceptionHandler.ERROR_TYPE_KEY, ExceptionHandler.USER_NOT_FOUND);
             return ExceptionHandler.ERROR_PAGE_URL;
         }
-        String encryptedPwd = passwordEncoder.encode(loginDTO.getUserLoginPwd());
-        if (!passwordEncoder.matches(loginDTO.getUserLoginPwd(), this.currentUser.getPwd())) {
+        if (!passwordEncoder.matches(loginDTO.getUserLoginPwd(), userDetails.getPassword())) {
             model.addAttribute(ExceptionHandler.ERROR_TYPE_KEY, ExceptionHandler.INVALID_PWD);
             return ExceptionHandler.ERROR_PAGE_URL;
         }
@@ -60,6 +63,7 @@ public class LoginController {
         model.addAttribute(LOGIN_FORM_NAME, new LoginDTO());
         return DEFAULT_PAGE_URL;
     }
+    */
 
     @GetMapping ("/" + REGISTER_USER_PAGE)
     public String showRegistrationPage (RegisterDTO registerDTO) {
@@ -82,5 +86,10 @@ public class LoginController {
         model.addAttribute(MSG_TO_USER, SUCCSESSFUL_LOGIN_MSG);
         model.addAttribute(LOGIN_FORM_NAME, new LoginDTO());
         return DEFAULT_PAGE_URL;
+    }
+
+    @GetMapping ("/testpage")
+    public String showtestPage(Model model) {
+        return "testpage";
     }
 }
