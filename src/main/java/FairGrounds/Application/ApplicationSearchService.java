@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,13 +20,14 @@ import java.util.List;
 public class ApplicationSearchService {
 
     @Autowired
-    ApplicationRepository applicationRepository;
+    private ApplicationRepository applicationRepository;
 
-    public List<ApplicationDTO> getQueriedApplications(String name, String expertise, String date,
-                                              Date workFrom, Date workTo) {
-        List <Application> applications = this.applicationRepository.findAll(name, expertise);
-        System.out.println(applications);
+    public List<ApplicationDTO> getQueriedApplications(String name, String expertise, Date appDate,
+                                                       Date workFrom, Date workTo) {
+
         List<ApplicationDTO> applicationData = new ArrayList<>();
+
+        List <Application> applications = this.applicationRepository.findAll(name, expertise, appDate, workFrom, workTo);
 
         for (Application a : applications) {
             applicationData.add(new ApplicationDTO(a.getPerson().getFname(), a.getPerson().getLname()));

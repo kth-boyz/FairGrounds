@@ -8,9 +8,9 @@
 <form th:action="@{/applications}" th:object="${applicationSearchForm}" id="search-params" method="POST">
     <input th:field="*{name}"/>
     <input th:field="*{expertise}"/>
-    <input th:field="*{appDate}" type="text" id="name"/>
-    <input th:field="*{workAvailabilityFrom}" type="text" id="application-date"/>
-    <input th:field="*{workAvailabilityTo}" type="text" id="work-period"/>
+    <input th:field="*{appDate}" type="date" id="application_date"/>
+    <input th:field="*{workAvailabilityFrom}" type="date" id="work_from"/>
+    <input th:field="*{workAvailabilityTo}" type="date" id="work_to"/>
     <input type="submit"/>
 </form>
 <div>

@@ -1,6 +1,9 @@
 package FairGrounds.Domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -9,13 +12,17 @@ public class Application {
 
     public Application(){}
 
-    public Application(String status){
+    public Application(String status) {
         this.status = status;
     }
 
     @Id
     @Column(name="id")
     private Long id;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="applicationdate")
+    private Date applicationdate;
 
     @OneToOne
     @JoinColumn (name = "person")
@@ -34,6 +41,13 @@ public class Application {
         return id;
     }
 
+    public Date getApplicationdate() {
+        return this.applicationdate;
+    }
+
+    public void setApplicationdate(Date applicationdate) {
+        this.applicationdate = applicationdate;
+    }
     public void setId(Long id) {
         this.id = id;
     }

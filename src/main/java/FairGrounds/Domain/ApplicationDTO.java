@@ -1,7 +1,6 @@
 package FairGrounds.Domain;
 
 import java.util.Date;
-import java.util.List;
 
 public class ApplicationDTO {
     private String fname;

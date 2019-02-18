@@ -1,6 +1,8 @@
 package FairGrounds.Config;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
+import org.h2.server.web.WebServlet;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -99,6 +101,13 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
                 .addResourceLocations(rootDirForStaticFiles)
                 .setCachePeriod(cachePeriodForStaticFilesInSecs)
                 .resourceChain(true).addResolver(new PathResourceResolver());
+    }
+
+    @Bean
+    ServletRegistrationBean h2servletRegistration(){
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
+        registrationBean.addUrlMappings("/console/*");
+        return registrationBean;
     }
 
 }

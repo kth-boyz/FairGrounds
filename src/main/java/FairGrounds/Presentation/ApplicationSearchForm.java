@@ -1,23 +1,25 @@
 package FairGrounds.Presentation;
 
+import java.util.Date;
+
 public class ApplicationSearchForm {
     private String name;
-    private String appDate;
-    private String workAvailabilityFrom;
-    private String workAvailabilityTo;
+    private Date appDate;
+    private Date workAvailabilityFrom;
+    private Date workAvailabilityTo;
     private String expertise;
 
     public String getName() { return this.name; }
 
-    public String getAppDate() {
+    public Date getAppDate() {
         return this.appDate;
     }
 
-    public String getWorkAvailabilityFrom() {
+    public Date getWorkAvailabilityFrom() {
         return this.workAvailabilityFrom;
     }
 
-    public String getWorkAvailabilityTo() {
+    public Date getWorkAvailabilityTo() {
         return this.workAvailabilityTo;
     }
 
@@ -29,15 +31,15 @@ public class ApplicationSearchForm {
 
     public void setExpertise(String expertise) { this.expertise = expertise; }
 
-    public void setAppDate(String appDate) {
+    public void setAppDate(Date appDate) {
         this.appDate = appDate;
     }
 
-    public void setWorkAvailabilityFrom(String workAvailabilityFrom) {
+    public void setWorkAvailabilityFrom(Date workAvailabilityFrom) {
         this.workAvailabilityFrom = workAvailabilityFrom;
     }
 
-    public void setWorkAvailabilityTo(String workAvailabilityTo) {
+    public void setWorkAvailabilityTo(Date workAvailabilityTo) {
         this.workAvailabilityTo = workAvailabilityTo;
     }
 }
