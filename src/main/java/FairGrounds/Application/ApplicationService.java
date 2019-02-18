@@ -14,8 +14,6 @@ import java.util.List;
 @Transactional
 @Service
 public class ApplicationService {
-    @PersistenceContext
-    private EntityManager em;
 
     @Autowired
     ExpertiseRepository expertiseRepository;
