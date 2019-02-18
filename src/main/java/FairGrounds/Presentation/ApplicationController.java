@@ -2,6 +2,7 @@ package FairGrounds.Presentation;
 
 import FairGrounds.Application.ApplicationService;
 import FairGrounds.Domain.Availability;
+import FairGrounds.Domain.Expertise;
 import FairGrounds.Domain.ExpertiseProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,51 +23,121 @@ public class ApplicationController {
     private static final String EXPERTISE_URL = "/expertise";
     private static final String AVAILABILITY_URL = "/availability";
     private static final String APPLICATION_URL  = "/apply";
+    private static final String TEST_PAGE  = "/testpage";
 
-   /* @InitBinder
+    @InitBinder
     public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("MM/dd/yyyy"), true));
-    }*/
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat( "yyyy-MM-dd"), true));
+    }
 
     @Autowired
     ApplicationService applicationService;
 
     @GetMapping(APPLICATION_URL)
-    public String showExpertiseView(ApplicationForm applicationForm, Model model) {
-        List<ExpertiseProfile> expertises = applicationService.getExpertises();
-        applicationForm.setExpertiseProfiles(expertises);
+    public String showExpertiseView(@ModelAttribute ApplicationForm applicationForm, Model model) {
+        applicationForm.setExpertize(applicationService.getExpertises());
+
+        printAll(applicationForm);
+        model.addAttribute(applicationForm);
+        return EXPERTISE_URL;
+    }
+    @PostMapping(value=APPLICATION_URL, params={"addExpertise"})
+    public String addExpertise(@ModelAttribute ApplicationForm applicationForm, Model model) {
+        applicationForm.setExpertize(applicationService.getExpertises());
+
+        applicationForm.getExpertiseProfiles().add(new ExpertiseProfile(new Expertise()));
+        printAll(applicationForm);
+        model.addAttribute(applicationForm);
+        return EXPERTISE_URL;
+    }
+
+    @PostMapping(value=APPLICATION_URL, params={"deleteExpertise"})
+    public String deleteExpertise(@ModelAttribute ApplicationForm applicationForm, Model model) {
+        applicationForm.setExpertize(applicationService.getExpertises());
+
+        int size = applicationForm.getExpertiseProfiles().size();
+        if(size>0){
+            applicationForm.getExpertiseProfiles().remove(size-1);
+        }
+        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return EXPERTISE_URL;
     }
 
     @PostMapping(value =APPLICATION_URL, params={"getAvailability"})
-    public String showAvailabilityView(ApplicationForm applicationForm, Model model){
+    public String showAvailabilityView(@ModelAttribute ApplicationForm applicationForm, Model model){
+        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return AVAILABILITY_URL;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"addAvailability"})
-    public String addAvailability(ApplicationForm applicationForm, Model model) {
+    public String addAvailability(@ModelAttribute ApplicationForm applicationForm, Model model) {
         applicationForm.getAvailabilities().add(new Availability());
+        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return AVAILABILITY_URL;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"deleteAvailability"})
-    public String deleteAvailability(ApplicationForm applicationForm, Model model) {
+    public String deleteAvailability(@ModelAttribute ApplicationForm applicationForm, Model model) {
         int size = applicationForm.getAvailabilities().size();
         if(size>0){
             applicationForm.getAvailabilities().remove(size-1);
         }
+        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return AVAILABILITY_URL;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"application"})
-    public String showApplication(ApplicationForm applicationForm, Model model) {
-        applicationForm.getAvailabilities().add(new Availability());
+    public String showApplication(@ModelAttribute ApplicationForm applicationForm, Model model) {
+        for (Availability availability: applicationForm.getAvailabilities()) {
+            System.out.println(availability.getFromDate() + " - " + availability.getToDate());
+        }
+        for (ExpertiseProfile expertiseProfile: applicationForm.getExpertiseProfiles()) {
+            System.out.println(expertiseProfile.getExpertise().getName());
+        }
+        printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return AVAILABILITY_URL;
+        return APPLICATION_URL;
     }
 
+    @PostMapping(value=APPLICATION_URL, params={"confirm"})
+    public String confirmApplication(@ModelAttribute ApplicationForm applicationForm, Model model) {
+        model.addAttribute(applicationForm);
+        printAll(applicationForm);
+        return TEST_PAGE;
+    }
+
+    private void printAll(ApplicationForm form){
+        System.out.println("-------------------------------------------------");
+        if(form!=null) {
+            System.out.println("EXPERTISES: ");
+            for (Expertise profile : form.getExpertize()) {
+                if (profile.getName() != null) {
+                        System.out.println("NAME: " + profile.getName());
+                }
+            }
+
+
+            System.out.println("EXPERTISEPROFILES: ");
+            for (ExpertiseProfile profile : form.getExpertiseProfiles()) {
+                if (profile.getExpertise() != null) {
+                    if (profile.getExpertise().getName() != null)
+                        System.out.println("NAME: " + profile.getExpertise().getName());
+                    System.out.println("YEAR: " + profile.getYears());
+                }
+            }
+            System.out.println("AVAILABILITY: ");
+            for (Availability availability : form.getAvailabilities()) {
+                if (availability.getToDate() != null) {
+                    System.out.println("TODATE: " + availability.getToDate());
+                }
+                if (availability.getFromDate() != null) {
+                    System.out.println("FROM: " + availability.getFromDate());
+                }
+            }
+        }
+    }
 }

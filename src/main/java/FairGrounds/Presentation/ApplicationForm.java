@@ -1,14 +1,16 @@
 package FairGrounds.Presentation;
 
 import FairGrounds.Domain.Availability;
+import FairGrounds.Domain.Expertise;
 import FairGrounds.Domain.ExpertiseProfile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationForm {
-    private List<ExpertiseProfile> expertiseProfiles;
+    private List<ExpertiseProfile> expertiseProfiles = new ArrayList<>();
     private List<Availability> availabilities = new ArrayList<>();
+    private List<Expertise> expertize = new ArrayList<>();
 
 
     public List<ExpertiseProfile> getExpertiseProfiles() {
@@ -25,5 +27,13 @@ public class ApplicationForm {
 
     public void setAvailabilities(List<Availability> availabilities) {
         this.availabilities = availabilities;
+    }
+
+    public List<Expertise> getExpertize() {
+        return expertize;
+    }
+
+    public void setExpertize(List<Expertise> expertise) {
+        this.expertize = expertise;
     }
 }
