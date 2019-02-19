@@ -9,7 +9,6 @@
 <form th:action="@{/apply}" th:object="${applicationForm}" method="post">
 
     <div> <h3>Availability form</h3>
-        <p>With thymeleaf</p>
         <ul th:each="availability, status : ${applicationForm.availabilities}" id="availabilities-th" >
             <li>
                 <input type="hidden"  th:value="${status.index}" name="index"/>
