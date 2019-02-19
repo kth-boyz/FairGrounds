@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Scope("session")
 public class FairGroundsController {
 
-    static final String DEFAULT_PAGE_URL = "/";
+
     static final String EXAMPLE_PAGE = "testpage";
 
     @Autowired
     LoginService loginService;
 
-    @GetMapping(DEFAULT_PAGE_URL)
+    @GetMapping("/" + EXAMPLE_PAGE)
     public String showDefaultView() {
         return EXAMPLE_PAGE;
     }
