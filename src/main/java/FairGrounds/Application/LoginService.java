@@ -42,7 +42,7 @@ public class LoginService implements UserDetailsService {
     }
 
     public Person findUserAccount(RegisterDTO registerDTO) {
-        return personRepository.findByUname(registerDTO.getUserName());
+        return personRepository.findByUsername(registerDTO.getUserName());
     }
 
     public Person saveNewUser(RegisterDTO registerDTO) {

@@ -34,8 +34,8 @@ public class Person{
     @Column (name = "pwd")
     private String pwd;
 
-    @Column (name = "roleId")
-    private String roleId;
+    @Column (name = "role")
+    private String role;
 
     @OneToOne(mappedBy = "person")
     private Application application;
@@ -45,8 +45,8 @@ public class Person{
         return role;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRole(String roleId) {
+        this.role = roleId;
     }
 
     public int getPersonId() {
