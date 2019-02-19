@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INSERT INTO EXPERTISE (id, name) VALUES (1, 'foo');
 INSERT INTO EXPERTISE (id, name) VALUES (2, 'bar');
 INSERT INTO EXPERTISE (id, name) VALUES (3, 'skim');
@@ -16,3 +17,7 @@ INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (1, '1999-01-02', '200
 INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (2, '1999-01-02', '2000-02-03',1);
 INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (3, '1999-01-02', '2000-02-01',1);
 */
+=======
+INSERT INTO person (PERSON_ID, EMAIL, FNAME, LNAME, PWD, ROLE, SSNR, USERNAME)
+VALUES ('4', 'foo', 'foo', 'foo', '$2y$12$sL/Tzb7Brvcz4rnofktn8esZfZWQokNmfCAnyJJb9lpMeOG9p0lEq', 'ADMIN', 'foo', 'foo');
+>>>>>>> Finished login
