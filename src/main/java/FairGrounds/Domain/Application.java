@@ -1,6 +1,7 @@
 package FairGrounds.Domain;
 //This is backend-login
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -9,8 +10,7 @@ public class Application {
 
     public Application(){}
 
-    public Application(List<ExpertiseProfile> profiles , List<Availability
-            > availabilities, Person person){
+    public Application(List<ExpertiseProfile> profiles , List<Availability> availabilities, Person person){
         this.status = "unchecked";
         this.expertiseProfile = profiles;
         this.availabilities = availabilities;
@@ -26,6 +26,8 @@ public class Application {
     @JoinColumn (name = "person")
     private Person person;
 
+    @Column(name="applicationdate")
+    private Date applicationdate;
 
     @OneToMany(mappedBy = "application")
     List<Availability> availabilities;
@@ -42,6 +44,7 @@ public class Application {
         return id;
     }
 
+    public Date getApplicationdate() { return this.applicationdate; }
     public void setId(Long id) {
         this.id = id;
     }
@@ -65,6 +68,8 @@ public class Application {
     public void setAvailabilities(List<Availability> availabilities) {
         this.availabilities = availabilities;
     }
+
+    public void setApplicationdate(Date applicationdate) { this.applicationdate = applicationdate; }
 
     public void setExpertiseProfiles(List<ExpertiseProfile> expertiseProfiles) {
         this.expertiseProfile = expertiseProfiles;
