@@ -40,7 +40,7 @@ public class Person{
     @OneToOne(mappedBy = "person")
     private Application application;
 
-    public Person(){};
+    public Person(){}
 
 
     public Person (RegisterDTO registerDTO) {
@@ -86,7 +86,7 @@ public class Person{
         this.email = email;
     }
 
-    public void setUname(String uname) {
+    public void setUsername(String uname) {
         this.username = uname;
     }
 
@@ -110,7 +110,7 @@ public class Person{
         return email;
     }
 
-    public String getUname() {
+    public String getUsername() {
         return username;
     }
 
