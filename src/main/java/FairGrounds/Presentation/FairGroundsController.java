@@ -10,11 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Scope("session")
 public class FairGroundsController {
 
-
     static final String EXAMPLE_PAGE = "testpage";
-
-    @Autowired
-    LoginService loginService;
 
     @GetMapping("/" + EXAMPLE_PAGE)
     public String showDefaultView() {
