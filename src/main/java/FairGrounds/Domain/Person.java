@@ -26,14 +26,14 @@ public class Person{
     @Column (name = "email")
     private String email;
 
-    @Column (name = "uname")
-    private String uname;
+    @Column (name = "username")
+    private String username;
 
     @Column (name = "pwd")
     private String pwd;
 
-    @Column (name = "roleId")
-    private String roleId;
+    @Column (name = "role")
+    private String role;
 
     @OneToOne
     @JoinColumn (name="application")
@@ -44,11 +44,12 @@ public class Person{
     public Person (RegisterDTO registerDTO) {
         this.fname = registerDTO.getfName();
         this.lname = registerDTO.getlName();
-        this.uname = registerDTO.getUserName();
+        this.username = registerDTO.getUserName();
         this.pwd = registerDTO.getUserPwd();
         this.email = registerDTO.getEmail();
         this.ssnr = registerDTO.getUserSsnr();
         this.personId = 1;
+        this.role = "USER";
     }
 
     public Application getApplication() {
@@ -59,13 +60,13 @@ public class Person{
         this.application = application;
     }
 
-    public String getRoleId() {
+    public String getRole() {
 
-        return roleId;
+        return role;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRole(String roleId) {
+        this.role = roleId;
     }
 
     public int getPersonId() {
@@ -93,7 +94,7 @@ public class Person{
     }
 
     public void setUname(String uname) {
-        this.uname = uname;
+        this.username = uname;
     }
 
     public void setPwd(String pwd) {
@@ -117,7 +118,7 @@ public class Person{
     }
 
     public String getUname() {
-        return uname;
+        return username;
     }
 
     public String getPwd() {

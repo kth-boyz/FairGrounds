@@ -2,7 +2,6 @@ package FairGrounds.Config;
 
 
 import FairGrounds.Application.LoginService;
-import FairGrounds.Application.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,33 +12,37 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.sql.DataSource;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private PersonService personService;
+    private LoginService loginService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-            http
+        http.
+                headers()
+                    .frameOptions().disable()
+                    .and()
                 .authorizeRequests()
-                    .antMatchers("/registerUser", "/error", "/registerNewUser", "/loginUser", "/console").permitAll()
-                    .antMatchers("/testpage").hasRole("ADMIN")
+                    .antMatchers("/logintestAdmin").hasAuthority("ADMIN")
+                    .antMatchers("/logintestUser").hasAnyAuthority("ADMIN", "USER")
+                    .antMatchers("/**").permitAll()
+                    .antMatchers("/console/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    .loginPage("/fakeLogin").permitAll()
-                    //.loginProcessingUrl("/loginUser")
-                    .failureUrl("/fakeLogin?error=fuck")
-                    //.defaultSuccessUrl("/testpage")
-                    .usernameParameter("login-userName")
-                    .passwordParameter("login-userPwd")
+                    .loginPage("/login").permitAll()
+                    .failureUrl("/login?error=f")
+                    .defaultSuccessUrl("/logintestUser")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
                     .and()
                 .logout()
-                    .permitAll();
+                    .permitAll()
+                    .and()
+                .csrf().disable();
     }
 
     @Bean
@@ -50,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(personService);
+        auth.setUserDetailsService(loginService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
