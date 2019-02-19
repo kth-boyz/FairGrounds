@@ -32,7 +32,7 @@ public class ApplicationService {
         return expertises;
     }
     public Person getUser(){
-        return personRepository.findByUname("tods");
+        return personRepository.findByUsername("tods");
     }
 
     public void storeApplication(Application application){
