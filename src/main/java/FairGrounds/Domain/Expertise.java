@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Expertise")
 public class Expertise {
+    public Expertise(){
+
+    }
 
     @Id
     @Column(name="id")
@@ -12,6 +15,7 @@ public class Expertise {
 
     @Column(name = "name")
     private String name;
+
 
     public Long getId() {
         return id;

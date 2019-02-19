@@ -4,23 +4,37 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "EXPERTISEPROFILE")
-public class ExpertiseProfile {
+public class ExpertiseProfile{
+    public ExpertiseProfile(){
+    }
+
+
+    public ExpertiseProfile(Expertise expertise, int years, Application application){
+        this.expertise = expertise;
+        this.years=years;
+        this.application = application;
+    }
+    public ExpertiseProfile(Expertise expertise){
+        this.expertise = expertise;
+        this.years=0;
+    }
+
 
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long expertiseprofile_id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "expertise")
     private Expertise expertise;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "application")
     private Application application;
 
     @Column (name = "years")
-    private long years;
+    private int years;
 
     public Expertise getExpertise() {
         return expertise;
@@ -46,11 +60,11 @@ public class ExpertiseProfile {
         this.application = application;
     }
 
-    public long getYears() {
+    public int getYears() {
         return years;
     }
 
-    public void setYears(long years) {
+    public void setYears(int years) {
         this.years = years;
     }
 }

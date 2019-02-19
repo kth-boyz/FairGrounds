@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply Test</title>
+</head>
+<body>
+
+<form th:action="@{/apply}" th:object="${applicationForm}" method="post">
+
+    <div>   <h3>Expertises:</h3>
+        <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
+            <li>
+                <!-- <li><span th:text="${status}"> Status </span>-->
+                <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
+                <span th:text="${expertiseProfile.years}"/>
+            </li>
+        </ul>
+        <h3>Availabilities:</h3>
+        <ul th:each="availability, status : ${applicationForm.availabilities}" id="availabilities-th" >
+            <li>
+                <p>
+                    From:
+                    <span  th:text="${{availability.fromDate}}" />
+                </p>
+                <p>
+                    To:
+                    <span  th:text="${{availability.toDate}}"/>
+                </p>
+            </li>
+        </ul>
+    </div>
+        <button name="confirm" type="submit">Send Application</button>
+    </div>
+</form>
+</body>
+</html>

@@ -9,11 +9,16 @@ public class Application {
 
     public Application(){}
 
-    public Application(String status){
-        this.status = status;
+    public Application(List<ExpertiseProfile> profiles , List<Availability
+            > availabilities, Person person){
+        this.status = "unchecked";
+        this.expertiseProfile = profiles;
+        this.availabilities = availabilities;
+        this.person = person;
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id")
     private Long id;
 
