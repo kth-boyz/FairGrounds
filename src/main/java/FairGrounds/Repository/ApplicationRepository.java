@@ -3,6 +3,8 @@ package FairGrounds.Repository;
 import FairGrounds.Domain.Application;
 import FairGrounds.Domain.ApplicationDTO;
 import FairGrounds.Domain.Person;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,10 +25,11 @@ public interface ApplicationRepository extends JpaRepository<Person, Application
             "AND (:fDate is null or aa.fromDate <= :fDate) " +
             "AND (:tDate is null or aa.toDate >= :tDate)";
     @Query(query)
-    List<Application> findAll(@Param("name") String name,
+    Page<Application> findAll(@Param("name") String name,
                               @Param("expertise") String expertise,
                               @Param("appDate") Date applicationDate,
                               @Param("fDate") Date fromDate,
-                              @Param("tDate") Date toDate);
+                              @Param("tDate") Date toDate,
+                              Pageable pageable);
 }
 

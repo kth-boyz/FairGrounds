@@ -3,16 +3,13 @@ package FairGrounds.Application;
 import FairGrounds.Domain.*;
 import FairGrounds.Repository.ApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
@@ -22,17 +19,9 @@ public class ApplicationSearchService {
     @Autowired
     private ApplicationRepository applicationRepository;
 
-    public List<ApplicationDTO> getQueriedApplications(String name, String expertise, Date appDate,
-                                                       Date workFrom, Date workTo) {
+    public Page<Application> getQueriedApplications(String name, String expertise, Date appDate,
+                                                       Date workFrom, Date workTo, Pageable pageable) {
 
-        List<ApplicationDTO> applicationData = new ArrayList<>();
-
-        List <Application> applications = this.applicationRepository.findAll(name, expertise, appDate, workFrom, workTo);
-
-        for (Application a : applications) {
-            applicationData.add(new ApplicationDTO(a.getPerson().getFname(), a.getPerson().getLname()));
-        }
-
-        return applicationData;
+        return this.applicationRepository.findAll(name, expertise, appDate, workFrom, workTo, pageable);
     }
 }
