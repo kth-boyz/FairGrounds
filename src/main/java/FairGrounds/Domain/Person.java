@@ -28,8 +28,8 @@ public class Person{
     @Column (name = "email")
     private String email;
 
-    @Column (name = "uname")
-    private String uname;
+    @Column (name = "username")
+    private String username;
 
     @Column (name = "pwd")
     private String pwd;
@@ -51,7 +51,7 @@ public class Person{
 
    public Integer getRoleId() {
 
-        return roleId;
+        return role;
     }
 
     public void setRoleId(Integer roleId) {
@@ -83,7 +83,7 @@ public class Person{
     }
 
     public void setUname(String uname) {
-        this.uname = uname;
+        this.username = uname;
     }
 
     public void setPwd(String pwd) {
@@ -107,7 +107,7 @@ public class Person{
     }
 
     public String getUname() {
-        return uname;
+        return username;
     }
 
     public String getPwd() {

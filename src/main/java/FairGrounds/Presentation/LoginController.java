@@ -18,8 +18,8 @@ import javax.validation.Valid;
 @Scope("session")
 public class LoginController {
 
-    private static final String DEFAULT_PAGE_URL = "/fakeLogin";
-    private static final String LOGIN_PAGE = "fakeLogin";
+    private static final String DEFAULT_PAGE_URL = "/";
+    private static final String LOGIN_PAGE = "login";
     private static final String LOG_IN_USER = "loginUser";
     private static final String LOGIN_FORM_NAME = "loginDTO";
     private static final String REGISTER_USER_PAGE = "registerUser";
@@ -42,28 +42,10 @@ public class LoginController {
         return LOGIN_PAGE;
     }
 
-    /*
-    @PostMapping("/" + LOG_IN_USER)
-    public String loginUser(@Valid LoginDTO loginDTO, BindingResult bindingResult, Model model) {
-
-        if(bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getErrorCount() + " Error found");
-            return DEFAULT_PAGE_URL;
-        }
-        UserDetails userDetails = loginService.findUserAccount(loginDTO);
-        if (userDetails == null) {
-            model.addAttribute(ExceptionHandler.ERROR_TYPE_KEY, ExceptionHandler.USER_NOT_FOUND);
-            return ExceptionHandler.ERROR_PAGE_URL;
-        }
-        if (!passwordEncoder.matches(loginDTO.getUserLoginPwd(), userDetails.getPassword())) {
-            model.addAttribute(ExceptionHandler.ERROR_TYPE_KEY, ExceptionHandler.INVALID_PWD);
-            return ExceptionHandler.ERROR_PAGE_URL;
-        }
-        System.out.println("User logged in");
-        model.addAttribute(LOGIN_FORM_NAME, new LoginDTO());
-        return DEFAULT_PAGE_URL;
+    @GetMapping("/" + LOGIN_PAGE)
+    public String showLoginPage(LoginDTO loginDTO, Model model) {
+        return LOGIN_PAGE;
     }
-    */
 
     @GetMapping ("/" + REGISTER_USER_PAGE)
     public String showRegistrationPage (RegisterDTO registerDTO) {
@@ -85,11 +67,16 @@ public class LoginController {
         System.out.println("New user saved");
         model.addAttribute(MSG_TO_USER, SUCCSESSFUL_LOGIN_MSG);
         model.addAttribute(LOGIN_FORM_NAME, new LoginDTO());
-        return DEFAULT_PAGE_URL;
+        return LOGIN_PAGE;
     }
 
-    @GetMapping ("/testpage")
-    public String showtestPage(Model model) {
-        return "testpage";
+    @GetMapping ("/logintestUser")
+    public String showtestPage1() {
+        return "logintestUser";
+    }
+
+    @GetMapping ("/logintestAdmin")
+    public String showtestPage2() {
+        return "logintestAdmin";
     }
 }
