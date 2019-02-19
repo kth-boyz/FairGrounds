@@ -29,10 +29,7 @@ public class ApplicationService {
 
     public List<Expertise> getExpertises(){
         List<Expertise> expertises =  expertiseRepository.findAll();
-        for (Expertise expertise: expertises) {
-            expertiseProfiles.add(new ExpertiseProfile(expertise, personRepository.findByUname("Taoudi")));
-        }
-        return expertiseProfiles;
+        return expertises;
     }
     public Person getUser(){
         return personRepository.findByUname("tods");

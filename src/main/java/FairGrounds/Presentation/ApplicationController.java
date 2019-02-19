@@ -118,27 +118,7 @@ public class ApplicationController {
         }
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return EXPERTISE_URL;
-    }
-
-    @PostMapping(value =AVAILABILITY_URL)
-    public String showAvailabilityView(ApplicationForm applicationForm, Model model){
-        model.addAttribute(applicationForm);
         return APPLICATION_URL;
-    }
-
-    @PostMapping(value=APPLICATION_URL, params={"confirm"})
-    public String confirmApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
-
-        applicationForm.setExpertize(this.applicationForm.getExpertize());
-        applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
-        applicationForm.setAvailabilities(this.applicationForm.getAvailabilities());
-        Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
-        applicationService.storeApplication(application);
-        System.out.println("check database now");
-        model.addAttribute(applicationForm);
-        printAll(applicationForm);
-        return TEST_PAGE;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
