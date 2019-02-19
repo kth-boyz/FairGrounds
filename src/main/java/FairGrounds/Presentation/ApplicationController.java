@@ -21,10 +21,10 @@ import java.util.List;
 @Controller
 @Scope("session")
 public class ApplicationController {
-    private static final String EXPERTISE_URL = "/expertise";
-    private static final String AVAILABILITY_URL = "/availability";
+    private static final String EXPERTISE_URL = "expertise";
+    private static final String AVAILABILITY_URL = "availability";
     private static final String APPLICATION_URL  = "/apply";
-    private static final String TEST_PAGE  = "/testpage";
+    private static final String TEST_PAGE  = "testpage";
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
