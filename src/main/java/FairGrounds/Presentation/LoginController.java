@@ -35,8 +35,7 @@ public class LoginController {
     private BCryptPasswordEncoder passwordEncoder;
 
     private Person currentUser;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+
 
 
     @GetMapping(DEFAULT_PAGE_URL)
@@ -82,8 +81,4 @@ public class LoginController {
         return "logintestAdmin";
     }
 
-    @GetMapping ("/logintestAdmin")
-    public String showtestPage2() {
-        return "logintestAdmin";
-    }
 }

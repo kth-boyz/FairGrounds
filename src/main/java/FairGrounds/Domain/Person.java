@@ -42,6 +42,19 @@ public class Person{
 
     public Person(){};
 
+
+    public Person (RegisterDTO registerDTO) {
+        this.fname = registerDTO.getfName();
+        this.lname = registerDTO.getlName();
+        this.username = registerDTO.getUserName();
+        this.pwd = registerDTO.getUserPwd();
+        this.email = registerDTO.getEmail();
+        this.ssnr = registerDTO.getUserSsnr();
+        this.personId = 1;
+        this.role = "USER";
+    }
+
+    public String getRole() {
         return role;
     }
 
