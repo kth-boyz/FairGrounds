@@ -1,5 +1,7 @@
 package FairGrounds.Domain;
-//This is backend-login
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -21,13 +23,18 @@ public class Application {
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id")
     private Long id;
+    public Application(String status) {
+        this.status = status;
+    }
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="applicationdate")
+    private Date applicationdate;
+
 
     @OneToOne
     @JoinColumn (name = "person")
     private Person person;
-
-    @Column(name="applicationdate")
-    private Date applicationdate;
 
     @OneToMany(mappedBy = "application")
     List<Availability> availabilities;
@@ -44,7 +51,10 @@ public class Application {
         return id;
     }
 
-    public Date getApplicationdate() { return this.applicationdate; }
+    public Date getApplicationdate() {
+        return this.applicationdate;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -70,6 +80,7 @@ public class Application {
     }
 
     public void setApplicationdate(Date applicationdate) { this.applicationdate = applicationdate; }
+
 
     public void setExpertiseProfiles(List<ExpertiseProfile> expertiseProfiles) {
         this.expertiseProfile = expertiseProfiles;

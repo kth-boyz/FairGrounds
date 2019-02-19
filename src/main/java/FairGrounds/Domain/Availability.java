@@ -8,29 +8,32 @@ import java.util.Date;
 @Entity
 @Table (name = "Availability")
 public class Availability {
-    public Availability(Date fromDate, Date toDate, Application application){
-        this.fromDate=fromDate;
-        this.toDate=toDate;
-        this.application=application;
+
+    public Availability(Date fromDate, Date toDate, Application application) {
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.application = application;
     }
-    public Availability(){
+
+    public Availability() {
 
     }
+
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "application")
+    @JoinColumn(name = "application")
     private Application application;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column (name = "fd")
+    @Column(name = "fd")
     private Date fromDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column (name = "td")
+    @Column(name = "td")
     private Date toDate;
 
 
