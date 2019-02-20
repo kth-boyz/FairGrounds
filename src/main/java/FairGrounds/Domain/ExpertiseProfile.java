@@ -21,7 +21,7 @@ public class ExpertiseProfile{
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long expertiseprofile_id;
 
     @ManyToOne(cascade = CascadeType.ALL)
