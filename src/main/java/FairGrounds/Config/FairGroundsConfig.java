@@ -78,10 +78,12 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         int cachePeriodForStaticFilesInSecs = 1;
         String rootDirForStaticFiles = "classpath:/web-root/";
 
+
         registry.addResourceHandler("/**")
                 .addResourceLocations(rootDirForStaticFiles)
                 .setCachePeriod(cachePeriodForStaticFilesInSecs)
                 .resourceChain(true).addResolver(new PathResourceResolver());
+
     }
 
     @Bean
