@@ -15,4 +15,5 @@ public interface RegisterApplicationRepository extends JpaRepository<Application
 
     @Override
     List<Application> findAll();
+    Application findApplicationById(Long id);
 }

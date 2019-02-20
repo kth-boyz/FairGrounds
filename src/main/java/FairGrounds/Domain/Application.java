@@ -1,5 +1,7 @@
 package FairGrounds.Domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -36,11 +38,13 @@ public class Application {
     @JoinColumn (name = "person")
     private Person person;
 
-    @OneToMany(mappedBy = "application")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "application")
+    @Fetch(value = FetchMode.SUBSELECT)
     List<Availability> availabilities;
 
 
-    @OneToMany(mappedBy = "application")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "application")
+    @Fetch(value = FetchMode.SUBSELECT)
     List<ExpertiseProfile> expertiseProfile;
 
 
@@ -71,7 +75,7 @@ public class Application {
         return this.availabilities;
     }
 
-    public List<ExpertiseProfile> getExpertiseProfiles(){
+    public List<ExpertiseProfile> getExpertiseProfile(){
         return this.expertiseProfile;
     }
 
@@ -82,7 +86,15 @@ public class Application {
     public void setApplicationdate(Date applicationdate) { this.applicationdate = applicationdate; }
 
 
-    public void setExpertiseProfiles(List<ExpertiseProfile> expertiseProfiles) {
+    public void setExpertiseProfile(List<ExpertiseProfile> expertiseProfiles) {
         this.expertiseProfile = expertiseProfiles;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

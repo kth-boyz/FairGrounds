@@ -16,7 +16,7 @@ public class ApplicationForm {
     private List<ExpertiseProfile> expertiseProfiles = new ArrayList<>();
     private List<Availability> availabilities = new ArrayList<>();
     private List<Expertise> expertize = new ArrayList<>();
-
+    private String status;
 
     public List<ExpertiseProfile> getExpertiseProfiles() {
         return expertiseProfiles;
@@ -40,5 +40,13 @@ public class ApplicationForm {
 
     public void setExpertize(List<Expertise> expertise) {
         this.expertize = expertise;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

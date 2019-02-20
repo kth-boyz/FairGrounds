@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -36,7 +33,7 @@ public class ApplicationService {
     }
 
     public void storeApplication(Application application){
-        for (ExpertiseProfile profile:application.getExpertiseProfiles()) {
+        for (ExpertiseProfile profile:application.getExpertiseProfile()) {
             Expertise expertise = expertiseRepository.findByName(profile.getExpertise().getName());
             profile.setExpertise(expertise);
             profile.setApplication(application);
@@ -47,5 +44,9 @@ public class ApplicationService {
             availabilityRepository.save(availability);
         }
         registerApplicationRepository.save(application);
+    }
+
+    public Application getApplication(Long id){
+        return registerApplicationRepository.findApplicationById(id);
     }
 }
