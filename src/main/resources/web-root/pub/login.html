@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.css}"/>
 </head>
 <body>
+    <div th:replace="resources/fragments/includes :: navbar"/>
     <section>
         <h1 th:if="${param.error}">Invalid username and password</h1>
     </section>
-    <form th:action="@{/login}" method='POST'>
+    <section>
+        <h1 th:text="${msg}"/>
+    </section>
+    <form th:action="@{/pub/login}" method='POST'>
         <p class="form"><label>Username</label>
         <input type="text" name="username" id="username" palceholder="Type Username"/>
         </p>
@@ -18,6 +23,7 @@
         <button type="submit">Log In</button>
     </form>
     <br/>
-    <a th:href="@{/registerUser}">Register a Profile</a>
+    <a th:href="@{/pub/registerUser}">Register a Profile</a>
+    <div th:replace="resources/fragments/includes :: footer"/>
 </body>
 </html>
