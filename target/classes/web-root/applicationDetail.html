@@ -3,7 +3,7 @@
 layout:decorate="~{resources/fragments/layout}">
 <body>
 <main layout:fragment="content">
-<form th:action="@{|/app/${id}|}" th:object="${applicationDetailForm}" method="post">
+<form th:action="@{/app/{path}(path=${id})}" th:object="${applicationDetailForm}" method="post">
 
     <p>Current status: <span th:text="${applicationDetailForm.application.status}"></span></p>
     <table border="1">
@@ -35,7 +35,7 @@ layout:decorate="~{resources/fragments/layout}">
         </tr>
         </tbody>
     </table>
-    <button name="accept" type="submit">Accept</button>
+    <input th:field="*{type}" type="submit" value="accept">Accept</input>
     <button name="reject" type="submit">Reject</button>
     <button name="list" type="submit">Go Back</button>
 

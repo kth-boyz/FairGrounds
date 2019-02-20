@@ -29,24 +29,30 @@ public class ApplicationDetailController {
     ApplicationForm applicationForm;
     @Autowired
     ApplicationService applicationService;
+    @Autowired
+    ApplicationDetailForm applicationDetailForm;
 
     @RequestMapping("/"+APPLICATION_URL+"/{appid}")
-    public String showExpertiseView(@ModelAttribute("ApplicationForm") ApplicationDetailForm applicationDetailForm, Model model,@PathVariable("appid") int appid) {
+    public String showExpertiseView(@ModelAttribute("ApplicationDetailForm") ApplicationDetailForm applicationDetailForm, Model model,@PathVariable("appid") int appid) {
         Long id = new Long(appid);
         Application app = applicationService.getApplication(id);
         applicationDetailForm.setApplication(app);
-        model.addAttribute(id.toString(), "id");
+        this.applicationDetailForm=applicationDetailForm;
+        model.addAttribute("id",id.toString());
         model.addAttribute(applicationDetailForm);
         return APPLICATION_PAGE;
     }
 
-    @PostMapping(value="/"+APPLICATION_URL+"/{appid}" ,params={"accept"})
-    public String acceptApplication(@ModelAttribute("ApplicationForm") ApplicationDetailForm applicationDetailForm, Model model,@PathVariable("appid") int appid) {
-        applicationDetailForm.getApplication().setStatus("ACCEPTED");
-        applicationService.storeApplication(applicationDetailForm.getApplication());
+    @PostMapping(value="/"+APPLICATION_URL+"/{appid}" ,params={"type"})
+    public String acceptApplication(@ModelAttribute("ApplicationDetailForm") ApplicationDetailForm applicationDetailForm, Model model,@PathVariable("appid") int appid) {
+        Application application = this.applicationDetailForm.getApplication();
+        application.setStatus("ACCEPTED");
+        applicationService.storeApplication(application);
         System.out.printf("check dbase");
-        return "/";
-
+        applicationDetailForm=this.applicationDetailForm;
+        model.addAttribute(applicationDetailForm);
+        return APPLICATION_PAGE;
     }
+
 
 }
