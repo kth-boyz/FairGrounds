@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form th:action="@{/registerNewUser}" th:object="${registerDTO}" method='POST'>
+    <form th:action="@{/pub/registerNewUser}" th:object="${registerDTO}" method='POST'>
         <p class="form"><label>User Name</label>
         <input type="text" th:field="*{userName}" id="register-userName" palceholder="Choose User Name"/>
         <span class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Error</span>

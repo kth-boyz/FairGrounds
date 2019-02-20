@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Scope("session")
 public class FairGroundsController {
 
-    static final String EXAMPLE_PAGE = "testpage";
+    static final String EXAMPLE_PAGE = "/pub/testpage";
 
-    @GetMapping("/" + EXAMPLE_PAGE)
+    @GetMapping(EXAMPLE_PAGE)
     public String showDefaultView() {
         return EXAMPLE_PAGE;
     }

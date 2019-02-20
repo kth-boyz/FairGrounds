@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="@{/apply}" th:object="${applicationForm}" method="post">
+<form th:action="@{/user/apply}" th:object="${applicationForm}" method="post">
 
     <div> <h3>Availability form</h3>
         <ul th:each="availability, status : ${applicationForm.availabilities}" id="availabilities-th" >
