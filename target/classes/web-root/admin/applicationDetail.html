@@ -35,9 +35,9 @@ layout:decorate="~{resources/fragments/layout}">
         </tr>
         </tbody>
     </table>
-    <input th:field="*{type}" type="submit" value="accept">Accept</input>
-    <button name="reject" type="submit">Reject</button>
-    <button name="list" type="submit">Go Back</button>
+    <button name="type" type="submit" th:name="type" value="accept">Accept</button>
+    <button name="reject" type="submit" th:name="type" value="reject">Reject</button>
+    <button name="list" type="submit" th:name="type" value="goback">Go Back</button>
 
 </form>
 </main>
