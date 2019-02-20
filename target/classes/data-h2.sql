@@ -10,6 +10,10 @@ INSERT INTO person (ID, EMAIL, FNAME, LNAME, PWD, ROLE, SSNR, USERNAME)
 VALUES ('4', 'foo', 'foo', 'foo', '$2y$12$sL/Tzb7Brvcz4rnofktn8esZfZWQokNmfCAnyJJb9lpMeOG9p0lEq', 'ADMIN', 'foo', 'foo');
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> fragments done
+=======
+
+>>>>>>> 6a8dfa913a9b9db2c3c186069dbd10c082d8552e
