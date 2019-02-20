@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{resources/fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main layout:fragment="content">
+        <section>
+            <h1 th:if="${param.error}">Invalid username and password</h1>
+        </section>
+        <section>
+            <h1 th:text="${msg}"/>
+        </section>
+        <form th:action="@{/pub/login}" method='POST'>
+            <p class="form"><label>Username</label>
+            <input type="text" name="username" id="username" palceholder="Type Username"/>
+            </p>
+            <p class="form"><label>Password</label>
+            <input type="password" name="password" id="password" palceholder="Type Password"/>
+            </p>
+            <button type="submit">Log In</button>
+        </form>
+        <br/>
+        <a th:href="@{/pub/registerUser}">Register a Profile</a>
+    </main>
+</body>
+</html>

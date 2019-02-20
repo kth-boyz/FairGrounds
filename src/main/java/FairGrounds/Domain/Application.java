@@ -1,6 +1,9 @@
 package FairGrounds.Domain;
-//This is backend-login
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -9,8 +12,7 @@ public class Application {
 
     public Application(){}
 
-    public Application(List<ExpertiseProfile> profiles , List<Availability
-            > availabilities, Person person){
+    public Application(List<ExpertiseProfile> profiles , List<Availability> availabilities, Person person){
         this.status = "unchecked";
         this.expertiseProfile = profiles;
         this.availabilities = availabilities;
@@ -18,14 +20,21 @@ public class Application {
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
+    public Application(String status) {
+        this.status = status;
+    }
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="applicationdate")
+    private Date applicationdate;
+
 
     @OneToOne
     @JoinColumn (name = "person")
     private Person person;
-
 
     @OneToMany(mappedBy = "application")
     List<Availability> availabilities;
@@ -40,6 +49,10 @@ public class Application {
 
     public Long getId() {
         return id;
+    }
+
+    public Date getApplicationdate() {
+        return this.applicationdate;
     }
 
     public void setId(Long id) {
@@ -65,6 +78,9 @@ public class Application {
     public void setAvailabilities(List<Availability> availabilities) {
         this.availabilities = availabilities;
     }
+
+    public void setApplicationdate(Date applicationdate) { this.applicationdate = applicationdate; }
+
 
     public void setExpertiseProfiles(List<ExpertiseProfile> expertiseProfiles) {
         this.expertiseProfile = expertiseProfiles;

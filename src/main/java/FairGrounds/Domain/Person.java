@@ -3,47 +3,51 @@ package FairGrounds.Domain;
 import FairGrounds.Presentation.RegisterDTO;
 
 import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
+
 import java.util.List;
 
 
 @Entity
 @Table(name = "Person")
-public class Person{
-    
+public class Person {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer personId;
 
-    @Column (name = "fname")
+    @Column(name = "fname")
     private String fname;
 
-    @Column (name = "lname")
+    @Column(name = "lname")
     private String lname;
 
-    @Column (name = "ssnr")
+    @Column(name = "ssnr")
     private String ssnr;
 
-    @Column (name = "email")
+    @Column(name = "email")
     private String email;
 
-    @Column (name = "username")
+    @Column(name = "username")
     private String username;
 
-    @Column (name = "pwd")
+    @Column(name = "pwd")
     private String pwd;
 
-    @Column (name = "role")
+    @Column(name = "role")
     private String role;
+
 
     @OneToOne(mappedBy = "person")
     private Application application;
 
-    public Person(){};
+    public Person() {
+    }
 
 
-    public Person (RegisterDTO registerDTO) {
+    public Person(RegisterDTO registerDTO) {
         this.fname = registerDTO.getfName();
         this.lname = registerDTO.getlName();
         this.username = registerDTO.getUserName();
@@ -53,6 +57,7 @@ public class Person{
         this.personId = 1;
         this.role = "USER";
     }
+
 
     public String getRole() {
         return role;
@@ -86,7 +91,7 @@ public class Person{
         this.email = email;
     }
 
-    public void setUname(String uname) {
+    public void setUsername(String uname) {
         this.username = uname;
     }
 
@@ -110,7 +115,7 @@ public class Person{
         return email;
     }
 
-    public String getUname() {
+    public String getUsername() {
         return username;
     }
 

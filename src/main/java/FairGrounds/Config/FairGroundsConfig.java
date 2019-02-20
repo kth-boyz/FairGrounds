@@ -2,7 +2,9 @@ package FairGrounds.Config;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.h2.server.web.WebServlet;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -92,6 +94,4 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
-
-
 }
