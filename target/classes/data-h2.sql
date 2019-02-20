@@ -59,7 +59,7 @@ INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (7,3,7,1);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (8,3,8,1);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (9,3,9,1);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (10,3,10,1);
-INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (11,3,11,1);
+INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (11,2,10,70);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (12,3,12,1);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (13,3,13,1);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (14,3,14,1);
@@ -74,6 +74,6 @@ INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (21,3,21,1
 
 
 INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (1, '1999-01-02 00:00:00', '2000-02-05 00:00:00',2);
-INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (2, '2002-01-02 00:00:00', '2004-02-03 00:00:00',2);
-INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (3, '1999-01-02 00:00:00', '2000-02-01 00:00:00',2);
+INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (2, '2002-01-02 00:00:00', '2004-02-03 00:00:00',10);
+INSERT INTO AVAILABILITY (id, fd, td, application) VALUES (3, '1999-01-02 00:00:00', '2000-02-01 00:00:00',10);
 
