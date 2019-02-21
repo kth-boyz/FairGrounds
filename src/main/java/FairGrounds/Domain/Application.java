@@ -38,7 +38,6 @@ public class Application {
     @JoinColumn (name = "person")
     private Person person;
 
-
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "application")
     @Fetch(value = FetchMode.SUBSELECT)
     List<Availability> availabilities;

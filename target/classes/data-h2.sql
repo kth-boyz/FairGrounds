@@ -26,7 +26,10 @@ INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
                     ('p', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 21, 'USER'),
                     ('yus','todi','skimmaren','$2a$10$DOvhm/LzukVhULgnymKu1urcnVDhHGNBhmlehP7AxFJflU2h/sKPK',
                     'email@email','9876567893',22,'ADMIN');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5d0e53a165e96b234a0505dbc254806220473132
 
 
 INSERT INTO APPLICATION (status, applicationdate, id, person) VALUES

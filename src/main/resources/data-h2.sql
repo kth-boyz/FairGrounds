@@ -27,8 +27,6 @@ INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
                     ('yus','todi','skimmaren','$2a$10$DOvhm/LzukVhULgnymKu1urcnVDhHGNBhmlehP7AxFJflU2h/sKPK',
                     'email@email','9876567893',22,'ADMIN');
 
-
-
 INSERT INTO APPLICATION (status, applicationdate, id, person) VALUES
 ('not checked', '2000-02-05 00:00:00', 2, 2),
 ('not checked', '2000-02-05 00:00:00', 3, 3),
