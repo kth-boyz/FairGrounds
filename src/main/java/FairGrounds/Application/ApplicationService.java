@@ -21,7 +21,7 @@ public class ApplicationService {
     PersonRepository personRepository;
 
     @Autowired
-    ApplicationRepository applicationRepository;
+    RegisterApplicationRepository registerApplicationRepository;
     @Autowired
     ExpertiseProfileRepository expertiseProfileRepository;
     @Autowired
@@ -46,6 +46,6 @@ public class ApplicationService {
             availability.setApplication(application);
             availabilityRepository.save(availability);
         }
-        applicationRepository.save(application);
+        registerApplicationRepository.save(application);
     }
 }

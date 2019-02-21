@@ -19,11 +19,10 @@ import javax.validation.Valid;
 public class LoginController {
 
     private static final String DEFAULT_PAGE_URL = "/";
-    private static final String LOGIN_PAGE = "login";
-    private static final String LOG_IN_USER = "loginUser";
+    private static final String LOGIN_PAGE = "pub/login";
     private static final String LOGIN_FORM_NAME = "loginDTO";
-    private static final String REGISTER_USER_PAGE = "registerUser";
-    private static final String REGISTER_NEW_USER = "registerNewUser";
+    private static final String REGISTER_USER_PAGE = "pub/registerUser";
+    private static final String REGISTER_NEW_USER = "pub/registerNewUser";
     public static final String MSG_TO_USER = "msg";
     private static final String REGISTRATION_FORM_NAME = "registerDTO";
     private static final String SUCCSESSFUL_LOGIN_MSG = "Your user profile has been created. Log in to proceed.";
@@ -44,7 +43,7 @@ public class LoginController {
     }
 
     @GetMapping("/" + LOGIN_PAGE)
-    public String showLoginPage(LoginDTO loginDTO, Model model) {
+    public String showLoginPage(Model model) {
         return LOGIN_PAGE;
     }
 
@@ -67,18 +66,17 @@ public class LoginController {
         this.currentUser = loginService.saveNewUser(registerDTO);
         System.out.println("New user saved");
         model.addAttribute(MSG_TO_USER, SUCCSESSFUL_LOGIN_MSG);
-        model.addAttribute(LOGIN_FORM_NAME, new LoginDTO());
         return LOGIN_PAGE;
     }
 
-    @GetMapping ("/logintestUser")
+    @GetMapping ("/user/logintestUser")
     public String showtestPage1() {
-        return "logintestUser";
+        return "user/logintestUser";
     }
 
-    @GetMapping ("/logintestAdmin")
+    @GetMapping ("/admin/logintestAdmin")
     public String showtestPage2() {
-        return "logintestAdmin";
+        return "admin/logintestAdmin";
     }
 
 }

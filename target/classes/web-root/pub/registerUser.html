@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{resources/fragments/layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <form th:action="@{/registerNewUser}" th:object="${registerDTO}" method='POST'>
+    <main layout:fragment="content">
+    <form th:action="@{/pub/registerNewUser}" th:object="${registerDTO}" method='POST'>
         <p class="form"><label>User Name</label>
         <input type="text" th:field="*{userName}" id="register-userName" palceholder="Choose User Name"/>
         <span class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Error</span>
@@ -31,6 +35,6 @@
         <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
         </p>
         <button type="submit">Register</button>
-    </form>
+    </form></main>
 </body>
 </html>

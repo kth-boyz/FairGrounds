@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{resources/fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main layout:fragment="content">
+        <form th:action="@{/user/apply}" th:object="${applicationForm}" method="post">
+
+                <div>   <h3>Exptertise form</h3>
+                 <!--   <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
+                        <li>
+                            <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
+                            <input type="number" th:field="*{expertiseProfiles[__${status.index}__].years}"/>
+                        </li>
+                    </ul>-->
+
+                    <!--  <ul th:each="expertise, status : ${applicationForm.expertises}">
+                      <li>
+                          <span th:text="${expertise.name}"> Expertise </span>
+                      </li>
+                  </ul>-->
+                    <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
+                     <select th:field="*{expertiseProfiles[__${status.index}__].expertise.name}">
+                         <option value="">Select Expertise</option>
+                        <option
+                                th:each="expertise : ${applicationForm.expertize}"
+                                th:value="${expertise.name}"
+                                th:text="${expertise.name}" name="name">
+                        </option>
+                    </select>
+                        <input type="number" th:field="*{expertiseProfiles[__${status.index}__].years}"/>
+                    </ul>
+                </div>
+            <button name="addExpertise" type="submit">Add</button>
+            <button th:if="${not #lists.isEmpty(applicationForm.expertiseProfiles)}"  name="deleteExpertise" type="submit">Remove</button>
+            <button name="getAvailability" type="submit">Next</button>
+        </form>
+    </main>
+</body>
+</html>

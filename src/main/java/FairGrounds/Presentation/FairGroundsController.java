@@ -7,16 +7,22 @@ import FairGrounds.Domain.ApplicationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+
+
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,8 +32,13 @@ import java.util.stream.IntStream;
 @Scope("session")
 public class FairGroundsController {
 
-    static final String EXAMPLE_PAGE = "testpage";
+    static final String EXAMPLE_PAGE = "/pub/testpage";
 
+
+    @GetMapping(EXAMPLE_PAGE)
+    public String showDefaultView() {
+        return EXAMPLE_PAGE;
+    }
     @Autowired
     private ApplicationSearchForm applicationSearchForm;
     @Autowired

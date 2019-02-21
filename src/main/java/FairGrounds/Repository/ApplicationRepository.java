@@ -1,6 +1,9 @@
 package FairGrounds.Repository;
 
 import FairGrounds.Domain.Application;
+
+import FairGrounds.Domain.ApplicationDTO;
+import FairGrounds.Domain.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +14,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 
-@Repository
-public interface ApplicationRepository  extends JpaRepository<Application, Integer> {
 
+@Repository
+public interface ApplicationRepository extends JpaRepository<Person, Application> {
 
     String query = "SELECT DISTINCT a " +
             "FROM Application a " +
