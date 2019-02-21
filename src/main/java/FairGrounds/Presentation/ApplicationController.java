@@ -14,19 +14,17 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 @Scope("session")
 public class ApplicationController {
 
     private static final String APPLICATION_PAGE  = "user/apply";
-    private static final String EXPERTISE_URL = "/user/expertise";
-    private static final String AVAILABILITY_URL = "/user/availability";
+    private static final String EXPERTISE_PAGE = "user/expertise";
+    private static final String AVAILABILITY_PAGE = "user/availability";
     private static final String APPLICATION_URL  = "/user/apply";
-    private static final String TEST_PAGE  = "/pub/testpage";
+    private static final String TEST_PAGE  = "pub/testpage";
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -44,7 +42,7 @@ public class ApplicationController {
         applicationForm.setExpertize(applicationService.getExpertises());
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return EXPERTISE_URL;
+        return EXPERTISE_PAGE;
     }
     @PostMapping(value=APPLICATION_URL, params={"addExpertise"})
     public String addExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
@@ -55,7 +53,7 @@ public class ApplicationController {
         applicationForm.getExpertiseProfiles().add(new ExpertiseProfile());
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return EXPERTISE_URL;
+        return EXPERTISE_PAGE;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"deleteExpertise"})
@@ -69,7 +67,7 @@ public class ApplicationController {
         }
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return EXPERTISE_URL;
+        return EXPERTISE_PAGE;
     }
 
     @PostMapping(value =APPLICATION_URL, params={"getAvailability"})
@@ -79,7 +77,7 @@ public class ApplicationController {
 
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return AVAILABILITY_URL;
+        return AVAILABILITY_PAGE;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"addAvailability"})
@@ -88,7 +86,7 @@ public class ApplicationController {
         applicationForm.getAvailabilities().add(new Availability());
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return AVAILABILITY_URL;
+        return AVAILABILITY_PAGE;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"deleteAvailability"})
@@ -100,7 +98,7 @@ public class ApplicationController {
         }
         printAll(applicationForm);
         model.addAttribute(applicationForm);
-        return AVAILABILITY_URL;
+        return AVAILABILITY_PAGE;
     }
 
     @PostMapping(value=APPLICATION_URL, params={"application"})
