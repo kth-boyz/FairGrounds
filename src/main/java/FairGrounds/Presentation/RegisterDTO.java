@@ -4,31 +4,31 @@ import javax.validation.constraints.*;
 
 public class RegisterDTO {
 
-    @NotBlank (message = "Please enter a username")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "User name can only contain letters and digits")
+    @NotBlank (message = "{register.error.username.missing}")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{register.error.username.regex}")
     private String userName;
 
-    @NotBlank (message = "Please enter a a password")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "User name can only contain letters and digits")
-    @Size (min = 6, message = "Password must be at least 6 characters")
+    @NotBlank (message = "{register.error.password.missing}")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{register.error.password.regex}")
+    @Size (min = 6, message = "{register.error.password.short}")
     private String userPwd;
 
-    @NotBlank (message = "Please enter your first name")
-    @Pattern(regexp = "^[\\p{L}\\p{M}*]*$", message = "Only letters allowed")
+    @NotBlank (message = "{register.error.fname.missing}")
+    @Pattern(regexp = "^[\\p{L}\\p{M}*]*$", message = "{register.error.param.regex}")
     private String fName;
 
-    @NotBlank (message = "Please enter your last name")
-    @Pattern(regexp = "^[\\p{L}\\p{M}*]*$", message = "Only letters allowed")
+    @NotBlank (message = "{register.error.lname.missing}")
+    @Pattern(regexp = "^[\\p{L}\\p{M}*]*$", message = "{register.error.param.regex}")
     private String lName;
 
-    @NotBlank (message = "Please enter your social security number")
-    @NotNull (message = "Please enter your social security number")
-    @Pattern(regexp = "^[0-9]+$", message = "Can only contain digits")
-    @Size (min = 10, max = 10, message = "Number must be 10 digits")
+    @NotBlank (message = "{register.error.ssn.missing}")
+    @NotNull (message = "{register.error.ssn.missing}")
+    @Pattern(regexp = "^[0-9]+$", message = "{register.error.ssn.regex}")
+    @Size (min = 10, max = 10, message = "{register.error.ssn.length}")
     private String userSsnr;
 
-    @NotBlank (message = "Please enter your email address")
-    @Email (message = "Email must be in valid form")
+    @NotBlank (message = "{register.error.email.missing}")
+    @Email (message = "{register.error.email.regex}")
     private String email;
 
     public String getUserName() {
