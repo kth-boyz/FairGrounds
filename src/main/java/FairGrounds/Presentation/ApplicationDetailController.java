@@ -20,6 +20,7 @@ public class ApplicationDetailController {
     private final static String APPLICATION_URL = "/app";
     private final static String APPLICATION_PAGE = "admin/applicationDetail";
     private final static String LIST_URL = "admin/list-application";
+
     /**
      * Specifies date format
      * @param binder
