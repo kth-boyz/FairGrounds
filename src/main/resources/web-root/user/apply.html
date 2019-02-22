@@ -10,29 +10,29 @@
 
         <form th:action="@{/user/apply}" th:object="${applicationForm}" method="post">
 
-        <div>   <h3>Expertises:</h3>
+        <div>   <h3><label th:text="#{apply.expertiseheader}"/></h3>
             <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
                 <li>
                     <!-- <li><span th:text="${status}"> Status </span>-->
-                    <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
+                    <span th:text="${expertiseProfile.expertise.name}"><label th:text="#{apply.expertise}"/> </span>
                     <span th:text="${expertiseProfile.years}"/>
                 </li>
             </ul>
-            <h3>Availabilities:</h3>
+            <h3><label th:text="#{apply.availabilitiesheader}"/></h3>
             <ul th:each="availability, status : ${applicationForm.availabilities}" id="availabilities-th" >
                 <li>
                     <p>
-                        From:
+                        <label th:text="#{apply.from}"/>
                         <span  th:text="${{availability.fromDate}}" />
                     </p>
                     <p>
-                        To:
+                        <label th:text="#{apply.to}"/>
                         <span  th:text="${{availability.toDate}}"/>
                     </p>
                 </li>
             </ul>
         </div>
-            <button name="confirm" type="submit">Send Application</button>
+            <button name="confirm" type="submit"><label th:text="#{apply.sendButton}"/></button>
         </div>
     </form>
     </main>

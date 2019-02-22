@@ -8,22 +8,22 @@
 <body>
     <main layout:fragment="content">
         <section>
-            <h1 th:if="${param.error}">Invalid username and password</h1>
+            <h3 th:if="${param.error}"><label th:text="#{login.error}"/></h3>
         </section>
         <section>
-            <h1 th:text="${msg}"/>
+            <h3 th:text="${msg}"/>
         </section>
         <form th:action="@{/pub/login}" method='POST'>
-            <p class="form"><label>Username</label>
+            <p class="form"><label th:text="#{login.username}"/>
             <input type="text" name="username" id="username" palceholder="Type Username"/>
             </p>
-            <p class="form"><label>Password</label>
+            <p class="form"><label th:text="#{login.password}"/>
             <input type="password" name="password" id="password" palceholder="Type Password"/>
             </p>
-            <button type="submit">Log In</button>
+            <button type="submit"><label th:text="#{login.button}"/></button>
         </form>
         <br/>
-        <a th:href="@{/pub/registerUser}">Register a Profile</a>
+        <a th:href="@{/pub/registerUser}"><label th:text="#{login.register}"/></a>
     </main>
 </body>
 </html>

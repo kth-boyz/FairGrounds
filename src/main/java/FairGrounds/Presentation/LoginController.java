@@ -4,6 +4,8 @@ import FairGrounds.Application.LoginService;
 import FairGrounds.Domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,13 +14,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 @Scope("session")
 public class LoginController {
 
-    private static final String DEFAULT_PAGE_URL = "/";
     private static final String LOGIN_PAGE = "pub/login";
     private static final String LOGIN_FORM_NAME = "loginDTO";
     private static final String REGISTER_USER_PAGE = "pub/registerUser";
@@ -35,15 +37,8 @@ public class LoginController {
 
     private Person currentUser;
 
-
-
-    @GetMapping(DEFAULT_PAGE_URL)
-    public String showDefaultView(LoginDTO loginDTO, Model model) {
-        return LOGIN_PAGE;
-    }
-
     @GetMapping("/" + LOGIN_PAGE)
-    public String showLoginPage(Model model) {
+    public String showLoginPage(LoginDTO loginDTO, Model model) {
         return LOGIN_PAGE;
     }
 
