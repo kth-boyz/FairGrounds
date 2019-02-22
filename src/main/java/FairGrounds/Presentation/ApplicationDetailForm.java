@@ -4,6 +4,9 @@ import FairGrounds.Domain.Application;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * Wrapper object for application detail
+ */
 @Component
 @Scope("session")
 public class ApplicationDetailForm {

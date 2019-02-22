@@ -20,6 +20,10 @@ public class ApplicationDetailController {
     private final static String APPLICATION_URL = "/app";
     private final static String APPLICATION_PAGE = "admin/applicationDetail";
     private final static String LIST_URL = "admin/list-application";
+    /**
+     * Specifies date format
+     * @param binder
+     */
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat( "yyyy-MM-dd"), true));
@@ -32,6 +36,13 @@ public class ApplicationDetailController {
     @Autowired
     ApplicationDetailForm applicationDetailForm;
 
+    /**
+     * Fetches application with ID and binds data to model
+     * @param applicationDetailForm - Wrapper object for data
+     * @param model - Binds data to html
+     * @param appid - id for application
+     * @return html of application page
+     */
     @GetMapping("/"+APPLICATION_URL+"/{appid}")
     public String showExpertiseView(@ModelAttribute("ApplicationDetailForm") ApplicationDetailForm applicationDetailForm, Model model,@PathVariable("appid") int appid) {
         Long id = new Long(appid);
@@ -43,6 +54,13 @@ public class ApplicationDetailController {
         return APPLICATION_PAGE;
     }
 
+    /**
+     * @param applicationDetailForm - Wrapper object for data
+     * @param model - Binds data to html
+     * @param appid - id for application
+     * @param type - which button that was clicked
+     * @return  redirects to a page depending on what button was clicked
+     */
     @PostMapping(value="/"+APPLICATION_URL+"/{appid}" )
     public String acceptApplication(@ModelAttribute("ApplicationDetailForm") ApplicationDetailForm applicationDetailForm, Model model
             ,@PathVariable("appid") int appid,@RequestParam(value="type",required=false) String type) {

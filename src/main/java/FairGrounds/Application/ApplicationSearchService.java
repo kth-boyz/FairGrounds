@@ -19,6 +19,16 @@ public class ApplicationSearchService {
     @Autowired
     private ApplicationRepository applicationRepository;
 
+    /**
+     *
+     * @param name - name of person
+     * @param expertise - name of epertise
+     * @param appDate - application submit date
+     * @param workFrom - availability from date
+     * @param workTo - availability to date
+     * @param pageable - Abstract interface for pagination information.
+     * @return - Pages with found applications
+     */
     public Page<Application> getQueriedApplications(String name, String expertise, Date appDate,
                                                        Date workFrom, Date workTo, Pageable pageable) {
 

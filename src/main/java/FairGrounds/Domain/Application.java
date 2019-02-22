@@ -14,6 +14,12 @@ public class Application {
 
     public Application(){}
 
+    /**
+     * Constructor
+     * @param profiles - expertise profiles for the application
+     * @param availabilities - availabilities for the application
+     * @param person - person that applied
+     */
     public Application(List<ExpertiseProfile> profiles , List<Availability> availabilities, Person person){
         this.status = "unchecked";
         this.expertiseProfile = profiles;
