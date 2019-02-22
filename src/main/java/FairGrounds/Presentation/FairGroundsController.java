@@ -42,6 +42,7 @@ public class FairGroundsController {
     private ApplicationSearchService applicationSearchService;
     @Autowired
     private LoginService loginService;
+
     /**
      * Redirect to homepage
      * @param model - binds data to html
