@@ -9,7 +9,7 @@
     <main layout:fragment="content">
         <form th:action="@{/user/apply}" th:object="${applicationForm}" method="post">
 
-                <div>   <h3>Exptertise form</h3>
+                <div>   <h3><label th:text="#{expertise.form}"/></h3>
                  <!--   <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
                         <li>
                             <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
@@ -24,7 +24,7 @@
                   </ul>-->
                     <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
                      <select th:field="*{expertiseProfiles[__${status.index}__].expertise.name}">
-                         <option value="">Select Expertise</option>
+                         <option value=""><label th:text="#{expertise.select}"/></option>
                         <option
                                 th:each="expertise : ${applicationForm.expertize}"
                                 th:value="${expertise.name}"
@@ -34,9 +34,9 @@
                         <input type="number" th:field="*{expertiseProfiles[__${status.index}__].years}"/>
                     </ul>
                 </div>
-            <button name="addExpertise" type="submit">Add</button>
-            <button th:if="${not #lists.isEmpty(applicationForm.expertiseProfiles)}"  name="deleteExpertise" type="submit">Remove</button>
-            <button name="getAvailability" type="submit">Next</button>
+            <button name="addExpertise" type="submit"><label th:text="#{expertise.add}"/></button>
+            <button th:if="${not #lists.isEmpty(applicationForm.expertiseProfiles)}"  name="deleteExpertise" type="submit"><label th:text="#{expertise.delete}"/></button>
+            <button name="getAvailability" type="submit"><label th:text="#{expertise.next}"/></button>
         </form>
     </main>
 </body>
