@@ -24,7 +24,7 @@ public class ApplicationController {
     private static final String EXPERTISE_PAGE = "user/expertise";
     private static final String AVAILABILITY_PAGE = "user/availability";
     private static final String APPLICATION_URL  = "/user/apply";
-    private static final String TEST_PAGE  = "pub/testpage";
+    private static final String TEST_PAGE  = "pub/home";
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
