@@ -159,4 +159,5 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
+
 }
