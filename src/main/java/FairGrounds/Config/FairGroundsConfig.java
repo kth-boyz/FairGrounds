@@ -10,17 +10,22 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.resource.PathResourceResolver;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+
+import java.util.Locale;
 
 @EnableTransactionManagement // Needed for @Transactional attribute outside
 // repositories.
@@ -55,8 +60,16 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         //templateEngine.setEnableSpringELCompiler(true);
         //Add the layout dialect, which enables reusing layout html pages.
         templateEngine.addDialect(new LayoutDialect());
+        templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
     }
+
+    /** DO I NEED THIS???????
+    @Bean
+    public SpringSecurityDialect securityDialect() {
+        return new SpringSecurityDialect();
+    }
+     **/
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -94,4 +107,39 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.US);
+        return slr;
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        String[] allowedHttpMethodsForLocaleChange = {"GET", "POST"};
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        lci.setHttpMethods(allowedHttpMethodsForLocaleChange);
+        lci.setIgnoreInvalidLocale(true);
+        return lci;
+    }
+
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource() {
+        String message = "classpath:/message";
+        String validationMessage = "classpath:/ValidationMessages";
+        ReloadableResourceBundleMessageSource resource =
+                new ReloadableResourceBundleMessageSource();
+        resource.addBasenames(message, validationMessage);
+        resource.setDefaultEncoding("UTF-8");
+        resource.setFallbackToSystemLocale(false);
+        return resource;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
 }
