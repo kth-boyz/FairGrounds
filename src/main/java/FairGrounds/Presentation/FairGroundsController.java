@@ -46,29 +46,50 @@ public class FairGroundsController {
     /**
      * Redirect to homepage
      * @param model - binds data to html
-     * @return
+     * @return - home page
      */
     @GetMapping (DEFAULT_PAGE_URL)
     public String showDefaultView (Model model) {
         return HOME_PAGE;
     }
 
+    /**
+     * Redirects to homepage
+     * @param model - binds data to html
+     * @return - home page
+     */
     @GetMapping("/" + HOME_PAGE)
     public String showHomeView(Model model) {
         return HOME_PAGE;
     }
 
+    /**
+     *
+     * @param applicationSearchForm - Wrapper object for form inputs
+     * @param model - binds data to html
+     * @return - html page for list-applications
+     */
     @GetMapping("/admin/list-application")
     public String searchApplications(@ModelAttribute("ApplicationSearchForm") ApplicationSearchForm applicationSearchForm, Model model) {
         model.addAttribute("applicationSearchForm", new ApplicationSearchForm());
         return "admin/list-application";
     }
-
+    /**
+     * Specifies date format
+     * @param binder
+     */
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
     }
 
+    /**
+     * Matches inputted data to database and returns pages with matched applications/persons
+     * @param applicationSearchForm - Wrapper object for form inputs
+     * @param model - binds data to html
+     * @param page - which part of the list
+     * @return - list-application page
+     */
     @RequestMapping("/admin/applications/page/{page}")
     public String queryApplications(ApplicationSearchForm applicationSearchForm, Model model, @PathVariable("page") int page) {
         System.out.println(applicationSearchForm.getName());

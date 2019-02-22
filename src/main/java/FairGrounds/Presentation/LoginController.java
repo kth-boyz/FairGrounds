@@ -37,6 +37,12 @@ public class LoginController {
 
     private Person currentUser;
 
+    /**
+     * Redirects to login page
+     * @param loginDTO - Wrapper object for login data
+     * @param model - binds data to html
+     * @return - login page
+     */
     @GetMapping("/" + LOGIN_PAGE)
     public String showLoginPage(LoginDTO loginDTO, Model model) {
         return LOGIN_PAGE;
@@ -63,6 +69,7 @@ public class LoginController {
         model.addAttribute(MSG_TO_USER, SUCCSESSFUL_LOGIN_MSG);
         return LOGIN_PAGE;
     }
+
 
     @GetMapping ("/user/logintestUser")
     public String showtestPage1() {
