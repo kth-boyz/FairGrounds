@@ -1,7 +1,6 @@
 package FairGrounds.Application;
 
 import FairGrounds.Domain.Person;
-import FairGrounds.Presentation.LoginDTO;
 import FairGrounds.Presentation.RegisterDTO;
 import FairGrounds.Repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
