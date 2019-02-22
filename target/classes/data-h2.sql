@@ -3,34 +3,28 @@ INSERT INTO EXPERTISE (id, name) VALUES (2, 'bar');
 INSERT INTO EXPERTISE (id, name) VALUES (3, 'skim');
 
 INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
-                   -- ('taoudi','youssef', 'tods', '123', 'taoudi123@whatver', '1234', 1,'USER'),
-                    ('chris', 'robberts', 'vinkel', '123', 'asd@asd.se', '1337', 2, 'USER'),
-                    ('petta', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 3, 'USER'),
-                    ('xyz','xyzxyz', 'todss', '123', 'taoudi123@whatver', '1234', 4,'USER'),
-                    ('abc', 'asdada', 'vinkel', '123', 'asd@asd.se', '1337', 5, 'USER'),
-                    ('a', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 6, 'USER'),
-                    ('b', 'svensso', 'pettap', '123', 'asd@asd.se', '1338', 7, 'USER'),
-                    ('c', 'svenss', 'pettap', '123', 'asd@asd.se', '1338', 8, 'USER'),
-                    ('d', 'svens', 'pettap', '123', 'asd@asd.se', '1338', 9, 'USER'),
-                    ('e', 'sven', 'pettap', '123', 'asd@asd.se', '1338', 10, 'USER'),
-                    ('f', 'sve', 'pettap', '123', 'asd@asd.se', '1338', 11, 'USER'),
-                    ('g', 'sv', 'pettap', '123', 'asd@asd.se', '1338', 12, 'USER'),
-                    ('h', 's', 'pettap', '123', 'asd@asd.se', '1338', 13, 'USER'),
-                    ('i', 'sv', 'pettap', '123', 'asd@asd.se', '1338', 14, 'USER'),
-                    ('j', 'sve', 'pettap', '123', 'asd@asd.se', '1338', 15, 'USER'),
-                    ('k', 'sven', 'pettap', '123', 'asd@asd.se', '1338', 16, 'USER'),
-                    ('l', 'svens', 'pettap', '123', 'asd@asd.se', '1338', 17, 'USER'),
-                    ('m', 'svenss', 'pettap', '123', 'asd@asd.se', '1338', 18, 'USER'),
-                    ('n', 'svensso', 'pettap', '123', 'asd@asd.se', '1338', 19, 'USER'),
+                    ('chris', 'robberts', 'vinkelg', '123', 'asd@asd.se', '1337', 2, 'USER'),
+                    ('petta', 'svensson', 'pettap3', '123', 'asd@asd.se', '1338', 3, 'USER'),
+                    ('xyz','xyzxyz', 'todsss', '1232', 'taoudi123@whatver', '1234', 4,'USER'),
+                    ('abc', 'asdada', 'vinkedl', '1231', 'asd@asd.se', '1337', 5, 'USER'),
+                    ('a', 'svensson', 'pettafp', '1253', 'asd@asd.se', '1338', 6, 'USER'),
+                    ('b', 'svensso', 'pettafasp', '1263', 'asd@asd.se', '1338', 7, 'USER'),
+                    ('c', 'svenss', 'pettewrap', '123', 'asd@asd.se', '1338', 8, 'USER'),
+                    ('d', 'svens', 'pettaqwep', '123', 'asd@asd.se', '1338', 9, 'USER'),
+                    ('e', 'sven', 'pettasdap', '123', 'asd@asd.se', '1338', 10, 'USER'),
+                    ('f', 'sve', 'pettavfdp', '123', 'asd@asd.se', '1338', 11, 'USER'),
+                    ('g', 'sv', 'pettabfdgp', '123', 'asd@asd.se', '1338', 12, 'USER'),
+                    ('h', 's', 'petta213p', '123', 'asd@asd.se', '1338', 13, 'USER'),
+                    ('i', 'sv', 'pett123ap', '123', 'asd@asd.se', '1338', 14, 'USER'),
+                    ('j', 'sve', 'pett251ap', '123', 'asd@asd.se', '1338', 15, 'USER'),
+                    ('k', 'sven', 'pettaferp', '123', 'asd@asd.se', '1338', 16, 'USER'),
+                    ('l', 'svens', 'pettfdap', '123', 'asd@asd.se', '1338', 17, 'USER'),
+                    ('m', 'svenss', 'petyrtap', '123', 'asd@asd.se', '1338', 18, 'USER'),
+                    ('n', 'svensso', 'pdsfettap', '123', 'asd@asd.se', '1338', 19, 'USER'),
                     ('o', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 20, 'USER'),
-                    ('p', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 21, 'USER'),
+                    ('p', 'svensson', 'pewewttap', '123', 'asd@asd.se', '1338', 21, 'USER'),
                     ('yus','todi','skimmaren','$2a$10$DOvhm/LzukVhULgnymKu1urcnVDhHGNBhmlehP7AxFJflU2h/sKPK',
                     'email@email','9876567893',22,'ADMIN');
-<<<<<<< HEAD
-
-=======
->>>>>>> 5d0e53a165e96b234a0505dbc254806220473132
-
 
 INSERT INTO APPLICATION (status, applicationdate, id, person) VALUES
 ('not checked', '2000-02-05 00:00:00', 2, 2),

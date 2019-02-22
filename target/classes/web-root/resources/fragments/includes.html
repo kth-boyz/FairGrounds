@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="header">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="mybootstrap.css" th:href="@{/resources/css/mybootstrap.css}"/>
@@ -8,17 +8,47 @@
     <body>
         <div th:fragment="navbar">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" th:href="@{/pub/home}">FairGrounds</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Features</a>
-                        <a class="nav-item nav-link" href="#">Pricing</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                        <a class="nav-item nav-link active" th:href="@{/pub/home}"><label th:text="#{navbar.home}"/><span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="#"><label th:text="#{navbar.aboutus}"/></a>
+                        <a class="nav-item nav-link active" sec:authorize="hasRole('USER')" th:href="@{/user/apply}"><label th:text="#{navbar.apply}"/></a>
+                        <a class="nav-item nav-link active" sec:authorize="hasRole('ADMIN')" th:href="@{/user/apply}"><label th:text="#{navbar.list}"/></a>
+                        <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/pub/login}"><label th:text="#{navbar.login}"/></a>
+                        <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/pub/registerUser}"><label th:text="#{navbar.signup}"/></a>
+                        <a class="nav-item nav-link active">
+                        <span th:text="#{lang.change}"></span>:
+                            <select id="locales">
+                                <option value=""></option>
+                                <option value="en" th:text="#{lang.en}"></option>
+                                <option value="sv" th:text="#{lang.sv}"></option>
+                            </select>
+                        </a>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+                        </script>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $("#locales").change(function () {
+                                    var selectedOption = $('#locales').val();
+                                    if (selectedOption != ''){
+                                        window.location.replace('?lang=' + selectedOption);
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
+                    <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                        <a class="nav-item nav-link active"><label th:text="#{user.loggedin}+' '+${#authentication.name}"/></a>
+                        <a class="nav-item">
+                            <form th:action="@{/logout}" method="POST">
+                                <button class="btn btn-secondary btn-sm" type="submit" name="logut">Log Out</button>
+                            </form>
+                        </a>
+                    </ul>
                 </div>
             </nav>
         </div>

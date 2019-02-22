@@ -9,7 +9,7 @@
     <main layout:fragment="content">
         <form th:action="@{/user/apply}" th:object="${applicationForm}" method="post">
 
-            <div> <h3>Availability form</h3>
+            <div> <h3><label th:text="#{availability.form}"/></h3>
                 <ul th:each="availability, status : ${applicationForm.availabilities}" id="availabilities-th" >
                     <li>
                         <input type="hidden"  th:value="${status.index}" name="index"/>
@@ -18,9 +18,9 @@
                     </li>
                 </ul>
             </div>
-            <button name="addAvailability" type="submit">Add</button>
-            <button th:if="${not #lists.isEmpty(applicationForm.availabilities)}"  name="deleteAvailability" type="submit">Delete</button>
-            <button name="application" type="submit">Next</button>
+            <button name="addAvailability" type="submit"><label th:text="#{availability.add}"/></button>
+            <button th:if="${not #lists.isEmpty(applicationForm.availabilities)}"  name="deleteAvailability" type="submit"><label th:text="#{availability.delete}"/></button>
+            <button name="application" type="submit"><label th:text="#{availability..next}"/></button>
 
 
 
