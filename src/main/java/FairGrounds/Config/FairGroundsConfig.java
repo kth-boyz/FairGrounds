@@ -147,7 +147,8 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         ReloadableResourceBundleMessageSource resource =
                 new ReloadableResourceBundleMessageSource();
         resource.addBasenames(message, validationMessage);
-        resource.setDefaultEncoding("ISO-8859-1");
+        //resource.setDefaultEncoding("ISO-8859-1");
+        resource.setDefaultEncoding("UTF-8");
         resource.setFallbackToSystemLocale(false);
         return resource;
     }
@@ -159,4 +160,5 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
+
 }
