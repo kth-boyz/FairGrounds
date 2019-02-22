@@ -10,8 +10,13 @@
 <<<<<<< HEAD:target/classes/web-root/pub/home.html~HEAD
         <h3><label th:text="#{testpage.hello}"/></h3>
 =======
+<<<<<<< HEAD
         <h2><label th:text="#{test.admin}"/></h2>
 >>>>>>> Its friday my dudes!!!!:src/main/resources/web-root/admin/logintestAdmin.html
+=======
+        <h2><label th:text="#{test.user}"/></h2>
+>>>>>>> Its friday my dudes!!!!:src/main/resources/web-root/user/logintestUser.html
+>>>>>>> Its friday my dudes!!!!
     </main>
 </body>
 </html>
