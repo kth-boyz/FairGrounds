@@ -107,4 +107,38 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.US);
+        return slr;
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        String[] allowedHttpMethodsForLocaleChange = {"GET", "POST"};
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        lci.setHttpMethods(allowedHttpMethodsForLocaleChange);
+        lci.setIgnoreInvalidLocale(true);
+        return lci;
+    }
+
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource() {
+        String message = "classpath:/message";
+        String validationMessage = "classpath:/ValidationMessages";
+        ReloadableResourceBundleMessageSource resource =
+                new ReloadableResourceBundleMessageSource();
+        resource.addBasenames(message, validationMessage);
+        resource.setDefaultEncoding("UTF-8");
+        resource.setFallbackToSystemLocale(false);
+        return resource;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
 }

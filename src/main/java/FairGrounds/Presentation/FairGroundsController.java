@@ -36,6 +36,7 @@ public class FairGroundsController {
     private static final String DEFAULT_PAGE_URL = "/";
     static final String HOME_PAGE = "pub/home";
 
+
     @GetMapping (DEFAULT_PAGE_URL)
     public String showDefaultView (Model model) {
         return HOME_PAGE;
