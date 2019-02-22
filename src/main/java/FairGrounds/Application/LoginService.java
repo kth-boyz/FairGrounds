@@ -25,6 +25,11 @@ public class LoginService implements UserDetailsService {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     *  Fetches user data bound to the username
+     * @param username - user to be logged in as
+     * @return - Object that holds user information
+     */
     @Override
     public UserDetails loadUserByUsername(String username) {
         Person person = personRepository.findByUsername(username);
@@ -36,10 +41,20 @@ public class LoginService implements UserDetailsService {
         return userDetails;
     }
 
+    /**
+     * tries to find user in databaase
+     * @param registerDTO - object holder with user details
+     * @return - returns the found user
+     */
     public Person findUserAccount(RegisterDTO registerDTO) {
         return personRepository.findByUsername(registerDTO.getUserName());
     }
 
+    /**
+     *
+     * @param registerDTO - object holder with user details
+     * @return -
+     */
     public Person saveNewUser(RegisterDTO registerDTO) {
         Person newUser = new Person(registerDTO);
         return personRepository.save(newUser);
