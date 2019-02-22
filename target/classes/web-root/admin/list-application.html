@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{resources/fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <form th:action="@{/admin/applications/page/1}" th:object="${applicationSearchForm}" id="search-params" method="POST">
+        <label for="name">Name</label>
+        <input id="name" th:field="*{name}"/>
+        <label for="name">expertise</label>
+        <input th:field="*{expertise}"/>
+        <label for="name">application date</label>
+        <input th:field="*{appDate}" type="date" id="application_date"/>
+        <label for="name">availability from</label>
+        <input th:field="*{workAvailabilityFrom}" type="date" id="work_from"/>
+        <label for="name">availability to</label>
+        <input th:field="*{workAvailabilityTo}" type="date" id="work_to"/>
+        <input type="submit"/>
+    </form>
+    <div>
+        <table th:object="${applications}" border="1">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Application Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="app : ${applicationdtos}">
+                    <td><span th:text="${app?.getFname()}"></span></td>
+                    <td><span th:text="${app?.getLname()}"></span></td>
+                    <td><span th:text="${app?.getApplicationDate()}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row" th:fragment="pagination">
+        <div class="col-md-2"></div>
+        <div>
+            <nav>
+                <ul>
+                    <li th:each="pageNumber : ${pageNumbers}" >
+                        <a class="page-link" th:href="@{|/admin/applications/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</main>
+</body>
+</html>

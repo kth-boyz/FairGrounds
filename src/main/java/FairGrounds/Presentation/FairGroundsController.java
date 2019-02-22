@@ -36,15 +36,6 @@ public class FairGroundsController {
     private static final String DEFAULT_PAGE_URL = "/";
     static final String HOME_PAGE = "pub/home";
 
-
-    @GetMapping (DEFAULT_PAGE_URL)
-    public String showDefaultView (Model model) {
-        return HOME_PAGE;
-    }
-    @GetMapping("/" + HOME_PAGE)
-    public String showHomeView(Model model) {
-        return HOME_PAGE;
-    }
     @Autowired
     private ApplicationSearchForm applicationSearchForm;
     @Autowired
@@ -52,10 +43,20 @@ public class FairGroundsController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping("/list-application")
+    @GetMapping (DEFAULT_PAGE_URL)
+    public String showDefaultView (Model model) {
+        return HOME_PAGE;
+    }
+
+    @GetMapping("/" + HOME_PAGE)
+    public String showHomeView(Model model) {
+        return HOME_PAGE;
+    }
+
+    @GetMapping("/admin/list-application")
     public String searchApplications(@ModelAttribute("ApplicationSearchForm") ApplicationSearchForm applicationSearchForm, Model model) {
         model.addAttribute("applicationSearchForm", new ApplicationSearchForm());
-        return "list-application";
+        return "admin/list-application";
     }
 
     @InitBinder
@@ -63,7 +64,7 @@ public class FairGroundsController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
     }
 
-    @RequestMapping("/applications/page/{page}")
+    @RequestMapping("/admin/applications/page/{page}")
     public String queryApplications(ApplicationSearchForm applicationSearchForm, Model model, @PathVariable("page") int page) {
         System.out.println(applicationSearchForm.getName());
 
@@ -102,6 +103,6 @@ public class FairGroundsController {
         }
         model.addAttribute("applicationdtos", applicationDTOS);
         model.addAttribute("applications", applications.getContent());
-        return "list-application";
+        return "admin/list-application";
     }
 }
