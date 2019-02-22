@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{/resources/fragments/layout}">
+    layout:decorate="~{resources/fragments/layout}">
 <body>
 <main layout:fragment="content">
 <form th:action="@{/app/{path}(path=${id})}" th:object="${applicationDetailForm}" method="post">

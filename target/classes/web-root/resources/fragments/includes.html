@@ -18,6 +18,7 @@
                         <a class="nav-item nav-link active" href="#"><label th:text="#{navbar.aboutus}"/></a>
                         <a class="nav-item nav-link active" sec:authorize="isAuthenticated()" th:href="@{/user/apply}"><label th:text="#{navbar.apply}"/></a>
                         <a class="nav-item nav-link active" sec:authorize="isAuthenticated()" th:href="@{/admin/list-application}"><label th:text="#{navbar.list}"/></a>
+
                         <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/pub/login}"><label th:text="#{navbar.login}"/></a>
                         <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/pub/registerUser}"><label th:text="#{navbar.signup}"/></a>
                         <a class="nav-item nav-link active">
