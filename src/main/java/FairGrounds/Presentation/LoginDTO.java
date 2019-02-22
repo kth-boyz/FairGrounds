@@ -3,6 +3,9 @@ package FairGrounds.Presentation;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+/**
+ * Wrapper object for login data
+ */
 public class LoginDTO {
 
     @NotBlank(message = "Please enter username")

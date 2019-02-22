@@ -2,6 +2,9 @@ package FairGrounds.Presentation;
 
 import javax.validation.constraints.*;
 
+/**
+ * Wrapper object for register data
+ */
 public class RegisterDTO {
 
     @NotBlank (message = "{register.error.username.missing}")
