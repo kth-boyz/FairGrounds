@@ -16,6 +16,10 @@ public class ExceptionHandler implements ErrorController{
     public static final String INVALID_PWD = "The password you entered was incorrect";
     public static final String USERNAME_TAKEN = "The username is already taken";
 
+    /**
+     *
+     * @return error page
+     */
     @Override
     public String getErrorPath() {
         return "/" + ERROR_PATH;

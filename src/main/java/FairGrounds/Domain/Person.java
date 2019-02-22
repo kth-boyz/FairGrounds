@@ -47,7 +47,10 @@ public class Person {
     public Person() {
     }
 
-
+    /**
+     * creates new person
+     * @param registerDTO - holds user data for person
+     */
     public Person(RegisterDTO registerDTO) {
         this.fname = registerDTO.getfName();
         this.lname = registerDTO.getlName();
@@ -55,7 +58,6 @@ public class Person {
         this.pwd = registerDTO.getUserPwd();
         this.email = registerDTO.getEmail();
         this.ssnr = registerDTO.getUserSsnr();
-        this.personId = 1;
         this.role = "USER";
     }
 

@@ -25,14 +25,27 @@ public class ApplicationService {
     @Autowired
     AvailabilityRepository availabilityRepository;
 
+    /**
+     *
+     * @return - returns all expertises in database
+     */
     public List<Expertise> getExpertises(){
         List<Expertise> expertises =  expertiseRepository.findAll();
         return expertises;
     }
+
+    /**
+     *
+     * @return - returns logged in user (TODO)
+     */
     public Person getUser(){
         return personRepository.findByUsername("tods");
     }
 
+    /**
+     * Stores application and all expertiseprofiles and availabilities connected to it
+     * @param application - Stored Application
+     */
     public void storeApplication(Application application){
         for (ExpertiseProfile profile:application.getExpertiseProfile()) {
             Expertise expertise = expertiseRepository.findByName(profile.getExpertise().getName());

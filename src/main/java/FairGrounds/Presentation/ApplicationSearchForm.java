@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+/**
+ * Object wrapper for application search form
+ */
 @Component
 @Scope("session")
 public class ApplicationSearchForm {

@@ -26,6 +26,10 @@ public class ApplicationController {
     private static final String APPLICATION_URL  = "/user/apply";
     private static final String TEST_PAGE  = "pub/home";
 
+    /**
+     * Specifies date format
+     * @param binder
+     */
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat( "yyyy-MM-dd"), true));
@@ -36,6 +40,12 @@ public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
 
+    /**
+     * Show form of expertises
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for expertises
+     */
     @GetMapping(APPLICATION_URL)
     public String showExpertiseView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
        // this.applicationForm = applicationForm;
@@ -44,6 +54,13 @@ public class ApplicationController {
         model.addAttribute(applicationForm);
         return EXPERTISE_PAGE;
     }
+
+    /**
+     * Adds a new list element
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for expertises
+     */
     @PostMapping(value=APPLICATION_URL, params={"addExpertise"})
     public String addExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
        // this.applicationForm = applicationForm;
@@ -56,6 +73,12 @@ public class ApplicationController {
         return EXPERTISE_PAGE;
     }
 
+    /**
+     * Delets a list element
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for expertises
+     */
     @PostMapping(value=APPLICATION_URL, params={"deleteExpertise"})
     public String deleteExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
 
@@ -70,6 +93,12 @@ public class ApplicationController {
         return EXPERTISE_PAGE;
     }
 
+    /**
+     *  Show form of availabilities
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for availabilities
+     */
     @PostMapping(value =APPLICATION_URL, params={"getAvailability"})
     public String showAvailabilityView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model){
         this.applicationForm.setExpertize(applicationForm.getExpertize());
@@ -80,6 +109,12 @@ public class ApplicationController {
         return AVAILABILITY_PAGE;
     }
 
+    /**
+     *  add list element
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for availabilities
+     */
     @PostMapping(value=APPLICATION_URL, params={"addAvailability"})
     public String addAvailability(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
 
@@ -89,6 +124,12 @@ public class ApplicationController {
         return AVAILABILITY_PAGE;
     }
 
+    /**
+     *delete list element
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for availabilities
+     */
     @PostMapping(value=APPLICATION_URL, params={"deleteAvailability"})
     public String deleteAvailability(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
 
@@ -101,6 +142,12 @@ public class ApplicationController {
         return AVAILABILITY_PAGE;
     }
 
+    /**
+     *  shows all data for the application
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for applications
+     */
     @PostMapping(value=APPLICATION_URL, params={"application"})
     public String showApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
 
@@ -121,6 +168,12 @@ public class ApplicationController {
         return APPLICATION_PAGE;
     }
 
+    /**
+     * Stores application in database and redirects to home page
+     * @param applicationForm - Wrapper object for values
+     * @param model - model holds all attached objects
+     * @return - html page for home page
+     */
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
     public String confirmApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
 
