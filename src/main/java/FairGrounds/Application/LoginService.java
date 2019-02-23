@@ -37,7 +37,7 @@ public class LoginService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
         GrantedAuthority authority = new SimpleGrantedAuthority(person.getRole());
-        UserDetails userDetails = new org.springframework.security.core.userdetails.User(person.getEmail(), person.getPwd(), Arrays.asList(authority));
+        UserDetails userDetails = new org.springframework.security.core.userdetails.User(person.getUsername(), person.getPwd(), Arrays.asList(authority));
         return userDetails;
     }
 
