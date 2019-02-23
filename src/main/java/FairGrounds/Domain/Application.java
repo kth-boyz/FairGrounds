@@ -39,9 +39,8 @@ public class Application {
     @Column(name="applicationdate")
     private Date applicationdate;
 
-
     @OneToOne
-    @JoinColumn (name = "person")
+    @JoinColumn (name = "person", unique = true)
     private Person person;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "application")
