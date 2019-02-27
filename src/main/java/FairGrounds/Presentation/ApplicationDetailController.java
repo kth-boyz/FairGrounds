@@ -85,7 +85,7 @@ public class ApplicationDetailController {
                 return APPLICATION_PAGE;
             case "goback":
                 applicationDetailForm = null;
-                return "redirect:" + LIST_URL;
+                return "redirect:../" + LIST_URL;
 
                 default:
                     return "redirect:" +APPLICATION_URL + id.toString();
