@@ -24,6 +24,7 @@
         <table th:object="${applications}" border="1">
             <thead>
                 <tr>
+                    <th>Application</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Application Date</th>
@@ -31,6 +32,7 @@
             </thead>
             <tbody>
                 <tr th:each="app : ${applicationdtos}">
+                    <td><a th:href="@{|/app/${app?.getId()}|}">Application</a></td>
                     <td><span th:text="${app?.getFname()}"></span></td>
                     <td><span th:text="${app?.getLname()}"></span></td>
                     <td><span th:text="${app?.getApplicationDate()}"></span></td>
@@ -40,13 +42,21 @@
     </div>
     <div class="row" th:fragment="pagination">
         <div class="col-md-2"></div>
-        <div>
             <nav>
-                <ul>
-                    <li th:each="pageNumber : ${pageNumbers}" >
-                        <a class="page-link" th:href="@{|/admin/applications/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
-                    </li>
-                </ul>
+                <div th:if="${isStartPage}">
+                    <ul>
+                        <li th:each="pageNumber : ${pageNumbers}" >
+                            <a class="page-link" th:href="@{|/admin/list-application/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                        </li>
+                    </ul>
+                </div>
+                <div th:unless="${isStartPage}">
+                    <ul>
+                        <li th:each="pageNumber : ${pageNumbers}" >
+                            <a class="page-link" th:href="@{|/admin/applications/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
         <div class="col-md-2"></div>

@@ -7,15 +7,13 @@ import FairGrounds.Domain.ApplicationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,11 +67,23 @@ public class FairGroundsController {
      * @param model - binds data to html
      * @return - html page for list-applications
      */
+    @GetMapping("/admin/list-application/page/{page}")
+    public String searchApplications(@ModelAttribute("ApplicationSearchForm") ApplicationSearchForm applicationSearchForm, Model model, @PathVariable("page") int page) {
+        PageRequest pageable = PageRequest.of(page - 1, 15);
+        getQueriedApplications("", "", null, null, null, pageable, model, true);
+        model.addAttribute("applicationSearchForm", new ApplicationSearchForm());
+
+        return "admin/list-application";
+    }
+
     @GetMapping("/admin/list-application")
     public String searchApplications(@ModelAttribute("ApplicationSearchForm") ApplicationSearchForm applicationSearchForm, Model model) {
+        PageRequest pageable = PageRequest.of(0, 15);
+        getQueriedApplications("", "", null, null, null, pageable, model, true);
         model.addAttribute("applicationSearchForm", new ApplicationSearchForm());
         return "admin/list-application";
     }
+
     /**
      * Specifies date format
      * @param binder
@@ -108,11 +118,17 @@ public class FairGroundsController {
         Date appDate = applicationSearchForm.getAppDate();
 
         PageRequest pageable = PageRequest.of(page - 1, 15);
+        getQueriedApplications(name, expertise, appDate, dateFrom, dateTo, pageable, model, false);
+        return "admin/list-application";
+    }
+
+    private void getQueriedApplications(String name, String expertise, Date applicationDate, Date fromDate, Date toDate, Pageable pageable, Model model, Boolean startPage) {
+        System.out.println("NAME! : " + name);
         Page<Application> applications =
-                this.applicationSearchService.getQueriedApplications(name, expertise, appDate, dateFrom, dateTo, pageable);
+                this.applicationSearchService.getQueriedApplications(name, expertise, applicationDate, fromDate, toDate, pageable);
 
         List<ApplicationDTO> applicationDTOS = new ArrayList<>();
-
+        System.out.println("number of pages: " + applications.getTotalPages());
         for (Application a : applications) {
             applicationDTOS.add(
                     new ApplicationDTO(a.getPerson().getFname(),
@@ -127,8 +143,9 @@ public class FairGroundsController {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, nrPages).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
+
         model.addAttribute("applicationdtos", applicationDTOS);
         model.addAttribute("applications", applications.getContent());
-        return "admin/list-application";
+        model.addAttribute("isStartPage", startPage);
     }
 }
