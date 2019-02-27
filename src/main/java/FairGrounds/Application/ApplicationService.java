@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -51,8 +52,6 @@ public class ApplicationService {
         if (!(auth instanceof AnonymousAuthenticationToken)) {
            return personRepository.findByUsername(userDetails.getUsername());
         }
-
-        System.out.println("NULLLLLLLLL");
         return null;
     }
 
@@ -61,23 +60,16 @@ public class ApplicationService {
      * @param application - Stored Application
      */
     public void storeApplication(Application application){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        Date date = new Date();
 
-
-        Application check = registerApplicationRepository.findApplicationByPerson(application.getPerson());
-        if(check!=null){
-            System.out.println("IT FUCKING EXISTS OKKKKKKKKKKKKKK: " + check.getId().intValue());
-            check=application;
-            registerApplicationRepository.save(check);
-        }
-
-        else {
-            Date date = new Date();
-            date.setHours(0);
-            date.setMinutes(0);
-            date.setSeconds(0);
-            application.setApplicationdate(date);
+            application.setApplicationdate(calendar.getTime());
             registerApplicationRepository.save(application);
-        }
+
         for (ExpertiseProfile profile:application.getExpertiseProfile()) {
             Expertise expertise = expertiseRepository.findByName(profile.getExpertise().getName());
             profile.setExpertise(expertise);

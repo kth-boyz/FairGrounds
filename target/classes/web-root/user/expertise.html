@@ -31,7 +31,7 @@
                                 th:text="${expertise.name}" name="name">
                         </option>
                     </select>
-                        <input type="number" th:field="*{expertiseProfiles[__${status.index}__].years}"/>
+                        <input type="number" step="0.5" th:field="*{expertiseProfiles[__${status.index}__].years}"/>
                     </ul>
                 </div>
             <button name="addExpertise" type="submit"><label th:text="#{expertise.add}"/></button>
