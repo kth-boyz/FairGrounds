@@ -58,7 +58,7 @@ public class Person {
         this.pwd = registerDTO.getUserPwd();
         this.email = registerDTO.getEmail();
         this.ssnr = registerDTO.getUserSsnr();
-        this.role = "USER";
+        this.role = "applicant";
     }
 
 
