@@ -1,10 +1,7 @@
 package FairGrounds.Presentation;
 
 import FairGrounds.Application.ApplicationService;
-import FairGrounds.Domain.Application;
-import FairGrounds.Domain.Availability;
-import FairGrounds.Domain.Expertise;
-import FairGrounds.Domain.ExpertiseProfile;
+import FairGrounds.Domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -25,6 +22,7 @@ public class ApplicationController {
     private static final String AVAILABILITY_PAGE = "user/availability";
     private static final String APPLICATION_URL  = "/user/apply";
     private static final String TEST_PAGE  = "pub/home";
+    private static final String ALREADY_EXISTS_PAGE = "user/app_exists";
 
     /**
      * Specifies date format
@@ -48,6 +46,11 @@ public class ApplicationController {
      */
     @GetMapping(APPLICATION_URL)
     public String showExpertiseView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+        Person user = applicationService.getUser();
+        if(user.getApplication()!=null){
+            model.addAttribute("name", user.getUsername());
+            return ALREADY_EXISTS_PAGE;
+        }
        // this.applicationForm = applicationForm;
         applicationForm.setExpertize(applicationService.getExpertises());
         printAll(applicationForm);

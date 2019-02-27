@@ -9,7 +9,7 @@ public class ExpertiseProfile{
     }
 
 
-    public ExpertiseProfile(Expertise expertise, int years, Application application){
+    public ExpertiseProfile(Expertise expertise, double years, Application application){
         this.expertise = expertise;
         this.years=years;
         this.application = application;
@@ -33,7 +33,7 @@ public class ExpertiseProfile{
     private Application application;
 
     @Column (name = "years")
-    private int years;
+    private double years;
 
     public Expertise getExpertise() {
         return expertise;
@@ -59,11 +59,11 @@ public class ExpertiseProfile{
         this.application = application;
     }
 
-    public int getYears() {
+    public double getYears() {
         return years;
     }
 
-    public void setYears(int years) {
+    public void setYears(double years) {
         this.years = years;
     }
 }
