@@ -7,9 +7,14 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -37,7 +42,10 @@ public class ApplicationController {
     ApplicationForm applicationForm;
     @Autowired
     ApplicationService applicationService;
-
+    @Autowired
+    ApplicationExpertiseFormValidator applicationExpertiseFormValidator;
+    @Autowired
+    ApplicationAvailabilityFormValidator applicationAvailabilityFormValidator;
     /**
      * Show form of expertises
      * @param applicationForm - Wrapper object for values
@@ -45,15 +53,15 @@ public class ApplicationController {
      * @return - html page for expertises
      */
     @GetMapping(APPLICATION_URL)
-    public String showExpertiseView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String showExpertiseView(@ModelAttribute("applicationForm") ApplicationForm applicationForm, BindingResult bindingResult,Model model) {
         Person user = applicationService.getUser();
         if(user.getApplication()!=null){
             model.addAttribute("name", user.getUsername());
             return ALREADY_EXISTS_PAGE;
         }
-       // this.applicationForm = applicationForm;
+        applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
         applicationForm.setExpertize(applicationService.getExpertises());
-        printAll(applicationForm);
+        applicationExpertiseFormValidator.validate(applicationForm, bindingResult);
         model.addAttribute(applicationForm);
         return EXPERTISE_PAGE;
     }
@@ -65,13 +73,12 @@ public class ApplicationController {
      * @return - html page for expertises
      */
     @PostMapping(value=APPLICATION_URL, params={"addExpertise"})
-    public String addExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String addExpertise(@ModelAttribute("applicationForm") ApplicationForm applicationForm,BindingResult bindingResult, Model model) {
        // this.applicationForm = applicationForm;
 
         applicationForm.setExpertize(applicationService.getExpertises());
 
         applicationForm.getExpertiseProfiles().add(new ExpertiseProfile());
-        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return EXPERTISE_PAGE;
     }
@@ -83,7 +90,7 @@ public class ApplicationController {
      * @return - html page for expertises
      */
     @PostMapping(value=APPLICATION_URL, params={"deleteExpertise"})
-    public String deleteExpertise(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String deleteExpertise(@ModelAttribute("applicationForm") ApplicationForm applicationForm, Model model) {
 
         applicationForm.setExpertize(applicationService.getExpertises());
 
@@ -91,7 +98,6 @@ public class ApplicationController {
         if(size>0){
             applicationForm.getExpertiseProfiles().remove(size-1);
         }
-        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return EXPERTISE_PAGE;
     }
@@ -103,12 +109,19 @@ public class ApplicationController {
      * @return - html page for availabilities
      */
     @PostMapping(value =APPLICATION_URL, params={"getAvailability"})
-    public String showAvailabilityView(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model){
+    public String showAvailabilityView(@ModelAttribute("applicationForm") @Valid ApplicationForm applicationForm, BindingResult bindingResult, Model model){
+
         this.applicationForm.setExpertize(applicationForm.getExpertize());
         this.applicationForm.setExpertiseProfiles(applicationForm.getExpertiseProfiles());
-
-        printAll(applicationForm);
         model.addAttribute(applicationForm);
+        applicationExpertiseFormValidator.validate(applicationForm, bindingResult);
+        if(bindingResult.hasErrors()) {
+            for(ObjectError error :bindingResult.getAllErrors()){
+                System.out.println("ERROR: "+ error.toString() + " OBJECT: " + error.getObjectName());
+            }
+            return "redirect:"+APPLICATION_URL;
+            //return EXPERTISE_PAGE;
+        }
         return AVAILABILITY_PAGE;
     }
 
@@ -119,7 +132,7 @@ public class ApplicationController {
      * @return - html page for availabilities
      */
     @PostMapping(value=APPLICATION_URL, params={"addAvailability"})
-    public String addAvailability(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String addAvailability(@ModelAttribute("applicationForm") @Valid ApplicationForm applicationForm, Model model) {
 
         applicationForm.getAvailabilities().add(new Availability());
         printAll(applicationForm);
@@ -134,7 +147,7 @@ public class ApplicationController {
      * @return - html page for availabilities
      */
     @PostMapping(value=APPLICATION_URL, params={"deleteAvailability"})
-    public String deleteAvailability(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String deleteAvailability(@ModelAttribute("applicationForm") @Valid ApplicationForm applicationForm, Model model) {
 
         int size = applicationForm.getAvailabilities().size();
         if(size>0){
@@ -152,11 +165,10 @@ public class ApplicationController {
      * @return - html page for applications
      */
     @PostMapping(value=APPLICATION_URL, params={"application"})
-    public String showApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String showApplication(@ModelAttribute("applicationForm") @Valid ApplicationForm applicationForm, BindingResult bindingResult,Model model) {
 
         applicationForm.setExpertize(this.applicationForm.getExpertize());
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
-
         this.applicationForm.setAvailabilities(applicationForm.getAvailabilities());
 
 
@@ -168,6 +180,12 @@ public class ApplicationController {
         }
         printAll(applicationForm);
         model.addAttribute(applicationForm);
+        applicationAvailabilityFormValidator.validate(applicationForm,bindingResult);
+
+
+        if(bindingResult.hasErrors()) {
+            return AVAILABILITY_PAGE;
+        }
         return APPLICATION_PAGE;
     }
 
@@ -178,7 +196,7 @@ public class ApplicationController {
      * @return - html page for home page
      */
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
-    public String confirmApplication(@ModelAttribute("ApplicationForm") ApplicationForm applicationForm, Model model) {
+    public String confirmApplication(@ModelAttribute("ApplicationForm") @Valid ApplicationForm applicationForm, Model model) {
 
         applicationForm.setExpertize(this.applicationForm.getExpertize());
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
