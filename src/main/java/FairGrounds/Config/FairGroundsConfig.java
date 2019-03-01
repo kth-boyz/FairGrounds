@@ -147,7 +147,7 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         ReloadableResourceBundleMessageSource resource =
                 new ReloadableResourceBundleMessageSource();
         resource.addBasenames(message, validationMessage);
-        resource.setDefaultEncoding("UTF-8");
+        resource.setDefaultEncoding("ISO-8859-1");
         resource.setFallbackToSystemLocale(false);
         return resource;
     }
