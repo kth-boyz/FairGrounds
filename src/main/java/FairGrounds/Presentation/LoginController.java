@@ -60,8 +60,8 @@ public class LoginController {
         }
         this.currentUser  = loginService.findUserAccount(registerDTO);
         if(this.currentUser != null) {
-            model.addAttribute(ExceptionHandler.ERROR_TYPE_KEY, ExceptionHandler.USERNAME_TAKEN);
-            return ExceptionHandler.ERROR_PAGE_URL;
+            model.addAttribute(ExceptionHandlers.ERROR_TYPE_KEY, ExceptionHandlers.USERNAME_TAKEN);
+            return ExceptionHandlers.ERROR_PAGE_URL;
         }
         registerDTO.setUserPwd(passwordEncoder.encode(registerDTO.getUserPwd()));
         this.currentUser = loginService.saveNewUser(registerDTO);
