@@ -32,13 +32,23 @@ import java.util.Locale;
 @EnableWebMvc
 @Configuration
 public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAware {
+
     private ApplicationContext applicationContext;
 
+    /**
+     * @param applicationContext The application context used by the running
+     *                           application.
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
+    /**
+     * Create a org.springframework.web.servlet ViewResolver bean
+     * this bean handles all templates for the Thymeleaf template eugenie
+     * it also specifies the encoding of the templates
+     */
     @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -48,51 +58,45 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         return viewResolver;
     }
 
-    @Bean(name = "bankTemplateEngine")
+    /**
+     * Create a org.thymeleaf.ITemplateEngine bean that manages
+     * this bean manages the integration of the templates with the Spring framework.
+     * added two dialects to the template engine
+     * Layout dialect for reusing layout, fragments, in HTML files
+     * Security dialect for using the "sec" annotation in HTML files
+     */
+    @Bean(name = "FairGroundsTemplateEngine")
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
-        // Enabling the SpringEL compiler with Spring 4.2.4 or newer can
-        // speed up execution in most scenarios, but might be incompatible
-        // with specific cases when expressions in one template are reused
-        // across different data types, so this flag is "false" by default
-        // for safer backwards compatibility.
-        //templateEngine.setEnableSpringELCompiler(true);
-        //Add the layout dialect, which enables reusing layout html pages.
         templateEngine.addDialect(new LayoutDialect());
         templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
     }
 
-    /** DO I NEED THIS???????
-    @Bean
-    public SpringSecurityDialect securityDialect() {
-        return new SpringSecurityDialect();
-    }
-     **/
-
+    /**
+     * Create a org.thymeleaf.templateresolver.ITemplateResolver
+     * This bean handles template integration with the Spring framework
+     * The source of the HTML files is defined and the suffix, the HTML files can be referenced with name
+     */
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver =
                 new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(this.applicationContext);
-        // Templates file shall have the path /web-root/<template name>.html
         templateResolver.setPrefix("classpath:/web-root/");
         templateResolver.setSuffix(".html");
-        // HTML is the default template mode, added here for the sake of
-        // clarity.
-        //templateResolver.setTemplateMode(TemplateMode.HTML);
-        // Template cache is true by default. Set to false to automatically
-        // update templates that have been modified.
         templateResolver.setCacheable(true);
         return templateResolver;
     }
 
+    /**
+     * Tells the framework where it can find the static files of the website
+     **/
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         int cachePeriodForStaticFilesInSecs = 1;
         String rootDirForStaticFiles = "classpath:/web-root/";
-
 
         registry.addResourceHandler("/**")
                 .addResourceLocations(rootDirForStaticFiles)
@@ -108,6 +112,9 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         return registrationBean;
     }
 
+    /**
+     * Starts a i18n servlet that stores the current Locale of the user in the session object
+     */
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
@@ -115,6 +122,10 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         return slr;
     }
 
+    /**
+     * Manages the Locale for the session
+     * set the current Locale code to the parameter lang in the request
+     */
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         String[] allowedHttpMethodsForLocaleChange = {"GET", "POST"};
@@ -125,6 +136,10 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         return lci;
     }
 
+    /**
+     * Tells the i18n the location of the messages that are to be generated in the HTML file
+     * depending on the current Locale
+     */
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         String message = "classpath:/message";
@@ -137,6 +152,9 @@ public class FairGroundsConfig implements WebMvcConfigurer, ApplicationContextAw
         return resource;
     }
 
+    /**
+     * Register the i18n interceptor.
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());

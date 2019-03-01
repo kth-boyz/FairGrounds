@@ -11,6 +11,11 @@ import java.util.List;
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public interface AvailabilityRepository extends JpaRepository<Availability, Long> {
+
+    /**
+     * Finds all availabilities
+     * @return a list of availabilities
+     */
     @Override
     List<Availability> findAll();
 }

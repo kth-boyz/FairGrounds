@@ -11,6 +11,11 @@ import java.util.List;
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public interface ExpertiseProfileRepository extends JpaRepository<ExpertiseProfile, Long> {
+
+    /**
+     * Fins all ExpertiseProfiles
+     * @return a list of ExpertiseProfiles
+     */
     @Override
     List<ExpertiseProfile> findAll();
 }

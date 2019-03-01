@@ -8,6 +8,16 @@ public class ApplicationDTO {
     private String lname;
     private Date applicationDate;
 
+    /**
+     * Constructor - initialises an instance of the object ApplicationDTO
+     * Purpose of this object is due to the session closing of the transaction. Since data has to be fetched from
+     * different relation tables, this data is stored in this data transfer object to be passed on to the templating
+     * engine Thymeleaf.
+     * @param fname - first name of applicant
+     * @param lname - last name of applicant
+     * @param applicationDate - date when application submitted
+     * @param id - primary key of application from DB
+     */
     public ApplicationDTO(String fname, String lname, Date applicationDate, Long id) {
         this.fname = fname;
         this.lname = lname;

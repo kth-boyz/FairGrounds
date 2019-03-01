@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Expertise")
 public class Expertise {
+
+    /**
+     * Required default constructor for Spring Framework
+     */
     public Expertise(){
 
     }

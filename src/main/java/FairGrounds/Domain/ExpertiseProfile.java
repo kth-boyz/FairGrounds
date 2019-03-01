@@ -5,15 +5,33 @@ import javax.persistence.*;
 @Entity
 @Table (name = "EXPERTISEPROFILE")
 public class ExpertiseProfile{
+
+    /**
+     * Required default constructor for Spring Framework
+     */
     public ExpertiseProfile(){
     }
 
 
+    /**
+     * Constructor, an applicant creates an instance of expertise profile
+     * This profile links the expertise with the application together with years of experience
+     * This is used for database
+     * @param expertise - the chosen expertise by applicant from list in view
+     * @param years - the years of expertise
+     * @param application - the application associated with the current expertise
+     */
     public ExpertiseProfile(Expertise expertise, double years, Application application){
         this.expertise = expertise;
         this.years=years;
         this.application = application;
     }
+
+    /**
+     *Constructor, an applicant creates an instance of expertise
+     * This is used for the form
+     * @param expertise - the chosen expertise from list in the view
+     */
     public ExpertiseProfile(Expertise expertise){
         this.expertise = expertise;
         this.years=0;
