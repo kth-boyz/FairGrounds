@@ -9,13 +9,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Arrays;
 
 
-@Transactional
+@Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
 @Service
 public class LoginService implements UserDetailsService {
 
@@ -53,7 +54,7 @@ public class LoginService implements UserDetailsService {
     /**
      *
      * @param registerDTO - object holder with user details
-     * @return -
+     * @return - object Person
      */
     public Person saveNewUser(RegisterDTO registerDTO) {
         Person newUser = new Person(registerDTO);

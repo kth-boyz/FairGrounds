@@ -15,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-
-
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public interface ApplicationRepository extends JpaRepository<Person, Application> {

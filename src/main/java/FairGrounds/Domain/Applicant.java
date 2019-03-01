@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.ArrayList;
 
-
+/**
+ * This class is not used, but it keeps reappearing when merging
+ * */
 public class Applicant extends Person {
 
     private Application application;

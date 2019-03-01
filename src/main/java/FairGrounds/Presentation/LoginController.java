@@ -70,15 +70,4 @@ public class LoginController {
         return LOGIN_PAGE;
     }
 
-
-    @GetMapping ("/user/logintestUser")
-    public String showtestPage1() {
-        return "user/logintestUser";
-    }
-
-    @GetMapping ("/admin/logintestAdmin")
-    public String showtestPage2() {
-        return "admin/logintestAdmin";
-    }
-
 }

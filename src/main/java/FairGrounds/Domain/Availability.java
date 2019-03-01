@@ -8,13 +8,22 @@ import java.util.Date;
 @Entity
 @Table (name = "Availability")
 public class Availability {
-
+    /**
+     * Constructor - initialises an instance of the object Availability
+     * Is used to encapsulate when an applicant is available for work to his/hers application
+     * @param fromDate - the date when a person is available from
+     * @param toDate - the date when a person is available to
+     * @param application - which application the availability is related to
+     */
     public Availability(Date fromDate, Date toDate, Application application) {
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.application = application;
     }
 
+    /**
+     * Required default constructor for Spring Framework
+     */
     public Availability() {
 
     }
