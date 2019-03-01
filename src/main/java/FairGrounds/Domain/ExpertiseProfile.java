@@ -1,6 +1,10 @@
 package FairGrounds.Domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table (name = "EXPERTISEPROFILE")
@@ -9,15 +13,16 @@ public class ExpertiseProfile{
     }
 
 
-    public ExpertiseProfile(Expertise expertise, double years, Application application){
+    public ExpertiseProfile(Expertise expertise, Double years, Application application){
         this.expertise = expertise;
         this.years=years;
         this.application = application;
     }
     public ExpertiseProfile(Expertise expertise){
         this.expertise = expertise;
-        this.years=0;
+        this.years= (double) 0;
     }
+
 
     @Id
     @Column(name="id")
@@ -33,7 +38,7 @@ public class ExpertiseProfile{
     private Application application;
 
     @Column (name = "years")
-    private double years;
+    private Double years;
 
     public Expertise getExpertise() {
         return expertise;
@@ -59,11 +64,11 @@ public class ExpertiseProfile{
         this.application = application;
     }
 
-    public double getYears() {
+    public Double getYears() {
         return years;
     }
 
-    public void setYears(double years) {
+    public void setYears(Double years) {
         this.years = years;
     }
 }
