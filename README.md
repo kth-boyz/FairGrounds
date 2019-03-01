@@ -31,7 +31,14 @@ The application connects to the database on the default port of `3306`
 The username and password can be changed in the `application.properties` file
 
 
-uploaded to heruko by travis
+## Launching application on Heroku
+To launch application on the Heroku server, push to master branch.
+The script `.travis.yml` will launch the application to the CI server, Travis.
+Travis, in turn, will deploy the application on the Heroku server.
+
+## Run Application locally
+
+Run the command `java -Dserver.port=$PORT $JAVA_OPTS -jar target/FairGrounds-1.0-SNAPSHOT.jar`
 
 ## Running Docker locally
 1. CD into root
