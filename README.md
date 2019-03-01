@@ -16,7 +16,7 @@ Project in Global Application Course at KTH (IV1201) by Peter Svensson, Christop
 * Thymeleaf
 * Spring Data (JPA)
 
-### Migration of data to new database
+## Migration of data to new database
 Old users in database migrated to new database.<br />
 Users with missing value in table `person`, these are occuiped by placeholders - varchar `NULL`<br />
 Users without username and password; a random password was generated for this user with the username "perstrand".<br />
