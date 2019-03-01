@@ -1,6 +1,21 @@
 # FairGrounds  
 Project in Global Application Course at KTH (IV1201) by Peter Svensson, Christopher Robberts and Youssef Taoudi
 
+## Tools
+* Version control (Git)
+* Project management (Maven)
+* Test (Spring MVC Test Framework)
+* Containerization (Docker)
+* Continuous integration, CI (Travis)
+* Cloud runtime (Heroku)
+
+## Frameworks
+* Spring Boot
+* Spring Security
+* Spring Web MVC
+* Thymeleaf
+* Spring Data (JPA)
+
 ### Migration of data to new database
 Old users in database migrated to new database.<br />
 User "borg" - missing value in table "person" for ssnr and email, these are occuiped by placeholders - varchar "NULL"<br />
