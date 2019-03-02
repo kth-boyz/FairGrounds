@@ -1,0 +1,6 @@
+LOAD DATABASE
+   FROM mysql://root:root@localhost/fairgrounds
+   INTO postgresql://localhost/fairgrounds
+ALTER schema 'fairgrounds' rename to 'public'
+CAST
+    type bigint to bigint drop typemod;
