@@ -1,0 +1,806 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: fairgrounds; Type: SCHEMA; Schema: -; Owner: Taoudi
+--
+
+CREATE SCHEMA fairgrounds;
+
+
+ALTER SCHEMA fairgrounds OWNER TO "Taoudi";
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: application; Type: TABLE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE TABLE fairgrounds.application (
+    status character varying(25) NOT NULL,
+    applicationdate date NOT NULL,
+    id bigint NOT NULL,
+    person bigint NOT NULL
+);
+
+
+ALTER TABLE fairgrounds.application OWNER TO "Taoudi";
+
+--
+-- Name: application_id_seq; Type: SEQUENCE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE SEQUENCE fairgrounds.application_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fairgrounds.application_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: application_id_seq; Type: SEQUENCE OWNED BY; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER SEQUENCE fairgrounds.application_id_seq OWNED BY fairgrounds.application.id;
+
+
+--
+-- Name: availability; Type: TABLE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE TABLE fairgrounds.availability (
+    id bigint NOT NULL,
+    fd date NOT NULL,
+    td date NOT NULL,
+    application bigint NOT NULL
+);
+
+
+ALTER TABLE fairgrounds.availability OWNER TO "Taoudi";
+
+--
+-- Name: availability_id_seq; Type: SEQUENCE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE SEQUENCE fairgrounds.availability_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fairgrounds.availability_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: availability_id_seq; Type: SEQUENCE OWNED BY; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER SEQUENCE fairgrounds.availability_id_seq OWNED BY fairgrounds.availability.id;
+
+
+--
+-- Name: expertise; Type: TABLE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE TABLE fairgrounds.expertise (
+    name character varying(255) NOT NULL,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE fairgrounds.expertise OWNER TO "Taoudi";
+
+--
+-- Name: expertiseprofile; Type: TABLE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE TABLE fairgrounds.expertiseprofile (
+    id bigint NOT NULL,
+    expertise bigint NOT NULL,
+    application bigint NOT NULL,
+    years numeric
+);
+
+
+ALTER TABLE fairgrounds.expertiseprofile OWNER TO "Taoudi";
+
+--
+-- Name: expertiseprofile_id_seq; Type: SEQUENCE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE SEQUENCE fairgrounds.expertiseprofile_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fairgrounds.expertiseprofile_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: expertiseprofile_id_seq; Type: SEQUENCE OWNED BY; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER SEQUENCE fairgrounds.expertiseprofile_id_seq OWNED BY fairgrounds.expertiseprofile.id;
+
+
+--
+-- Name: hibernate_sequence; Type: TABLE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE TABLE fairgrounds.hibernate_sequence (
+    next_val numeric
+);
+
+
+ALTER TABLE fairgrounds.hibernate_sequence OWNER TO "Taoudi";
+
+--
+-- Name: person; Type: TABLE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE TABLE fairgrounds.person (
+    id bigint NOT NULL,
+    fname character varying(255) NOT NULL,
+    lname character varying(255) NOT NULL,
+    email character varying(255),
+    ssnr character varying(255),
+    username character varying(255) NOT NULL,
+    pwd character varying(255) NOT NULL,
+    role character varying(30) NOT NULL
+);
+
+
+ALTER TABLE fairgrounds.person OWNER TO "Taoudi";
+
+--
+-- Name: person_id_seq; Type: SEQUENCE; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE SEQUENCE fairgrounds.person_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fairgrounds.person_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: person_id_seq; Type: SEQUENCE OWNED BY; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER SEQUENCE fairgrounds.person_id_seq OWNED BY fairgrounds.person.id;
+
+
+--
+-- Name: application; Type: TABLE; Schema: public; Owner: Taoudi
+--
+
+CREATE TABLE public.application (
+    status character varying(25) NOT NULL,
+    applicationdate date NOT NULL,
+    id bigint NOT NULL,
+    person bigint NOT NULL
+);
+
+
+ALTER TABLE public.application OWNER TO "Taoudi";
+
+--
+-- Name: application_id_seq; Type: SEQUENCE; Schema: public; Owner: Taoudi
+--
+
+CREATE SEQUENCE public.application_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.application_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: application_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Taoudi
+--
+
+ALTER SEQUENCE public.application_id_seq OWNED BY public.application.id;
+
+
+--
+-- Name: availability; Type: TABLE; Schema: public; Owner: Taoudi
+--
+
+CREATE TABLE public.availability (
+    id bigint NOT NULL,
+    fd date NOT NULL,
+    td date NOT NULL,
+    application bigint NOT NULL
+);
+
+
+ALTER TABLE public.availability OWNER TO "Taoudi";
+
+--
+-- Name: availability_id_seq; Type: SEQUENCE; Schema: public; Owner: Taoudi
+--
+
+CREATE SEQUENCE public.availability_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.availability_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: availability_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Taoudi
+--
+
+ALTER SEQUENCE public.availability_id_seq OWNED BY public.availability.id;
+
+
+--
+-- Name: expertise; Type: TABLE; Schema: public; Owner: Taoudi
+--
+
+CREATE TABLE public.expertise (
+    name character varying(255) NOT NULL,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.expertise OWNER TO "Taoudi";
+
+--
+-- Name: expertiseprofile; Type: TABLE; Schema: public; Owner: Taoudi
+--
+
+CREATE TABLE public.expertiseprofile (
+    id bigint NOT NULL,
+    expertise bigint NOT NULL,
+    application bigint NOT NULL,
+    years bigint
+);
+
+
+ALTER TABLE public.expertiseprofile OWNER TO "Taoudi";
+
+--
+-- Name: expertiseprofile_id_seq; Type: SEQUENCE; Schema: public; Owner: Taoudi
+--
+
+CREATE SEQUENCE public.expertiseprofile_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.expertiseprofile_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: expertiseprofile_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Taoudi
+--
+
+ALTER SEQUENCE public.expertiseprofile_id_seq OWNED BY public.expertiseprofile.id;
+
+
+--
+-- Name: hibernate_sequence; Type: TABLE; Schema: public; Owner: Taoudi
+--
+
+CREATE TABLE public.hibernate_sequence (
+    next_val bigint
+);
+
+
+ALTER TABLE public.hibernate_sequence OWNER TO "Taoudi";
+
+--
+-- Name: person; Type: TABLE; Schema: public; Owner: Taoudi
+--
+
+CREATE TABLE public.person (
+    id bigint NOT NULL,
+    fname character varying(255) NOT NULL,
+    lname character varying(255) NOT NULL,
+    email character varying(255),
+    ssnr character varying(255),
+    username character varying(255) NOT NULL,
+    pwd character varying(255) NOT NULL,
+    role character varying(30) NOT NULL
+);
+
+
+ALTER TABLE public.person OWNER TO "Taoudi";
+
+--
+-- Name: person_id_seq; Type: SEQUENCE; Schema: public; Owner: Taoudi
+--
+
+CREATE SEQUENCE public.person_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.person_id_seq OWNER TO "Taoudi";
+
+--
+-- Name: person_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Taoudi
+--
+
+ALTER SEQUENCE public.person_id_seq OWNED BY public.person.id;
+
+
+--
+-- Name: application id; Type: DEFAULT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.application ALTER COLUMN id SET DEFAULT nextval('fairgrounds.application_id_seq'::regclass);
+
+
+--
+-- Name: availability id; Type: DEFAULT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.availability ALTER COLUMN id SET DEFAULT nextval('fairgrounds.availability_id_seq'::regclass);
+
+
+--
+-- Name: expertiseprofile id; Type: DEFAULT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.expertiseprofile ALTER COLUMN id SET DEFAULT nextval('fairgrounds.expertiseprofile_id_seq'::regclass);
+
+
+--
+-- Name: person id; Type: DEFAULT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.person ALTER COLUMN id SET DEFAULT nextval('fairgrounds.person_id_seq'::regclass);
+
+
+--
+-- Name: application id; Type: DEFAULT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.application ALTER COLUMN id SET DEFAULT nextval('public.application_id_seq'::regclass);
+
+
+--
+-- Name: availability id; Type: DEFAULT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.availability ALTER COLUMN id SET DEFAULT nextval('public.availability_id_seq'::regclass);
+
+
+--
+-- Name: expertiseprofile id; Type: DEFAULT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.expertiseprofile ALTER COLUMN id SET DEFAULT nextval('public.expertiseprofile_id_seq'::regclass);
+
+
+--
+-- Name: person id; Type: DEFAULT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.person ALTER COLUMN id SET DEFAULT nextval('public.person_id_seq'::regclass);
+
+
+--
+-- Data for Name: application; Type: TABLE DATA; Schema: fairgrounds; Owner: Taoudi
+--
+
+COPY fairgrounds.application (status, applicationdate, id, person) FROM stdin;
+REJECTED	2019-03-01	1	2
+ACCEPTED	2019-03-01	2	1
+\.
+
+
+--
+-- Data for Name: availability; Type: TABLE DATA; Schema: fairgrounds; Owner: Taoudi
+--
+
+COPY fairgrounds.availability (id, fd, td, application) FROM stdin;
+1	2014-02-23	2014-05-25	1
+2	2014-07-10	2014-08-10	1
+3	2019-01-31	2019-02-16	2
+4	2019-03-28	2019-03-31	2
+\.
+
+
+--
+-- Data for Name: expertise; Type: TABLE DATA; Schema: fairgrounds; Owner: Taoudi
+--
+
+COPY fairgrounds.expertise (name, id) FROM stdin;
+Korvgrillning	1
+Karuselldrift	2
+\.
+
+
+--
+-- Data for Name: expertiseprofile; Type: TABLE DATA; Schema: fairgrounds; Owner: Taoudi
+--
+
+COPY fairgrounds.expertiseprofile (id, expertise, application, years) FROM stdin;
+1	1	1	4
+2	2	1	2
+3	1	2	3
+\.
+
+
+--
+-- Data for Name: hibernate_sequence; Type: TABLE DATA; Schema: fairgrounds; Owner: Taoudi
+--
+
+COPY fairgrounds.hibernate_sequence (next_val) FROM stdin;
+1
+1
+\.
+
+
+--
+-- Data for Name: person; Type: TABLE DATA; Schema: fairgrounds; Owner: Taoudi
+--
+
+COPY fairgrounds.person (id, fname, lname, email, ssnr, username, pwd, role) FROM stdin;
+1	Greta	Borg	NULL	NULL	borg	$2a$10$3cX0hH6lxrQsjUMIpyVJh.7r0lhutYbOMGZ8w6FJ1SCkkPMnydohu	recruit
+2	Per	Strand	per@strand.kth.se	196712121211	perstrand	$2a$10$rIkDmcub5C4DfK/2fBHhL.DRkGwPkEb1cZi7dCLFue5Y/akKTlGPi	applicant
+\.
+
+
+--
+-- Data for Name: application; Type: TABLE DATA; Schema: public; Owner: Taoudi
+--
+
+COPY public.application (status, applicationdate, id, person) FROM stdin;
+REJECTED	2019-03-01	1	2
+ACCEPTED	2019-03-01	2	1
+\.
+
+
+--
+-- Data for Name: availability; Type: TABLE DATA; Schema: public; Owner: Taoudi
+--
+
+COPY public.availability (id, fd, td, application) FROM stdin;
+1	2014-02-23	2014-05-25	1
+2	2014-07-10	2014-08-10	1
+3	2019-01-31	2019-02-16	2
+4	2019-03-28	2019-03-31	2
+\.
+
+
+--
+-- Data for Name: expertise; Type: TABLE DATA; Schema: public; Owner: Taoudi
+--
+
+COPY public.expertise (name, id) FROM stdin;
+Korvgrillning	1
+Karuselldrift	2
+\.
+
+
+--
+-- Data for Name: expertiseprofile; Type: TABLE DATA; Schema: public; Owner: Taoudi
+--
+
+COPY public.expertiseprofile (id, expertise, application, years) FROM stdin;
+1	1	1	4
+2	2	1	2
+3	1	2	3
+\.
+
+
+--
+-- Data for Name: hibernate_sequence; Type: TABLE DATA; Schema: public; Owner: Taoudi
+--
+
+COPY public.hibernate_sequence (next_val) FROM stdin;
+1
+1
+\.
+
+
+--
+-- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: Taoudi
+--
+
+COPY public.person (id, fname, lname, email, ssnr, username, pwd, role) FROM stdin;
+1	Greta	Borg	NULL	NULL	borg	$2a$10$3cX0hH6lxrQsjUMIpyVJh.7r0lhutYbOMGZ8w6FJ1SCkkPMnydohu	recruit
+2	Per	Strand	per@strand.kth.se	196712121211	perstrand	$2a$10$rIkDmcub5C4DfK/2fBHhL.DRkGwPkEb1cZi7dCLFue5Y/akKTlGPi	applicant
+\.
+
+
+--
+-- Name: application_id_seq; Type: SEQUENCE SET; Schema: fairgrounds; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('fairgrounds.application_id_seq', 2, true);
+
+
+--
+-- Name: availability_id_seq; Type: SEQUENCE SET; Schema: fairgrounds; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('fairgrounds.availability_id_seq', 4, true);
+
+
+--
+-- Name: expertiseprofile_id_seq; Type: SEQUENCE SET; Schema: fairgrounds; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('fairgrounds.expertiseprofile_id_seq', 3, true);
+
+
+--
+-- Name: person_id_seq; Type: SEQUENCE SET; Schema: fairgrounds; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('fairgrounds.person_id_seq', 2, true);
+
+
+--
+-- Name: application_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('public.application_id_seq', 2, true);
+
+
+--
+-- Name: availability_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('public.availability_id_seq', 4, true);
+
+
+--
+-- Name: expertiseprofile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('public.expertiseprofile_id_seq', 3, true);
+
+
+--
+-- Name: person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Taoudi
+--
+
+SELECT pg_catalog.setval('public.person_id_seq', 2, true);
+
+
+--
+-- Name: application idx_16388_primary; Type: CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.application
+    ADD CONSTRAINT idx_16388_primary PRIMARY KEY (id);
+
+
+--
+-- Name: availability idx_16394_primary; Type: CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.availability
+    ADD CONSTRAINT idx_16394_primary PRIMARY KEY (id);
+
+
+--
+-- Name: expertise idx_16398_primary; Type: CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.expertise
+    ADD CONSTRAINT idx_16398_primary PRIMARY KEY (id);
+
+
+--
+-- Name: expertiseprofile idx_16403_primary; Type: CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.expertiseprofile
+    ADD CONSTRAINT idx_16403_primary PRIMARY KEY (id);
+
+
+--
+-- Name: person idx_16418_primary; Type: CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.person
+    ADD CONSTRAINT idx_16418_primary PRIMARY KEY (id);
+
+
+--
+-- Name: application idx_16754_primary; Type: CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.application
+    ADD CONSTRAINT idx_16754_primary PRIMARY KEY (id);
+
+
+--
+-- Name: availability idx_16760_primary; Type: CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.availability
+    ADD CONSTRAINT idx_16760_primary PRIMARY KEY (id);
+
+
+--
+-- Name: expertise idx_16764_primary; Type: CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.expertise
+    ADD CONSTRAINT idx_16764_primary PRIMARY KEY (id);
+
+
+--
+-- Name: expertiseprofile idx_16769_primary; Type: CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.expertiseprofile
+    ADD CONSTRAINT idx_16769_primary PRIMARY KEY (id);
+
+
+--
+-- Name: person idx_16778_primary; Type: CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.person
+    ADD CONSTRAINT idx_16778_primary PRIMARY KEY (id);
+
+
+--
+-- Name: idx_16388_person; Type: INDEX; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE UNIQUE INDEX idx_16388_person ON fairgrounds.application USING btree (person);
+
+
+--
+-- Name: idx_16394_application; Type: INDEX; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE INDEX idx_16394_application ON fairgrounds.availability USING btree (application);
+
+
+--
+-- Name: idx_16403_application; Type: INDEX; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE INDEX idx_16403_application ON fairgrounds.expertiseprofile USING btree (application);
+
+
+--
+-- Name: idx_16403_expertise; Type: INDEX; Schema: fairgrounds; Owner: Taoudi
+--
+
+CREATE INDEX idx_16403_expertise ON fairgrounds.expertiseprofile USING btree (expertise);
+
+
+--
+-- Name: idx_16754_person; Type: INDEX; Schema: public; Owner: Taoudi
+--
+
+CREATE UNIQUE INDEX idx_16754_person ON public.application USING btree (person);
+
+
+--
+-- Name: idx_16760_application; Type: INDEX; Schema: public; Owner: Taoudi
+--
+
+CREATE INDEX idx_16760_application ON public.availability USING btree (application);
+
+
+--
+-- Name: idx_16769_application; Type: INDEX; Schema: public; Owner: Taoudi
+--
+
+CREATE INDEX idx_16769_application ON public.expertiseprofile USING btree (application);
+
+
+--
+-- Name: idx_16769_expertise; Type: INDEX; Schema: public; Owner: Taoudi
+--
+
+CREATE INDEX idx_16769_expertise ON public.expertiseprofile USING btree (expertise);
+
+
+--
+-- Name: availability availability_ibfk_1; Type: FK CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.availability
+    ADD CONSTRAINT availability_ibfk_1 FOREIGN KEY (application) REFERENCES fairgrounds.application(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: expertiseprofile expertiseprofile_ibfk_1; Type: FK CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.expertiseprofile
+    ADD CONSTRAINT expertiseprofile_ibfk_1 FOREIGN KEY (application) REFERENCES fairgrounds.application(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: expertiseprofile expertiseprofile_ibfk_2; Type: FK CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.expertiseprofile
+    ADD CONSTRAINT expertiseprofile_ibfk_2 FOREIGN KEY (expertise) REFERENCES fairgrounds.expertise(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: application fkc8gtc9d6uh2m95we0kk5u73k3; Type: FK CONSTRAINT; Schema: fairgrounds; Owner: Taoudi
+--
+
+ALTER TABLE ONLY fairgrounds.application
+    ADD CONSTRAINT fkc8gtc9d6uh2m95we0kk5u73k3 FOREIGN KEY (person) REFERENCES fairgrounds.person(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: availability availability_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.availability
+    ADD CONSTRAINT availability_ibfk_1 FOREIGN KEY (application) REFERENCES public.application(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: expertiseprofile expertiseprofile_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.expertiseprofile
+    ADD CONSTRAINT expertiseprofile_ibfk_1 FOREIGN KEY (application) REFERENCES public.application(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: expertiseprofile expertiseprofile_ibfk_2; Type: FK CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.expertiseprofile
+    ADD CONSTRAINT expertiseprofile_ibfk_2 FOREIGN KEY (expertise) REFERENCES public.expertise(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- Name: application fkc8gtc9d6uh2m95we0kk5u73k3; Type: FK CONSTRAINT; Schema: public; Owner: Taoudi
+--
+
+ALTER TABLE ONLY public.application
+    ADD CONSTRAINT fkc8gtc9d6uh2m95we0kk5u73k3 FOREIGN KEY (person) REFERENCES public.person(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
