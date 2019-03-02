@@ -4,11 +4,6 @@ jdk:
    - oraclejdk8
 services:
    - docker
-spring:
-   datasource:
-      url: jdbc:mysql://localhost:3306/fairgrounds
-      username: root
-      password: root
 env:
    global:
       - REGISTRY_USER=taoudi
