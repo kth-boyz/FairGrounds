@@ -66,7 +66,6 @@ public class ApplicationService {
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
         Date date = new Date();
-
             application.setApplicationdate(calendar.getTime());
             registerApplicationRepository.save(application);
 
