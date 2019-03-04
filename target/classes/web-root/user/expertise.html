@@ -10,6 +10,18 @@
         <form th:action="@{/user/apply}" th:object="${applicationForm}" method="post">
             <span th:errors="${applicationForm.expertiseProfiles}">ERROR</span>
             <div>   <h3><label th:text="#{expertise.form}"/></h3>
+                 <!--   <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
+                        <li>
+                            <span th:text="${expertiseProfile.expertise.name}"> Expertise </span>
+                            <input type="number" th:field="*{expertiseProfiles[__${status.index}__].years}"/>
+                        </li>
+                    </ul>-->
+
+                    <!--  <ul th:each="expertise, status : ${applicationForm.expertises}">
+                      <li>
+                          <span th:text="${expertise.name}"> Expertise </span>
+                      </li>
+                  </ul>-->
                     <ul th:each="expertiseProfile, status : ${applicationForm.expertiseProfiles}">
                      <select th:field="*{expertiseProfiles[__${status.index}__].expertise.name}">
                          <option value=""><label th:text="#{expertise.select}"/></option>

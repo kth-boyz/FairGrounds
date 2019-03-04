@@ -8,31 +8,31 @@
 <body>
 <main layout:fragment="content">
     <form th:action="@{/admin/applications/page/1}" th:object="${applicationSearchForm}" id="search-params" method="POST">
-        <label for="name">Name</label>
+        <label for="name"><label th:text="#{list.name}"/></label>
         <input id="name" th:field="*{name}"/>
-        <label for="name">expertise</label>
+        <label for="name"><label th:text="#{list.expertise}"/></label>
         <input th:field="*{expertise}"/>
-        <label for="name">application date</label>
+        <label for="name"><label th:text="#{list.appdate}"/></label>
         <input th:field="*{appDate}" type="date" id="application_date"/>
-        <label for="name">availability from</label>
+        <label for="name"><label th:text="#{list.avalibilityfrom}"/></label>
         <input th:field="*{workAvailabilityFrom}" type="date" id="work_from"/>
-        <label for="name">availability to</label>
+        <label for="name"><label th:text="#{list.avalibilityto}"/></label>
         <input th:field="*{workAvailabilityTo}" type="date" id="work_to"/>
-        <input type="submit"/>
+        <button type="submit"><label th:text="#{list.button}"/></button>
     </form>
     <div>
         <table th:object="${applications}" border="1">
             <thead>
                 <tr>
-                    <th>Application</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Application Date</th>
+                    <th><label th:text="#{list.application}"/></th>
+                    <th><label th:text="#{register.firstname}"/></th>
+                    <th><label th:text="#{register.lastname}"/></th>
+                    <th><label th:text="#{list.applicationdate}"/></th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="app : ${applicationdtos}">
-                    <td><a th:href="@{|/app/${app?.getId()}|}">Application</a></td>
+                    <td><a th:href="@{|/app/${app?.getId()}|}"><label th:text="#{list.application}"/></a></td>
                     <td><span th:text="${app?.getFname()}"></span></td>
                     <td><span th:text="${app?.getLname()}"></span></td>
                     <td><span th:text="${app?.getApplicationDate()}"></span></td>

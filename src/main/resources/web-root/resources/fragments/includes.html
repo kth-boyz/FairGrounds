@@ -46,7 +46,7 @@
                         <a class="nav-item nav-link active"><label th:text="#{user.loggedin}+' '+${#authentication.name}"/></a>
                         <a class="nav-item">
                             <form th:action="@{/logout}" method="POST">
-                                <button class="btn btn-secondary btn-sm" type="submit" name="logut">Log Out</button>
+                                <button class="btn btn-secondary btn-sm" type="submit" name="logut"><label th:text="#{logout.button}"/></button>
                             </form>
                         </a>
                     </ul>
