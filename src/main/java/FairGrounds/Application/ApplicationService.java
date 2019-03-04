@@ -59,7 +59,8 @@ public class ApplicationService {
      * Stores application and all expertiseprofiles and availabilities connected to it
      * @param application - Stored Application
      */
-    public void storeApplication(Application application){
+    public void storeApplication(Application application) throws IllegalApplicationException {
+        checkApplication(application);
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
@@ -78,6 +79,28 @@ public class ApplicationService {
         for (Availability availability:application.getAvailabilities()) {
             availability.setApplication(application);
             availabilityRepository.save(availability);
+        }
+    }
+    private void checkApplication(Application application) throws IllegalApplicationException {
+        if(getUser().getApplication()!=null){
+            throw new IllegalApplicationException("User already has application!");
+        }
+        for (ExpertiseProfile profile:application.getExpertiseProfile()) {
+            if(profile.getYears()==null || profile.getYears()<=0){
+                throw new IllegalApplicationException("Years is set incorrectly");
+            }
+            if(profile.getExpertise()==null){
+                throw new IllegalApplicationException("Expertise is not set");
+            }
+        }
+
+        for (Availability availability:application.getAvailabilities()) {
+            if(availability.getFromDate()==null || availability.getToDate()==null){
+                throw new IllegalApplicationException("Dates must not be null");
+            }
+            if(availability.getFromDate().after(availability.getToDate())){
+                throw new IllegalApplicationException("From date must be after to date");
+            }
         }
     }
 
