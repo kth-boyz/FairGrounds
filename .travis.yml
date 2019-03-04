@@ -20,7 +20,7 @@ before_deploy:
 deploy:
    provider: heroku
    api_key:
-      secure: b1914aef-2241-4c05-988c-68866367fdd8
+      secure: 6ecada15-2e15-4b3d-9652-1c520c306f17
    app: kthboyz-fairgrounds
    on:
       repo: kth-boyz/FairGrounds
