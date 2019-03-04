@@ -26,9 +26,9 @@ public interface ApplicationRepository extends JpaRepository<Person, Application
             "LEFT OUTER JOIN a.availabilities aa " +
             "WHERE ep.expertise.name LIKE CONCAT('%', :expertise, '%')" +
             "AND p.fname LIKE CONCAT('%', :name, '%') " +
-            "AND (:appDate is null or a.applicationdate = :appDate) " +
-            "AND (:fDate is null or aa.fromDate <= :fDate) " +
-            "AND (:tDate is null or aa.toDate >= :tDate)";
+            "AND (CAST(:appDate as date) is null or a.applicationdate = :appDate) " +
+            "AND (CAST(:fDate as date) is null or aa.fromDate <= :fDate) " +
+            "AND (CAST(:tDate as date) is null or aa.toDate >= :tDate)";
     @Query(query)
     Page<Application> findAll(@Param("name") String name,
                               @Param("expertise") String expertise,
