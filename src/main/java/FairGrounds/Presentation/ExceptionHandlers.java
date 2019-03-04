@@ -1,6 +1,7 @@
 package FairGrounds.Presentation;
 
 
+import FairGrounds.Domain.IllegalApplicationException;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class ExceptionHandlers implements ErrorController{
     public static final String INTERNAL_GENERIC_ERROR = "internalGeneric";
     public static final String USERNAME_TAKEN = "userTaken";
     public static final String PAGE_NOT_FOUND = "pagenotfound";
+    public static final String APPLICATION_ERROR = "appError";
 
     /**
      *
@@ -37,6 +39,12 @@ public class ExceptionHandlers implements ErrorController{
         return ERROR_PAGE_URL;
     }
 
+    @ExceptionHandler(IllegalApplicationException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String applicationError(Exception exception, Model model) {
+        model.addAttribute(ERROR_TYPE_KEY, APPLICATION_ERROR);
+        return ERROR_PAGE_URL;
+    }
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String pageNotFound(Exception exception, Model model) {
