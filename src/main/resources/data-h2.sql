@@ -23,6 +23,11 @@ INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
                     ('n', 'svensso', 'pdsfettap', '123', 'asd@asd.se', '1338', 19, 'USER'),
                     ('o', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 20, 'USER'),
                     ('p', 'svensson', 'pewewttap', '123', 'asd@asd.se', '1338', 21, 'USER'),
+                   -- ('taoudi','youssef', 'tods', '123', 'taoudi123@whatver', '1234', 1,'USER'),
+                    ('chris', 'robberts', 'vinkel', '123', 'asd@asd.se', '1337', 2, 'USER'),
+                    ('petta', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 3, 'USER'),
+                    ('xyz','xyzxyz', 'todss', '123', 'taoudi123@whatver', '1234', 4,'USER'),
+                    ('abc', 'asdada', 'vinkel', '123', 'asd@asd.se', '1337', 5, 'USER'),
                     ('yus','todi','skimmaren','$2a$10$DOvhm/LzukVhULgnymKu1urcnVDhHGNBhmlehP7AxFJflU2h/sKPK',
                     'email@email','9876567893',22,'ADMIN');
 
@@ -30,23 +35,7 @@ INSERT INTO APPLICATION (status, applicationdate, id, person) VALUES
 ('not checked', '2000-02-05 00:00:00', 2, 2),
 ('not checked', '2000-02-05 00:00:00', 3, 3),
 ('not checked', '2000-02-05 00:00:00', 4, 4),
-('not checked', '2000-02-05 00:00:00', 5, 5),
-('not checked', '2000-02-05 00:00:00', 6, 6),
-('not checked', '2000-02-05 00:00:00', 7, 7),
-('not checked', '2000-02-05 00:00:00', 8, 8),
-('not checked', '2000-02-05 00:00:00', 9, 9),
-('not checked', '2000-02-05 00:00:00', 10, 10),
-('not checked', '2000-02-05 00:00:00', 11, 11),
-('not checked', '2000-02-05 00:00:00', 12, 12),
-('not checked', '2000-02-05 00:00:00', 13, 13),
-('not checked', '2000-02-05 00:00:00', 14, 14),
-('not checked', '2000-02-05 00:00:00', 15, 15),
-('not checked', '2000-02-05 00:00:00', 16, 16),
-('not checked', '2000-02-05 00:00:00', 17, 17),
-('not checked', '2000-02-05 00:00:00', 18, 18),
-('not checked', '2000-02-05 00:00:00', 19, 19),
-('not checked', '2000-02-05 00:00:00', 20, 20),
-('not checked', '2000-02-05 00:00:00', 21, 21);
+('not checked', '2000-02-05 00:00:00', 5, 5);
 
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (2,1,2,2);
 INSERT INTO EXPERTISEPROFILE (id, expertise,application,years) VALUES (3,3,3,1);
