@@ -31,6 +31,10 @@
                     </p>
                 </li>
             </ul>
+            <span th:errors="${applicationForm.password}">ERROR</span>
+            <br>
+            <label>Confirm Password</label>
+            <input type="password"  th:field="*{password}"/>
         </div>
             <button name="confirm" type="submit"><label th:text="#{apply.sendButton}"/></button>
         </div>
