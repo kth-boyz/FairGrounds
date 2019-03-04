@@ -55,6 +55,14 @@ public class ApplicationService {
         return null;
     }
 
+    public String getPassword(){
+        Person person = getUser();
+        if(person!=null){
+           return person.getPwd();
+        }
+        return null;
+    }
+
     /**
      * Stores application and all expertiseprofiles and availabilities connected to it
      * @param application - Stored Application

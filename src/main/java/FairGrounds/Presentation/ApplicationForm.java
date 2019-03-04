@@ -19,6 +19,7 @@ public class ApplicationForm {
     private List<Availability> availabilities = new ArrayList<>();
     private List<Expertise> expertize = new ArrayList<>();
     private String status;
+    private String password;
 
     public List<ExpertiseProfile> getExpertiseProfiles() {
         return expertiseProfiles;
@@ -50,5 +51,13 @@ public class ApplicationForm {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
