@@ -1,6 +1,9 @@
 package FairGrounds.Domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "Expertise")
@@ -17,6 +20,8 @@ public class Expertise {
     @Column(name="id")
     private Long id;
 
+    @NotNull
+    @NotBlank
     @Column(name = "name")
     private String name;
 

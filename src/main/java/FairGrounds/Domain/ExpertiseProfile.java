@@ -1,10 +1,9 @@
 package FairGrounds.Domain;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table (name = "EXPERTISEPROFILE")
@@ -47,14 +46,18 @@ public class ExpertiseProfile{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long expertiseprofile_id;
 
+    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "expertise")
     private Expertise expertise;
 
+    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "application")
     private Application application;
 
+    @NotNull
+    @DecimalMin("0.5")
     @Column (name = "years")
     private Double years;
 

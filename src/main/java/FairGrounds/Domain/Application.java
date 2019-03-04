@@ -5,6 +5,7 @@ import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class Application {
         this.status = status;
     }
 
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="applicationdate")
     private Date applicationdate;
@@ -47,12 +49,11 @@ public class Application {
     @Fetch(value = FetchMode.SUBSELECT)
     List<Availability> availabilities;
 
-
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "application")
     @Fetch(value = FetchMode.SUBSELECT)
     List<ExpertiseProfile> expertiseProfile;
 
-
+    @NotNull
     @Column (name="status")
     private String status;
 

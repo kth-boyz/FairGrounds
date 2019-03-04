@@ -16,13 +16,8 @@
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" th:href="@{/pub/home}"><label th:text="#{navbar.home}"/><span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link active" href="#"><label th:text="#{navbar.aboutus}"/></a>
-<<<<<<< HEAD
                         <a class="nav-item nav-link active" sec:authorize="isAuthenticated()" th:href="@{/user/apply}"><label th:text="#{navbar.apply}"/></a>
                         <a class="nav-item nav-link active" sec:authorize="isAuthenticated()" th:href="@{/admin/list-application}"><label th:text="#{navbar.list}"/></a>
-=======
-                        <a class="nav-item nav-link active" sec:authorize="hasAnyAuthority('USER')" th:href="@{/user/apply}"><label th:text="#{navbar.apply}"/></a>
-                        <a class="nav-item nav-link active" sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/user/apply}"><label th:text="#{navbar.list}"/></a>
->>>>>>> b65d88f8aeb9b5565f380ce24ba9c3a3ae3f59e1
                         <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/pub/login}"><label th:text="#{navbar.login}"/></a>
                         <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{/pub/registerUser}"><label th:text="#{navbar.signup}"/></a>
                         <a class="nav-item nav-link active">
@@ -50,7 +45,7 @@
                         <a class="nav-item nav-link active"><label th:text="#{user.loggedin}+' '+${#authentication.name}"/></a>
                         <a class="nav-item">
                             <form th:action="@{/logout}" method="POST">
-                                <button class="btn btn-secondary btn-sm" type="submit" name="logut">Log Out</button>
+                                <button class="btn btn-secondary btn-sm" type="submit" name="logut"><label th:text="#{logout.button}"/></button>
                             </form>
                         </a>
                     </ul>
