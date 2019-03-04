@@ -5,6 +5,10 @@ import FairGrounds.Domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,6 +50,9 @@ public class ApplicationController {
     ApplicationExpertiseFormValidator applicationExpertiseFormValidator;
     @Autowired
     ApplicationAvailabilityFormValidator applicationAvailabilityFormValidator;
+    @Autowired
+    PasswordValidator passwordValidator;
+
     /**
      * Show form of expertises
      * @param applicationForm - Wrapper object for values
@@ -196,11 +203,19 @@ public class ApplicationController {
      * @return - html page for home page
      */
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
-    public String confirmApplication(@ModelAttribute("ApplicationForm") @Valid ApplicationForm applicationForm, Model model) throws IllegalApplicationException {
+    public String confirmApplication(@ModelAttribute("applicationForm") @Valid ApplicationForm applicationForm, Model model,BindingResult bindingResult) throws IllegalApplicationException {
+
+
 
         applicationForm.setExpertize(this.applicationForm.getExpertize());
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
         applicationForm.setAvailabilities(this.applicationForm.getAvailabilities());
+
+        passwordValidator.validate(applicationForm,bindingResult);
+        if(bindingResult.hasErrors()) {
+            return APPLICATION_PAGE;
+        }
+
         Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
         applicationService.storeApplication(application);
         System.out.println("check database now");
