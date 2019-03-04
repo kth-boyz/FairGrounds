@@ -108,4 +108,11 @@ public class ApplicationService {
     public Application getApplication(Long id){
         return registerApplicationRepository.findApplicationById(id);
     }
+
+    public void storeChangedApplication(Application application) throws IllegalApplicationException {
+        if(registerApplicationRepository.findApplicationById(application.getId())==null){
+            throw new IllegalApplicationException("Application does not exist");
+        }
+        registerApplicationRepository.save(application);
+    }
 }
