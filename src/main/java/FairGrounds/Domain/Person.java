@@ -4,7 +4,7 @@ import FairGrounds.Presentation.RegisterDTO;
 
 import javax.persistence.*;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 import java.util.List;
 
@@ -18,27 +18,48 @@ public class Person {
     @Column(name = "id")
     private Long personId;
 
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^[\\p{L}\\p{M}*]*$")
     @Column(name = "fname")
     private String fname;
 
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^[\\p{L}\\p{M}*]*$")
     @Column(name = "lname")
     private String lname;
 
+    @NotNull
+    @NotBlank
+    @NotNull
+    @Pattern(regexp = "^[0-9]+$")
+    @Size(min = 10, max = 10)
     @Column(name = "ssnr")
     private String ssnr;
 
+    @NotNull
+    @NotBlank
+    @Email
     @Column(name = "email")
     private String email;
 
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z0-9]+$")
     @Column(name = "username",unique=true)
     private String username;
 
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @Size (min = 6)
     @Column(name = "pwd")
     private String pwd;
 
+    @NotNull
     @Column(name = "role")
     private String role;
-
 
     @OneToOne(mappedBy = "person")
     private Application application;

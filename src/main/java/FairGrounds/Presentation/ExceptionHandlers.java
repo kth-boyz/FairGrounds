@@ -25,13 +25,19 @@ public class ExceptionHandlers implements ErrorController{
 
     /**
      *
-     * @return error page
+     * @return error path
      */
     @Override
     public String getErrorPath() {
         return "/" + ERROR_PATH;
     }
 
+    /**
+     *
+     * @param exception the exception that is thrown on the server
+     * @param model the view model
+     * @return the default error page
+     */
     @ExceptionHandler (Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleException(Exception exception, Model model) {
@@ -39,12 +45,12 @@ public class ExceptionHandlers implements ErrorController{
         return ERROR_PAGE_URL;
     }
 
-    @ExceptionHandler(IllegalApplicationException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String applicationError(Exception exception, Model model) {
-        model.addAttribute(ERROR_TYPE_KEY, APPLICATION_ERROR);
-        return ERROR_PAGE_URL;
-    }
+    /**
+     *  Catches the 404 - page not found error
+     * @param exception the exception that is thrown
+     * @param model the view model
+     * @return the default error page
+     */
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String pageNotFound(Exception exception, Model model) {

@@ -5,12 +5,12 @@
 <main layout:fragment="content">
 <form th:action="@{/app/{path}(path=${id})}" th:object="${applicationDetailForm}" method="post">
 
-    <p>Current status: <span th:text="${applicationDetailForm.application.status}"></span></p>
+    <p><label th:text="#{application.status}"/> <span th:text="${applicationDetailForm.application.status}"></span></p>
     <table border="1">
         <thead>
         <tr>
-            <th>Expertise</th>
-            <th>Years of Experience</th>
+            <th><label th:text="#{application.expertise}"/></th>
+            <th><label th:text="#{application.years}"/></th>
         </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
     <table border="1">
         <thead>
         <tr>
-            <th>From</th>
-            <th>To</th>
+            <th><label th:text="#{apply.from}"/></th>
+            <th><label th:text="#{apply.to}"/></th>
         </tr>
         </thead>
         <tbody>
@@ -35,9 +35,9 @@
         </tr>
         </tbody>
     </table>
-    <button name="type" type="submit" th:name="type" value="accept">Accept</button>
-    <button name="reject" type="submit" th:name="type" value="reject">Reject</button>
-    <button name="list" type="submit" th:name="type" value="goback">Go Back</button>
+    <button name="type" type="submit" th:name="type" value="accept"><label th:text="#{application.accept}"/></button>
+    <button name="reject" type="submit" th:name="type" value="reject"><label th:text="#{application.reject}"/></button>
+    <button name="list" type="submit" th:name="type" value="goback"><label th:text="#{application.goback}"/></button>
 
 </form>
 </main>
