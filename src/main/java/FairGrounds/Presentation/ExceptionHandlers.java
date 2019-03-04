@@ -52,6 +52,7 @@ public class ExceptionHandlers implements ErrorController{
         return ERROR_PAGE_URL;
     }
 
+
     /**
      *  Catches the 404 - page not found error
      * @param exception the exception that is thrown
