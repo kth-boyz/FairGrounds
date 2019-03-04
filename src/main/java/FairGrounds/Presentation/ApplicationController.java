@@ -196,7 +196,7 @@ public class ApplicationController {
      * @return - html page for home page
      */
     @PostMapping(value=APPLICATION_URL, params={"confirm"})
-    public String confirmApplication(@ModelAttribute("ApplicationForm") @Valid ApplicationForm applicationForm, Model model) {
+    public String confirmApplication(@ModelAttribute("ApplicationForm") @Valid ApplicationForm applicationForm, Model model) throws IllegalApplicationException {
 
         applicationForm.setExpertize(this.applicationForm.getExpertize());
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
