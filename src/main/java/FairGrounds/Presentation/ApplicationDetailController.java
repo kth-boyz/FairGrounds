@@ -18,7 +18,7 @@ import java.util.Date;
 @Scope("session")
 public class ApplicationDetailController {
 
-    private final static String APPLICATION_URL = "/app";
+    private final static String APPLICATION_URL = "app";
     private final static String APPLICATION_PAGE = "admin/applicationDetail";
     private final static String LIST_URL = "admin/list-application";
 
@@ -89,7 +89,7 @@ public class ApplicationDetailController {
                 return "redirect:../" + LIST_URL;
 
                 default:
-                    return "redirect:" +APPLICATION_URL + id.toString();
+                    return "redirect:../" +APPLICATION_URL + id.toString();
 
         }
     }
