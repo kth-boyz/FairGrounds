@@ -1,6 +1,7 @@
 package FairGrounds.Presentation;
 import FairGrounds.Application.ApplicationService;
 import FairGrounds.Domain.Application;
+import FairGrounds.Domain.IllegalApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -64,21 +65,21 @@ public class ApplicationDetailController {
      */
     @PostMapping(value="/"+APPLICATION_URL+"/{appid}" )
     public String acceptApplication(@ModelAttribute("ApplicationDetailForm") ApplicationDetailForm applicationDetailForm, Model model
-            ,@PathVariable("appid") int appid,@RequestParam(value="type",required=false) String type) {
+            ,@PathVariable("appid") int appid,@RequestParam(value="type",required=false) String type) throws IllegalApplicationException {
         Long id = new Long(appid);
         Application application = this.applicationDetailForm.getApplication();
 
         switch (type) {
             case "accept":
                  application.setStatus("ACCEPTED");
-                applicationService.storeApplication(application);
+                applicationService.storeChangedApplication(application);
                 applicationDetailForm=this.applicationDetailForm;
                 model.addAttribute("id",id.toString());
                 model.addAttribute(applicationDetailForm);
                 return APPLICATION_PAGE;
             case "reject":
                 application.setStatus("REJECTED");
-                applicationService.storeApplication(application);
+                applicationService.storeChangedApplication(application);
                 applicationDetailForm=this.applicationDetailForm;
                 model.addAttribute("id",id.toString());
                 model.addAttribute(applicationDetailForm);
