@@ -21,13 +21,14 @@ public class PasswordValidator implements Validator {
         return ApplicationForm.class.equals(clazz);
     }
 
-
+    /**
+     * Checks if password is correct
+     * @param o ApplicationForm
+     * @param errors Error
+     */
     @Override
     public void validate(Object o, Errors errors) {
         ApplicationForm form = (ApplicationForm) o;
-        System.out.println("FORM PASSWORD: " + form.getPassword());
-        System.out.println("ACTUAL PASSWORD: " + applicationService.getPassword());
-
         if(!encoder.matches(form.getPassword(), applicationService.getPassword())){
             errors.rejectValue("password", "incorrect.password.error");
         }

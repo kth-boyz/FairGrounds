@@ -13,6 +13,11 @@ public class ApplicationAvailabilityFormValidator implements Validator {
         return ApplicationForm.class.equals(clazz);
     }
 
+    /**
+     * Checks availability list of object and rejects if incorrect or invalid
+     * @param o ApplicationForm
+     * @param errors Error
+     */
     @Override
     public void validate(Object o, Errors errors) {
         System.out.println("checking AVAILABILITIES" +

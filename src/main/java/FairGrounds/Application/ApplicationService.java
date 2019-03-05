@@ -2,11 +2,15 @@ package FairGrounds.Application;
 
 import FairGrounds.Domain.*;
 import FairGrounds.Repository.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +23,8 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
 @Service
 public class ApplicationService {
+    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
+
 
     @Autowired
     ExpertiseRepository expertiseRepository;
@@ -67,7 +73,11 @@ public class ApplicationService {
      * Stores application and all expertiseprofiles and availabilities connected to it
      * @param application - Stored Application
      */
-    public void storeApplication(Application application) throws IllegalApplicationException {
+    public void storeApplication(Application application, String encodedPassword, BCryptPasswordEncoder encoder) throws IllegalApplicationException {
+        if(!encoder.matches(encodedPassword, getPassword())){
+            throw new IllegalApplicationException("Password did not match logged in user");
+        }
+
         checkApplication(application);
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -88,7 +98,9 @@ public class ApplicationService {
             availability.setApplication(application);
             availabilityRepository.save(availability);
         }
+        logger.info("Application submitted by " + getUser());
     }
+
     private void checkApplication(Application application) throws IllegalApplicationException {
         if(getUser().getApplication()!=null){
             throw new IllegalApplicationException("User already has application!");

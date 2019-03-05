@@ -2,6 +2,9 @@ package FairGrounds.Presentation;
 
 
 import FairGrounds.Domain.IllegalApplicationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,7 @@ public class ExceptionHandlers implements ErrorController{
     public static final String USERNAME_TAKEN = "userTaken";
     public static final String PAGE_NOT_FOUND = "pagenotfound";
     public static final String APPLICATION_ERROR = "appError";
+    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
 
     /**
      *
@@ -41,6 +45,7 @@ public class ExceptionHandlers implements ErrorController{
     @ExceptionHandler (Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleException(Exception exception, Model model) {
+        logger.error("INTERNAL SERVER ERROR: " + exception.getMessage());
         model.addAttribute(ERROR_TYPE_KEY, INTERNAL_GENERIC_ERROR);
         return ERROR_PAGE_URL;
     }
@@ -54,9 +59,22 @@ public class ExceptionHandlers implements ErrorController{
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String pageNotFound(Exception exception, Model model) {
+        logger.error("404 NOT FOUND ERROR: " + exception.getMessage());
         model.addAttribute(ERROR_TYPE_KEY, PAGE_NOT_FOUND);
         return ERROR_PAGE_URL;
     }
 
-
+    /**
+     * Catches errors invoked on application submission
+     * @param exception exception for when something goes wrong in application submission
+     * @param model - binds values to html
+     * @return error page
+     */
+    @ExceptionHandler(IllegalApplicationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String ApplicationError(Exception exception, Model model) {
+        logger.error("APPLICATION ERROR: " + exception.getMessage());
+        model.addAttribute(ERROR_TYPE_KEY, APPLICATION_ERROR);
+        return ERROR_PAGE_URL;
+    }
 }
