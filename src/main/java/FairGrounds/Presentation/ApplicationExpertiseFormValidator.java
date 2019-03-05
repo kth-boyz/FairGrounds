@@ -19,7 +19,11 @@ public class ApplicationExpertiseFormValidator implements Validator {
         return ApplicationForm.class.equals(clazz);
     }
 
-    
+    /**
+     * Checks expertise list fields of object and rejects if incorrect or invalid
+     * @param obj ApplicationForm
+     * @param e Error
+     */
     public void validate(Object obj, Errors e) {
 
         //System.out.println("checking profiles--------------");

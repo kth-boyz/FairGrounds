@@ -2,8 +2,11 @@ package FairGrounds.Presentation;
 
 import FairGrounds.Application.ApplicationService;
 import FairGrounds.Domain.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -32,6 +35,7 @@ public class ApplicationController {
     private static final String APPLICATION_URL  = "/user/apply";
     private static final String TEST_PAGE  = "pub/home";
     private static final String ALREADY_EXISTS_PAGE = "user/app_exists";
+    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
 
     /**
      * Specifies date format
@@ -41,7 +45,8 @@ public class ApplicationController {
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat( "yyyy-MM-dd"), true));
     }
-
+    @Autowired
+    BCryptPasswordEncoder encoder;
     @Autowired
     ApplicationForm applicationForm;
     @Autowired
@@ -123,9 +128,6 @@ public class ApplicationController {
         model.addAttribute(applicationForm);
         applicationExpertiseFormValidator.validate(applicationForm, bindingResult);
         if(bindingResult.hasErrors()) {
-            for(ObjectError error :bindingResult.getAllErrors()){
-                System.out.println("ERROR: "+ error.toString() + " OBJECT: " + error.getObjectName());
-            }
             return "redirect:"+APPLICATION_URL;
             //return EXPERTISE_PAGE;
         }
@@ -142,7 +144,6 @@ public class ApplicationController {
     public String addAvailability(@ModelAttribute("applicationForm") @Valid ApplicationForm applicationForm, Model model) {
 
         applicationForm.getAvailabilities().add(new Availability());
-        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return AVAILABILITY_PAGE;
     }
@@ -160,7 +161,6 @@ public class ApplicationController {
         if(size>0){
             applicationForm.getAvailabilities().remove(size-1);
         }
-        printAll(applicationForm);
         model.addAttribute(applicationForm);
         return AVAILABILITY_PAGE;
     }
@@ -178,17 +178,8 @@ public class ApplicationController {
         applicationForm.setExpertiseProfiles(this.applicationForm.getExpertiseProfiles());
         this.applicationForm.setAvailabilities(applicationForm.getAvailabilities());
 
-
-        for (Availability availability: applicationForm.getAvailabilities()) {
-            System.out.println(availability.getFromDate() + " - " + availability.getToDate());
-        }
-        for (ExpertiseProfile expertiseProfile: applicationForm.getExpertiseProfiles()) {
-            System.out.println(expertiseProfile.getExpertise().getName());
-        }
-        printAll(applicationForm);
         model.addAttribute(applicationForm);
         applicationAvailabilityFormValidator.validate(applicationForm,bindingResult);
-
 
         if(bindingResult.hasErrors()) {
             return AVAILABILITY_PAGE;
@@ -217,10 +208,8 @@ public class ApplicationController {
         }
 
         Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
-        applicationService.storeApplication(application);
-        System.out.println("check database now");
+        applicationService.storeApplication(application,applicationForm.getPassword(),encoder);
         model.addAttribute(applicationForm);
-        printAll(applicationForm);
         return TEST_PAGE;
     }
 
