@@ -3,39 +3,6 @@ INSERT INTO EXPERTISE (id, name) VALUES (2, 'bar');
 INSERT INTO EXPERTISE (id, name) VALUES (3, 'skim');
 
 INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    ('chris', 'robberts', 'vinkelg', '123', 'asd@asd.se', '1337', 2, 'USER'),
-                    ('petta', 'svensson', 'pettap3', '123', 'asd@asd.se', '1338', 3, 'USER'),
-                    ('xyz','xyzxyz', 'todsss', '1232', 'taoudi123@whatver', '1234', 4,'USER'),
-                    ('abc', 'asdada', 'vinkedl', '1231', 'asd@asd.se', '1337', 5, 'USER'),
-                    ('a', 'svensson', 'pettafp', '1253', 'asd@asd.se', '1338', 6, 'USER'),
-                    ('b', 'svensso', 'pettafasp', '1263', 'asd@asd.se', '1338', 7, 'USER'),
-                    ('c', 'svenss', 'pettewrap', '123', 'asd@asd.se', '1338', 8, 'USER'),
-                    ('d', 'svens', 'pettaqwep', '123', 'asd@asd.se', '1338', 9, 'USER'),
-                    ('e', 'sven', 'pettasdap', '123', 'asd@asd.se', '1338', 10, 'USER'),
-                    ('f', 'sve', 'pettavfdp', '123', 'asd@asd.se', '1338', 11, 'USER'),
-                    ('g', 'sv', 'pettabfdgp', '123', 'asd@asd.se', '1338', 12, 'USER'),
-                    ('h', 's', 'petta213p', '123', 'asd@asd.se', '1338', 13, 'USER'),
-                    ('i', 'sv', 'pett123ap', '123', 'asd@asd.se', '1338', 14, 'USER'),
-                    ('j', 'sve', 'pett251ap', '123', 'asd@asd.se', '1338', 15, 'USER'),
-                    ('k', 'sven', 'pettaferp', '123', 'asd@asd.se', '1338', 16, 'USER'),
-                    ('l', 'svens', 'pettfdap', '123', 'asd@asd.se', '1338', 17, 'USER'),
-                    ('m', 'svenss', 'petyrtap', '123', 'asd@asd.se', '1338', 18, 'USER'),
-                    ('n', 'svensso', 'pdsfettap', '123', 'asd@asd.se', '1338', 19, 'USER'),
-                    ('o', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 20, 'USER'),
-                    ('p', 'svensson', 'pewewttap', '123', 'asd@asd.se', '1338', 21, 'USER'),
-                   -- ('taoudi','youssef', 'tods', '123', 'taoudi123@whatver', '1234', 1,'USER'),
-                    ('chris', 'robberts', 'vinkel', '123', 'asd@asd.se', '1337', 2, 'USER'),
-                    ('petta', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 3, 'USER'),
-                    ('xyz','xyzxyz', 'todss', '123', 'taoudi123@whatver', '1234', 4,'USER'),
-                    ('abc', 'asdada', 'vinkel', '123', 'asd@asd.se', '1337', 5, 'USER'),
-=======
-=======
->>>>>>> sql
-=======
->>>>>>> e85d03cf9ad5d5645c7f42042cdc75bccdec9f53
                     ('chris', 'robberts', 'vinkelg', '123', 'asd@asd.se', '1337', 2, 'applicant'),
                     ('petta', 'svensson', 'pettap3', '123', 'asd@asd.se', '1338', 3, 'applicant'),
                     ('xyz','xyzxyz', 'todsss', '1232', 'taoudi123@whatver', '1234', 4,'applicant'),
@@ -56,13 +23,6 @@ INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
                     ('n', 'svensso', 'pdsfettap', '123', 'asd@asd.se', '1338', 19, 'applicant'),
                     ('o', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 20, 'applicant'),
                     ('p', 'svensson', 'pewewttap', '123', 'asd@asd.se', '1338', 21, 'applicant'),
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> non-repudiation password check
-=======
->>>>>>> sql
-=======
->>>>>>> e85d03cf9ad5d5645c7f42042cdc75bccdec9f53
                     ('yus','todi','skimmaren','$2a$10$DOvhm/LzukVhULgnymKu1urcnVDhHGNBhmlehP7AxFJflU2h/sKPK',
                     'email@email','9876567893',22,'recruit');
 

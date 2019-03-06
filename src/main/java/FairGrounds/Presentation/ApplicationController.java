@@ -209,7 +209,7 @@ public class ApplicationController {
 
         Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
         applicationService.storeApplication(application,applicationForm.getPassword(),encoder);
-        logger.trace("Application submitted by " + applicationService.getUser());
+        logger.trace("Application submitted by " + applicationService.getUser().getUsername());
         model.addAttribute(applicationForm);
         return TEST_PAGE;
     }

@@ -50,13 +50,6 @@ public class ExceptionHandlers implements ErrorController{
         return ERROR_PAGE_URL;
     }
 
-    @ExceptionHandler(IllegalApplicationException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String applicationError(Exception exception, Model model) {
-        model.addAttribute(ERROR_TYPE_KEY, APPLICATION_ERROR);
-        return ERROR_PAGE_URL;
-    }
-
     /**
      *  Catches the 404 - page not found error
      * @param exception the exception that is thrown

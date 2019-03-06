@@ -50,3 +50,123 @@
  
 [1;32m2019-03-06 12:57:16,794[0;39m ERROR [http-nio-8080-exec-4] [1;31morg.springframework.boot.SpringApplication[0;39m [ExceptionHandlers.java:76] [1;35mAPPLICATION ERROR: ERRORRRR :))))))))[0;39m 
  
+[1;32m2019-03-06 13:38:08,631[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 23556 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 13:38:08,641[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 13:38:08,642[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 13:38:18,465[0;39m WARN [main] [1;31morg.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext[0;39m [AbstractApplicationContext.java:557] [1;35mException encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception; nested exception is java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}[0;39m 
+ 
+[1;32m2019-03-06 13:38:18,526[0;39m ERROR [main] [1;31morg.springframework.boot.SpringApplication[0;39m [SpringApplication.java:858] [1;35mApplication run failed[0;39m 
+ 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception; nested exception is java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:456)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1305)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at FairGrounds.Main.main(Main.java:14)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception; nested exception is java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	... 19 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:101)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:65)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:286)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:261)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:941)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:885)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$e0731828.CGLIB$handlerExceptionResolver$41(<generated>)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$e0731828$$FastClassBySpringCGLIB$$ee2e455c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$e0731828.handlerExceptionResolver(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 20 common frames omitted
+[1;32m2019-03-06 13:38:40,244[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 23563 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 13:38:40,257[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 13:38:40,259[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 13:38:47,476[0;39m WARN [main] [1;31morg.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext[0;39m [AbstractApplicationContext.java:557] [1;35mException encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception; nested exception is java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}[0;39m 
+ 
+[1;32m2019-03-06 13:38:47,560[0;39m ERROR [main] [1;31morg.springframework.boot.SpringApplication[0;39m [SpringApplication.java:858] [1;35mApplication run failed[0;39m 
+ 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception; nested exception is java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:456)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1305)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at FairGrounds.Main.main(Main.java:14)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception; nested exception is java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	... 19 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class FairGrounds.Domain.IllegalApplicationException]: {public java.lang.String FairGrounds.Presentation.ExceptionHandlers.applicationError(java.lang.Exception,org.springframework.ui.Model), public java.lang.String FairGrounds.Presentation.ExceptionHandlers.ApplicationError(java.lang.Exception,org.springframework.ui.Model)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:101)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:65)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:286)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:261)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:941)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:885)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$4726d7db.CGLIB$handlerExceptionResolver$41(<generated>)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$4726d7db$$FastClassBySpringCGLIB$$76198a40.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$4726d7db.handlerExceptionResolver(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 20 common frames omitted
+[1;32m2019-03-06 13:40:55,708[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 23619 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 13:40:55,716[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 13:40:55,717[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 13:41:03,763[0;39m WARN [main] [1;31morg.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration[0;39m [ThymeleafAutoConfiguration.java:108] [1;35mCannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)[0;39m 
+ 
+[1;32m2019-03-06 13:41:03,872[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:59] [1;35mStarted Main in 8.938 seconds (JVM running for 10.048)[0;39m 
+ 
+[1;32m2019-03-06 13:41:15,528[0;39m TRACE [http-nio-8080-exec-3] [1;31mFairGrounds.Application.LoginService[0;39m [LoginService.java:45] [1;35mskimmaren logged in[0;39m 
+ 
+[1;32m2019-03-06 13:41:43,837[0;39m TRACE [http-nio-8080-exec-9] [1;31mFairGrounds.Presentation.ApplicationController[0;39m [ApplicationController.java:212] [1;35mApplication submitted by FairGrounds.Domain.Person@202e4f7a[0;39m 
+ 
