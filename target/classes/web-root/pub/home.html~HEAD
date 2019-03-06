@@ -12,6 +12,7 @@
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <h2><label th:text="#{test.admin}"/></h2>
 >>>>>>> Its friday my dudes!!!!:src/main/resources/web-root/admin/logintestAdmin.html
 =======
@@ -22,6 +23,10 @@
         <h2><label th:text="#{test.user}"/></h2>
 >>>>>>> Its friday my dudes!!!!:src/main/resources/web-root/user/logintestUser.html
 >>>>>>> Its friday my dudes!!!!
+=======
+        <h2><label th:text="#{test.user}"/></h2>
+>>>>>>> Its friday my dudes!!!!:src/main/resources/web-root/user/logintestUser.html
+>>>>>>> e85d03cf9ad5d5645c7f42042cdc75bccdec9f53
     </main>
 </body>
 </html>

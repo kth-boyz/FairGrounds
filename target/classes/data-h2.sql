@@ -5,6 +5,7 @@ INSERT INTO EXPERTISE (id, name) VALUES (3, 'skim');
 INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     ('chris', 'robberts', 'vinkelg', '123', 'asd@asd.se', '1337', 2, 'USER'),
                     ('petta', 'svensson', 'pettap3', '123', 'asd@asd.se', '1338', 3, 'USER'),
                     ('xyz','xyzxyz', 'todsss', '1232', 'taoudi123@whatver', '1234', 4,'USER'),
@@ -33,6 +34,8 @@ INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
 =======
 =======
 >>>>>>> sql
+=======
+>>>>>>> e85d03cf9ad5d5645c7f42042cdc75bccdec9f53
                     ('chris', 'robberts', 'vinkelg', '123', 'asd@asd.se', '1337', 2, 'applicant'),
                     ('petta', 'svensson', 'pettap3', '123', 'asd@asd.se', '1338', 3, 'applicant'),
                     ('xyz','xyzxyz', 'todsss', '1232', 'taoudi123@whatver', '1234', 4,'applicant'),
@@ -54,9 +57,12 @@ INSERT INTO PERSON (fname, lname, username, pwd, email, ssnr, id, role) VALUES
                     ('o', 'svensson', 'pettap', '123', 'asd@asd.se', '1338', 20, 'applicant'),
                     ('p', 'svensson', 'pewewttap', '123', 'asd@asd.se', '1338', 21, 'applicant'),
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> non-repudiation password check
 =======
 >>>>>>> sql
+=======
+>>>>>>> e85d03cf9ad5d5645c7f42042cdc75bccdec9f53
                     ('yus','todi','skimmaren','$2a$10$DOvhm/LzukVhULgnymKu1urcnVDhHGNBhmlehP7AxFJflU2h/sKPK',
                     'email@email','9876567893',22,'recruit');
 
