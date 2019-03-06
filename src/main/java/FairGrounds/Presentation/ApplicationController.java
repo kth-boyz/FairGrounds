@@ -35,7 +35,7 @@ public class ApplicationController {
     private static final String APPLICATION_URL  = "/user/apply";
     private static final String TEST_PAGE  = "pub/home";
     private static final String ALREADY_EXISTS_PAGE = "user/app_exists";
-    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
 
     /**
      * Specifies date format
@@ -209,6 +209,7 @@ public class ApplicationController {
 
         Application application = new Application(applicationForm.getExpertiseProfiles(), applicationForm.getAvailabilities(),applicationService.getUser());
         applicationService.storeApplication(application,applicationForm.getPassword(),encoder);
+        logger.trace("Application submitted by " + applicationService.getUser());
         model.addAttribute(applicationForm);
         return TEST_PAGE;
     }

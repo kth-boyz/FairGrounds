@@ -18,8 +18,6 @@ public class DataSourceConfig {
 
     @Bean
     public DataSource dataSource() {
-        System.out.println("PRINT THIS PLSAESE--------------------");
-        System.out.println("URL --------------- " + dbUrl);
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(dbUrl);
         config.setUsername(username);

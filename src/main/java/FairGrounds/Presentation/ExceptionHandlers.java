@@ -25,7 +25,7 @@ public class ExceptionHandlers implements ErrorController{
     public static final String USERNAME_TAKEN = "userTaken";
     public static final String PAGE_NOT_FOUND = "pagenotfound";
     public static final String APPLICATION_ERROR = "appError";
-    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExceptionHandler.class);
 
     /**
      *

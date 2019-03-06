@@ -23,8 +23,6 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
 @Service
 public class ApplicationService {
-    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
-
 
     @Autowired
     ExpertiseRepository expertiseRepository;
@@ -98,7 +96,6 @@ public class ApplicationService {
             availability.setApplication(application);
             availabilityRepository.save(availability);
         }
-        logger.info("Application submitted by " + getUser());
     }
 
     private void checkApplication(Application application) throws IllegalApplicationException {

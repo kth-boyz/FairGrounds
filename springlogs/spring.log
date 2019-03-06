@@ -1,0 +1,52 @@
+[1;32m2019-03-06 12:37:51,689[0;39m WARN [main] [1;31morg.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration[0;39m [ThymeleafAutoConfiguration.java:108] [1;35mCannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)[0;39m 
+ 
+[1;32m2019-03-06 12:39:29,360[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 20892 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 12:39:29,365[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 12:39:29,366[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 12:39:35,979[0;39m WARN [main] [1;31morg.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration[0;39m [ThymeleafAutoConfiguration.java:108] [1;35mCannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)[0;39m 
+ 
+[1;32m2019-03-06 12:39:36,096[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:59] [1;35mStarted Main in 7.465 seconds (JVM running for 8.409)[0;39m 
+ 
+[1;32m2019-03-06 12:39:46,543[0;39m TRACE [http-nio-8080-exec-4] [1;31mFairGrounds.Application.LoginService[0;39m [LoginService.java:46] [1;35mskimmaren logged in[0;39m 
+ 
+[1;32m2019-03-06 12:41:04,447[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 20898 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 12:41:04,456[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 12:41:04,457[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 12:41:12,171[0;39m WARN [main] [1;31morg.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration[0;39m [ThymeleafAutoConfiguration.java:108] [1;35mCannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)[0;39m 
+ 
+[1;32m2019-03-06 12:41:12,271[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:59] [1;35mStarted Main in 8.538 seconds (JVM running for 9.427)[0;39m 
+ 
+[1;32m2019-03-06 12:41:19,889[0;39m ERROR [http-nio-8080-exec-4] [1;31mFairGrounds.Application.LoginService[0;39m [LoginService.java:46] [1;35mskimmaren logged in[0;39m 
+ 
+[1;32m2019-03-06 12:43:11,553[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 20914 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 12:43:11,558[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 12:43:11,559[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 12:43:18,151[0;39m WARN [main] [1;31morg.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration[0;39m [ThymeleafAutoConfiguration.java:108] [1;35mCannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)[0;39m 
+ 
+[1;32m2019-03-06 12:43:18,279[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:59] [1;35mStarted Main in 7.451 seconds (JVM running for 8.365)[0;39m 
+ 
+[1;32m2019-03-06 12:43:48,576[0;39m ERROR [http-nio-8080-exec-6] [1;31mFairGrounds.Application.LoginService[0;39m [LoginService.java:46] [1;35mskimmaren logged in[0;39m 
+ 
+[1;32m2019-03-06 12:57:01,306[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:50] [1;35mStarting Main on n144-p132.eduroam.kth.se with PID 21019 (started by Taoudi in /Users/Taowdi/Desktop/Globala Applikationer/FairGrounds)[0;39m 
+ 
+[1;32m2019-03-06 12:57:01,310[0;39m DEBUG [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:53] [1;35mRunning with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE[0;39m 
+ 
+[1;32m2019-03-06 12:57:01,311[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [SpringApplication.java:675] [1;35mNo active profile set, falling back to default profiles: default[0;39m 
+ 
+[1;32m2019-03-06 12:57:10,511[0;39m WARN [main] [1;31morg.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration[0;39m [ThymeleafAutoConfiguration.java:108] [1;35mCannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)[0;39m 
+ 
+[1;32m2019-03-06 12:57:10,681[0;39m INFO [main] [1;31mFairGrounds.Main[0;39m [StartupInfoLogger.java:59] [1;35mStarted Main in 10.111 seconds (JVM running for 11.249)[0;39m 
+ 
+[1;32m2019-03-06 12:57:16,630[0;39m TRACE [http-nio-8080-exec-3] [1;31mFairGrounds.Application.LoginService[0;39m [LoginService.java:45] [1;35mskimmaren logged in[0;39m 
+ 
+[1;32m2019-03-06 12:57:16,794[0;39m ERROR [http-nio-8080-exec-4] [1;31morg.springframework.boot.SpringApplication[0;39m [ExceptionHandlers.java:76] [1;35mAPPLICATION ERROR: ERRORRRR :))))))))[0;39m 
+ 
