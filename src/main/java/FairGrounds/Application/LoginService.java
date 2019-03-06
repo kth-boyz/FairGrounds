@@ -6,7 +6,6 @@ import FairGrounds.Repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,7 +21,7 @@ import java.util.Arrays;
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
 @Service
 public class LoginService implements UserDetailsService {
-    private static final Logger logger = LoggerFactory.getLogger(SpringApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
 
     @Autowired
     private PersonRepository personRepository;
@@ -43,7 +42,7 @@ public class LoginService implements UserDetailsService {
         }
         GrantedAuthority authority = new SimpleGrantedAuthority(person.getRole());
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(person.getUsername(), person.getPwd(), Arrays.asList(authority));
-        logger.info(person.getUsername() + " logged in");
+        logger.trace(person.getUsername() + " logged in");
         return userDetails;
     }
 
