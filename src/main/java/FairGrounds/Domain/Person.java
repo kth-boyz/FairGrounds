@@ -52,7 +52,6 @@ public class Person {
 
     @NotNull
     @NotBlank
-    @Pattern(regexp = "^[a-zA-Z0-9]+$")
     @Size (min = 6)
     @Column(name = "pwd")
     private String pwd;
