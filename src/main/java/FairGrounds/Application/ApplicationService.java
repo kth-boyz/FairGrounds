@@ -47,7 +47,7 @@ public class ApplicationService {
 
     /**
      *
-     * @return - returns logged in user (TODO)
+     * @return - returns logged in user if logged in
      */
     public Person getUser(){
         UserDetails userDetails =
@@ -125,6 +125,11 @@ public class ApplicationService {
         return registerApplicationRepository.findApplicationById(id);
     }
 
+    /**
+     * Updates application
+     * @param application
+     * @throws IllegalApplicationException
+     */
     public void storeChangedApplication(Application application) throws IllegalApplicationException {
         if(registerApplicationRepository.findApplicationById(application.getId())==null){
             throw new IllegalApplicationException("Application does not exist");

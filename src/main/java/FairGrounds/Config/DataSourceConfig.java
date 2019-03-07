@@ -15,7 +15,10 @@ public class DataSourceConfig {
     @Value("${spring.datasource.password}")
     private String password;
 
-
+    /**
+     * Links to heroku database (postgres)
+     * @return
+     */
     @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
