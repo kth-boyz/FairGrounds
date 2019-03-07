@@ -48,11 +48,23 @@ public class LoginController {
         return LOGIN_PAGE;
     }
 
+    /**
+     * Redirects to register page
+     * @param registerDTO - register form
+     * @return - Returns register page
+     */
     @GetMapping ("/" + REGISTER_USER_PAGE)
     public String showRegistrationPage (RegisterDTO registerDTO) {
         return REGISTER_USER_PAGE;
     }
 
+    /**
+     * Registers user
+     * @param registerDTO - Register form
+     * @param bindingResult - Object for binding errors
+     * @param model - Binds data to html
+     * @return - Page to redirect to
+     */
     @PostMapping ("/" + REGISTER_NEW_USER)
     public String registerNewUser(@Valid RegisterDTO registerDTO, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
