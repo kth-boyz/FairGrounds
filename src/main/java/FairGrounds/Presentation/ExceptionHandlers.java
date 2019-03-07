@@ -56,7 +56,7 @@ public class ExceptionHandlers implements ErrorController{
      * @param model the view model
      * @return the default error page
      */
-    ä
+    
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String pageNotFound(Exception exception, Model model) {
