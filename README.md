@@ -28,7 +28,10 @@ Passwords in the new database are encrypted with BCrypt - original cleartext pas
 This application runs with a SQL database.
 To create the database run the script `fairgrounds.sql` to build the database
 The application connects to the database on the default port of `3306`
-The username and password can be changed in the `application.properties` file
+The username and password can be changed in the `application.properties` file.
+To run the program on heroku with a database, postgresql must be used. Create the database using the script 'postgresdump' and port it to your heroku server and use the postgres properties in 'application.properties'. Make sure the URL, password and username match those shown in the database credentials on the heroku dashboard.
+
+The 'herokudump.sh' file can be ran to transfer the postgresdump to the heroku server
 
 
 ## Launching application on Heroku
