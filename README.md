@@ -28,15 +28,16 @@ Passwords in the new database are encrypted with BCrypt - original cleartext pas
 
 ## Database
 This application runs with three different databases. Comment or uncomment the databse that you would like to use when running the application by using `#` in the `application.properties` file. The datasases are labeled. PostgresSQL for Heroku launch only<br />
-#H2 inmemory database<br />
+<br />
+*H2 inmemory database<br />
 Only used for testing application. This database is full of dummy data only used for testing the system.<br />
 <br />
-#SQL database<br />
+*SQL database<br />
 To create the database run the script `fairgrounds.sql` to build the database
 The application connects to the database on the default port of `3306`
 The username and password can be changed in the `application.properties` file.<br />
 <br />
-#PostgreSQL
+*PostgreSQL<br />
 To run the program on heroku with a database, postgresql must be used. Create the database using the script 'postgresdump' and port it to your heroku server and use the postgres properties in 'application.properties'. Make sure the URL, password and username match those shown in the database credentials on the heroku dashboard.<br />
 <br />
 The 'herokudump.sh' file can be ran to transfer the postgresdump to the heroku server
