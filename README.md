@@ -8,6 +8,8 @@ Project in Global Application Course at KTH (IV1201) by Peter Svensson, Christop
 * Containerization (Docker)
 * Continuous integration, CI (Travis)
 * Cloud runtime (Heroku)
+* SQL
+* Postgresql
 
 ## Frameworks
 * Spring Boot
@@ -25,12 +27,18 @@ Information about the new login credentials will be sent to the affected users.<
 Passwords in the new database are encrypted with BCrypt - original cleartext passwords are provided in script as comment<br />
 
 ## Database
-This application runs with a SQL database.
+This application runs with three different databases. Comment or uncomment the databse that you would like to use when running the application by using `#` in the `application.properties` file. The datasases are labeled. PostgresSQL for Heroku launch only<br />
+#H2 inmemory database<br />
+Only used for testing application. This database is full of dummy data only used for testing the system.<br />
+<br />
+#SQL database<br />
 To create the database run the script `fairgrounds.sql` to build the database
 The application connects to the database on the default port of `3306`
-The username and password can be changed in the `application.properties` file.
-To run the program on heroku with a database, postgresql must be used. Create the database using the script 'postgresdump' and port it to your heroku server and use the postgres properties in 'application.properties'. Make sure the URL, password and username match those shown in the database credentials on the heroku dashboard.
-
+The username and password can be changed in the `application.properties` file.<br />
+<br />
+#PostgreSQL
+To run the program on heroku with a database, postgresql must be used. Create the database using the script 'postgresdump' and port it to your heroku server and use the postgres properties in 'application.properties'. Make sure the URL, password and username match those shown in the database credentials on the heroku dashboard.<br />
+<br />
 The 'herokudump.sh' file can be ran to transfer the postgresdump to the heroku server
 
 
